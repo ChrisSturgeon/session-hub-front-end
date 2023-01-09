@@ -23,6 +23,7 @@ const useFetch = (url) => {
           console.log(responseData);
           setAPIData(responseData);
           setIsLoading(false);
+          setIsAuthenticated(true);
         }
 
         // Fetch unsuccessful - user is not authenticated

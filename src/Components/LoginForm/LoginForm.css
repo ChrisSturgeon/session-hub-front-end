@@ -1,0 +1,14 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: clamp(200px, 100%, 300px);
+  align-items: flex-start;
+}
+
+.login-form input {
+  width: 100%;
+}
+
+.login-form button {
+  width: 100%;
+}

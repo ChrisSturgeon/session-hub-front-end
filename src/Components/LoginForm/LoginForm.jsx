@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import './LoginForm.css';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function LoginForm() {
+export default function LoginForm({ toggleAuth }) {
   const [inputs, setInputs] = useState({
     username: '',
     password: '',
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setInputs((prevState) => ({
@@ -13,13 +17,18 @@ export default function LoginForm() {
     }));
   };
 
-  const onSubmit = async (event) => {
+  const onSubmit = async (event, guest = false) => {
     event.preventDefault();
 
-    const postData = {
-      username: inputs.username,
-      password: inputs.password,
-    };
+    const postData = {};
+
+    if (guest) {
+      postData.username = 'guest';
+      postData.password = 'Hendrixasdfasdf1212!';
+    } else {
+      postData.username = inputs.username;
+      postData.password = inputs.password;
+    }
 
     try {
       const response = await fetch('http://localhost:3000/api/users/login', {
@@ -35,6 +44,9 @@ export default function LoginForm() {
         const responseData = await response.json();
         window.localStorage.setItem('JWT', responseData.data.token);
         console.log(responseData);
+        console.log('Logged in...');
+        toggleAuth();
+        navigate('/');
       }
 
       if (response.status === 403) {
@@ -52,7 +64,7 @@ export default function LoginForm() {
   };
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="login-form">
         <label htmlFor="username">Username</label>
         <input
           name="username"
@@ -60,7 +72,7 @@ export default function LoginForm() {
           value={inputs.username}
           onChange={handleChange}
         />
-        <label htmlFor="password"></label>
+        <label htmlFor="password">Password</label>
         <input
           name="password"
           type="password"
@@ -68,6 +80,7 @@ export default function LoginForm() {
           onChange={handleChange}
         />
         <button type="submit">Log In</button>
+        <button onClick={() => onSubmit(true)}>Guest Account</button>
       </form>
     </div>
   );

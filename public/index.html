@@ -24,6 +24,53 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: '877611430246905',
+          cookie: true,
+          xfbml: true,
+          version: 'v15.0',
+        });
+
+        FB.AppEvents.logPageView();
+      };
+
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, 'script', 'facebook-jssdk');
+    </script>
+    <script type="text/javascript">
+      if (window.location.hash && window.location.hash == '#_=_') {
+        if (window.history && history.pushState) {
+          window.history.pushState(
+            '',
+            document.title,
+            window.location.pathname
+          );
+        } else {
+          // Prevent scrolling by storing the page's current scroll offset
+          var scroll = {
+            top: document.body.scrollTop,
+            left: document.body.scrollLeft,
+          };
+          window.location.hash = '';
+          // Restore the scroll offset, should be flicker free
+          document.body.scrollTop = scroll.top;
+          document.body.scrollLeft = scroll.left;
+        }
+      }
+    </script>
+
     <title>React App</title>
   </head>
   <body>
