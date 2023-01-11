@@ -1,34 +1,32 @@
 import './LoginForm.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import Button from '../../Button/Button';
 
 export default function LoginForm({ toggleAuth }) {
-  const [inputs, setInputs] = useState({
-    username: '',
-    password: '',
-  });
-
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleChange = (event) => {
-    setInputs((prevState) => ({
-      ...prevState,
-      [event.target.name]: event.target.value,
-    }));
+  // Updates username state on input change
+  const handleUsernameChange = (event) => {
+    setUsername((prev) => event.target.value);
   };
 
-  const onSubmit = async (event, guest = false) => {
+  // Updates password state on input change
+  const handlePasswordChange = (event) => {
+    setPassword((prev) => event.target.value);
+  };
+
+  // Logs in user if valid credentials or retrieves error json for warnings
+  const onSubmit = async (event, exampleAccount = false) => {
     event.preventDefault();
 
-    const postData = {};
-
-    if (guest) {
-      postData.username = 'guest';
-      postData.password = 'Hendrixasdfasdf1212!';
-    } else {
-      postData.username = inputs.username;
-      postData.password = inputs.password;
-    }
+    const postData = {
+      username,
+      password,
+    };
 
     try {
       const response = await fetch('http://localhost:3000/api/users/login', {
@@ -43,8 +41,6 @@ export default function LoginForm({ toggleAuth }) {
       if (response.status === 200) {
         const responseData = await response.json();
         window.localStorage.setItem('JWT', responseData.data.token);
-        console.log(responseData);
-        console.log('Logged in...');
         toggleAuth();
         navigate('/');
       }
@@ -62,6 +58,13 @@ export default function LoginForm({ toggleAuth }) {
       console.log(err);
     }
   };
+
+  // Fills inputs with example account credentials
+  const completeExampleCredentials = () => {
+    setUsername('Example User');
+    setPassword('SessionHub2023!');
+  };
+
   return (
     <div>
       <form onSubmit={onSubmit} className="login-form">
@@ -69,19 +72,22 @@ export default function LoginForm({ toggleAuth }) {
         <input
           name="username"
           type="text"
-          value={inputs.username}
-          onChange={handleChange}
+          value={username}
+          onChange={handleUsernameChange}
         />
         <label htmlFor="password">Password</label>
         <input
           name="password"
           type="password"
-          value={inputs.password}
-          onChange={handleChange}
+          value={password}
+          onChange={handlePasswordChange}
         />
-        <button type="submit">Log In</button>
-        <button onClick={() => onSubmit(true)}>Guest Account</button>
+        <Button label="Log In" />
       </form>
+      <Button
+        onClick={completeExampleCredentials}
+        label="Use Example Account"
+      />
     </div>
   );
 }

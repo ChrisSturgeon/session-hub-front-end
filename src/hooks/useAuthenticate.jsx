@@ -30,12 +30,9 @@ const useAuthenticate = () => {
               },
             }
           );
-          console.log(response.status);
 
           // User is authenticated
           if (response.status === 200) {
-            const responseData = await response.json();
-            console.log(responseData);
             setIsAuthenticated(true);
             setIsLoading(false);
           }

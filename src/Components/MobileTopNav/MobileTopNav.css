@@ -1,0 +1,19 @@
+.mobile-top-nav {
+  background-color: var(--medium-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 1em;
+}
+
+.mobile-top-nav h1 {
+  color: white;
+}
+
+.mobile-top-nav button {
+  font-size: 1.5rem;
+  display: flex;
+  color: white;
+  background-color: transparent;
+  border: none;
+}

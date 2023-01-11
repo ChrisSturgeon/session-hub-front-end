@@ -25,66 +25,19 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
 
-    <script>
-      window.fbAsyncInit = function () {
-        FB.init({
-          appId: '877611430246905',
-          cookie: true,
-          xfbml: true,
-          version: 'v15.0',
-        });
-
-        FB.AppEvents.logPageView();
-      };
-
-      (function (d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {
-          return;
-        }
-        js = d.createElement(s);
-        js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      })(document, 'script', 'facebook-jssdk');
-    </script>
-    <script type="text/javascript">
-      if (window.location.hash && window.location.hash == '#_=_') {
-        if (window.history && history.pushState) {
-          window.history.pushState(
-            '',
-            document.title,
-            window.location.pathname
-          );
-        } else {
-          // Prevent scrolling by storing the page's current scroll offset
-          var scroll = {
-            top: document.body.scrollTop,
-            left: document.body.scrollLeft,
-          };
-          window.location.hash = '';
-          // Restore the scroll offset, should be flicker free
-          document.body.scrollTop = scroll.top;
-          document.body.scrollLeft = scroll.left;
-        }
-      }
-    </script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
 
     <title>React App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
