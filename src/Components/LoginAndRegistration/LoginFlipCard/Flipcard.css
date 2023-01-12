@@ -35,14 +35,16 @@
   padding: 1em 2em;
   display: flex;
   flex-direction: column;
-  gap: 1em;
 }
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front,
 .flip-card-back {
-  background: linear-gradient(-50deg, var(--light-blue), var(--turquoise));
-  background-color: var(--medium-blue);
+  /* background: linear-gradient(-50deg, var(--light-blue), var(--turquoise)); */
+  background-color: transparent;
+  /* border: 1px solid rgba(225, 225, 225, 0.283); */
+  border: 1px solid rgba(255, 255, 255, 0.354);
+
   color: white;
 }
 
@@ -57,6 +59,29 @@
   border-radius: 5px;
 }
 
-.rotated {
+.flip-card-front .create-btn {
   color: red;
+  margin-top: 1em;
+}
+
+.shake {
+  animation: shake 1s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

@@ -1,12 +1,17 @@
 import './LoginForm.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../Button/Button';
+import ValidationError from '../../ValidationError/ValidationError';
 
-export default function LoginForm({ toggleAuth }) {
+export default function LoginForm({ toggleAuth, triggerShake }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [usernameError, setUsernameError] = useState(false);
+  const [noUserError, setNoUserError] = useState(false);
+  const [passwordMissingError, setPasswordMissingError] = useState(false);
+  const [incorrectPasswordError, setIncorrectPasswordError] = useState(false);
   const navigate = useNavigate();
 
   // Updates username state on input change
@@ -22,6 +27,17 @@ export default function LoginForm({ toggleAuth }) {
   // Logs in user if valid credentials or retrieves error json for warnings
   const onSubmit = async (event, exampleAccount = false) => {
     event.preventDefault();
+
+    // Check inputs are not empty
+    !username.length ? setUsernameError(true) : setUsernameError(false);
+    !password.length
+      ? setPasswordMissingError(true)
+      : setPasswordMissingError(false);
+
+    if (!username.length || !password.length) {
+      triggerShake();
+      return;
+    }
 
     const postData = {
       username,
@@ -75,6 +91,11 @@ export default function LoginForm({ toggleAuth }) {
           value={username}
           onChange={handleUsernameChange}
         />
+        <ValidationError message="Username required" visible={usernameError} />
+        <ValidationError
+          message="Username does not exist"
+          visible={noUserError}
+        />
         <label htmlFor="password">Password</label>
         <input
           name="password"
@@ -82,12 +103,23 @@ export default function LoginForm({ toggleAuth }) {
           value={password}
           onChange={handlePasswordChange}
         />
+        <ValidationError
+          message="Password required"
+          visible={passwordMissingError}
+        />
+        <ValidationError
+          message="Password incorrect"
+          visible={incorrectPasswordError}
+        />
         <Button label="Log In" />
       </form>
-      <Button
-        onClick={completeExampleCredentials}
-        label="Use Example Account"
-      />
+      <div>
+        <Button
+          onClick={completeExampleCredentials}
+          label="Use Example Account"
+          id="example-account-btn"
+        />
+      </div>
     </div>
   );
 }

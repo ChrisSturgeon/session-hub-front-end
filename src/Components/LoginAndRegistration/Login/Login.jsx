@@ -2,14 +2,32 @@ import './Login.css';
 import React, { useState } from 'react';
 import FlipCard from '../LoginFlipCard/Flipcard';
 import Surfers from '../../../images/landing-page-surfers.jpeg';
+import PartyWave from '../../../images/ripping.jpeg';
 
 export default function Login({ toggleAuth }) {
   return (
-    <div className="login-page">
-      <header>
+    <div
+      className="login-page"
+      style={{ backgroundImage: `url(${PartyWave})`, backgroundSize: 'cover' }}
+    >
+      {/* <header>
         <h1>Session Hub</h1>
-      </header>
-      <main>
+      </header> */}
+      <div></div>
+
+      <div className="sidebar">
+        <h1>Session Hub</h1>
+        <p>
+          Welcome to Session Hub! A site to post about your latest surfing,
+          windsurfing, and kitesurfing sessions. Connect with your friends to
+          follow their activities, plan meet ups and discuss gear.
+        </p>
+        <div className="flip-card-wrapper">
+          <FlipCard toggleAuth={toggleAuth} />
+        </div>
+      </div>
+
+      {/* <main>
         <div className="hero-wrapper">
           <div className="hero">
             <p>
@@ -17,7 +35,6 @@ export default function Login({ toggleAuth }) {
               windsurfing, and kitesurfing sessions. Connect with your friends
               to follow their activities, plan meet ups and discuss gear.
             </p>
-            <img src={Surfers} alt="surfers on beach"></img>
           </div>
           <div className="flip-card-wrapper">
             <FlipCard toggleAuth={toggleAuth} />
@@ -38,7 +55,7 @@ export default function Login({ toggleAuth }) {
             ></path>
           </svg>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }
