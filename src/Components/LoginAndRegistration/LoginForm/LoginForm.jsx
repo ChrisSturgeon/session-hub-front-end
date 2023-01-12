@@ -87,6 +87,7 @@ export default function LoginForm({ toggleAuth, triggerShake }) {
         triggerShake();
         const data = await response.json();
         setIncorrectPasswordError(data.message);
+        return;
       }
 
       // User does not exist in database
@@ -94,6 +95,7 @@ export default function LoginForm({ toggleAuth, triggerShake }) {
         triggerShake();
         const data = await response.json();
         setNoUserError(data.message);
+        return;
       }
     } catch (err) {
       console.log(err);

@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 3px;
 }
 
 .register-form input {
@@ -11,4 +10,21 @@
 
 .register-form .btn {
   margin-top: 0.5em;
+}
+
+.register-form .form-top-row,
+.account-requirements .form-top-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+.register-form .form-top-row .open-btn {
+  padding: 0 0.2em;
+  font-size: 0.8rem;
+  background-color: transparent;
+  color: yellow;
+  border: none;
+  cursor: pointer;
 }

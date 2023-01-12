@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import Button from '../../Button/Button';
 
 export default function FlipCard({ toggleAuth }) {
-  const [flipped, setFlipped] = useState(false);
+  const [flipped, setFlipped] = useState(true);
   const [shake, setShake] = useState(false);
 
   const handleFlip = () => {
@@ -25,8 +25,10 @@ export default function FlipCard({ toggleAuth }) {
       <div className={!flipped ? 'flip-card' : 'flip-card flipped'}>
         <div className="flip-card-inner">
           <div className="flip-card-front">
-            <h2>Log In</h2>
-            <LoginForm toggleAuth={toggleAuth} triggerShake={triggerShake} />
+            <div>
+              <h2>Log In</h2>
+              <LoginForm toggleAuth={toggleAuth} triggerShake={triggerShake} />
+            </div>
             <Button
               className="create-btn"
               label="Create Account"
@@ -34,9 +36,14 @@ export default function FlipCard({ toggleAuth }) {
             />
           </div>
           <div className="flip-card-back">
-            <h2>Create Account</h2>
-            <RegisterForm handleFlip={handleFlip} />
-            <Button label="Back to Log In" onClick={handleFlip} />
+            <div>
+              <h2>Create Account</h2>
+              <RegisterForm
+                handleFlip={handleFlip}
+                triggerShake={triggerShake}
+              />
+            </div>
+            <Button label="Log In" onClick={handleFlip} />
           </div>
         </div>
       </div>

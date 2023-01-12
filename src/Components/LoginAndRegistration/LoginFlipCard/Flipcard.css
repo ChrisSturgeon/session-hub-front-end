@@ -35,6 +35,7 @@
   padding: 1em 2em;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Style the front side (fallback if image is missing) */

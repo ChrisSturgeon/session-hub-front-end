@@ -1,0 +1,34 @@
+.account-requirements {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* height: 100%; */
+}
+
+.account-requirements ul {
+  padding: 0;
+  margin: 0;
+  /* list-style: none; */
+}
+
+.account-requirements li {
+  text-align: start;
+  font-size: 1rem;
+  font-weight: 700;
+}
+/* .account-requirements span {
+  margin-top: 1em;
+} */
+
+.account-requirements .username-requirements {
+  margin-bottom: 1em;
+}
+
+.account-requirements .form-top-row .close-btn {
+  padding: 0 0.2em;
+  font-size: 0.8rem;
+  background-color: transparent;
+  color: yellow;
+  border: none;
+  cursor: pointer;
+}
