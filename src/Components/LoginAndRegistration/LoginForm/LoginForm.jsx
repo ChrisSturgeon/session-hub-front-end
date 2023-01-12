@@ -1,18 +1,19 @@
 import './LoginForm.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../Button/Button';
 import ValidationError from '../../ValidationError/ValidationError';
 
 export default function LoginForm({ toggleAuth, triggerShake }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [usernameError, setUsernameError] = useState(false);
-  const [noUserError, setNoUserError] = useState(false);
-  const [passwordMissingError, setPasswordMissingError] = useState(false);
-  const [incorrectPasswordError, setIncorrectPasswordError] = useState(false);
   const navigate = useNavigate();
+
+  // Valiation & Login error message states
+  const [usernameError, setUsernameError] = useState(false);
+  const [noUserError, setNoUserError] = useState('');
+  const [passwordMissingError, setPasswordMissingError] = useState(false);
+  const [incorrectPasswordError, setIncorrectPasswordError] = useState('');
 
   // Updates username state on input change
   const handleUsernameChange = (event) => {
@@ -24,7 +25,24 @@ export default function LoginForm({ toggleAuth, triggerShake }) {
     setPassword((prev) => event.target.value);
   };
 
-  // Logs in user if valid credentials or retrieves error json for warnings
+  // Removes 'required' validation messages for input lengths > 0
+  useEffect(() => {
+    if (password.length) {
+      setPasswordMissingError(false);
+    }
+
+    if (username.length) {
+      setUsernameError(false);
+    }
+  }, [username, password]);
+
+  // Fills inputs with example account credentials
+  const completeExampleCredentials = () => {
+    setUsername('Example User');
+    setPassword('SessionHub2023!');
+  };
+
+  // Logs in user if valid credentials or retrieves error json for validation
   const onSubmit = async (event, exampleAccount = false) => {
     event.preventDefault();
 
@@ -39,11 +57,13 @@ export default function LoginForm({ toggleAuth, triggerShake }) {
       return;
     }
 
+    // Create object with inputted credentials for fetch POST request
     const postData = {
       username,
       password,
     };
 
+    // Fetch POST method and handle response
     try {
       const response = await fetch('http://localhost:3000/api/users/login', {
         method: 'POST',
@@ -54,6 +74,7 @@ export default function LoginForm({ toggleAuth, triggerShake }) {
         body: JSON.stringify(postData),
       });
 
+      // Credentials are valid, store JWT and redirect to home page
       if (response.status === 200) {
         const responseData = await response.json();
         window.localStorage.setItem('JWT', responseData.data.token);
@@ -61,24 +82,22 @@ export default function LoginForm({ toggleAuth, triggerShake }) {
         navigate('/');
       }
 
+      // Users exists but incorrect password
       if (response.status === 403) {
+        triggerShake();
         const data = await response.json();
-        console.log(data);
+        setIncorrectPasswordError(data.message);
       }
 
+      // User does not exist in database
       if (response.status === 404) {
+        triggerShake();
         const data = await response.json();
-        console.log(data);
+        setNoUserError(data.message);
       }
     } catch (err) {
       console.log(err);
     }
-  };
-
-  // Fills inputs with example account credentials
-  const completeExampleCredentials = () => {
-    setUsername('Example User');
-    setPassword('SessionHub2023!');
   };
 
   return (
@@ -91,10 +110,13 @@ export default function LoginForm({ toggleAuth, triggerShake }) {
           value={username}
           onChange={handleUsernameChange}
         />
-        <ValidationError message="Username required" visible={usernameError} />
+        <ValidationError
+          message="Username required"
+          isVisible={usernameError}
+        />
         <ValidationError
           message="Username does not exist"
-          visible={noUserError}
+          isVisible={noUserError}
         />
         <label htmlFor="password">Password</label>
         <input
@@ -105,11 +127,11 @@ export default function LoginForm({ toggleAuth, triggerShake }) {
         />
         <ValidationError
           message="Password required"
-          visible={passwordMissingError}
+          isVisible={passwordMissingError}
         />
         <ValidationError
           message="Password incorrect"
-          visible={incorrectPasswordError}
+          isVisible={incorrectPasswordError}
         />
         <Button label="Log In" />
       </form>

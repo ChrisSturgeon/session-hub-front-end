@@ -10,6 +10,7 @@
   width: 100%;
   font-weight: 500;
   color: var(--dark-blue);
+  padding: 0 0.25em;
 }
 
 .login-form .btn {

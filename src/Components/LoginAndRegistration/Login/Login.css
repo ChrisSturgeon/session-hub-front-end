@@ -1,12 +1,34 @@
 .login-page {
   min-height: 100vh;
-  overflow-x: hidden;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-  /* background: linear-gradient(45deg, rgb(245, 245, 245), white); */
   display: grid;
   grid-template-columns: 2fr 500px 60px;
+}
+
+.login-page h1 {
+  color: white;
+  font-weight: 900;
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.login-page .sidebar {
+  background-color: rgba(33, 38, 61, 0.319);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+  gap: 1.5em;
+  grid-column-start: 2;
+}
+
+.login-page .sidebar p {
+  color: white;
+  font-weight: 700;
+}
+
+.flip-card-wrapper {
+  width: clamp(250px, 100%, 300px);
 }
 
 @media only screen and (max-width: 1075px) {
@@ -18,140 +40,4 @@
   .login-page .sidebar {
     width: clamp(300px, 500px, 600px);
   }
-}
-
-.login-page header {
-  width: 100%;
-  background: linear-gradient(-45deg, var(--light-blue), var(--turquoise));
-  padding: 1em 2em;
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-}
-
-.login-page h1 {
-  color: white;
-  font-weight: 900;
-  font-size: 4rem;
-  line-height: 1;
-}
-
-.login-page main {
-  display: flex;
-  justify-content: center;
-}
-
-.login-page .hero-wrapper {
-  width: clamp(200px, 100%, 900px);
-  padding: 1em;
-  gap: 20px;
-  margin-top: 1em;
-  display: flex;
-}
-
-.hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-weight: 500;
-  width: 66%;
-}
-
-.hero img {
-  border-radius: 5px;
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  object-fit: cover;
-  max-height: 300px;
-}
-
-.flip-card-wrapper {
-  width: 33%;
-}
-
-footer {
-  display: flex;
-  align-items: flex-end;
-}
-
-footer .custom-shape-divider-bottom-1673444937 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-footer .custom-shape-divider-bottom-1673444937 svg {
-  position: relative;
-  display: block;
-  width: calc(142% + 1.3px);
-  height: 167px;
-}
-
-footer .custom-shape-divider-bottom-1673444937 .shape-fill {
-  fill: rgba(255, 255, 255, 0.367);
-}
-
-/** For tablet devices **/
-@media (min-width: 768px) and (max-width: 1023px) {
-  .custom-shape-divider-bottom-1673444937 svg {
-    width: calc(142% + 1.3px);
-    height: 56px;
-  }
-}
-
-/* @media only screen and (max-width: 768px) {
-  .login-page main {
-    width: clamp(200px, 100%, 400px);
-  }
-  .hero-wrapper {
-    flex-direction: column;
-  }
-
-  .hero,
-  .flip-card-wrapper {
-    width: 100%;
-  }
-
-  footer .custom-shape-divider-bottom-1673444937 .shape-fill {
-    display: none;
-  }
-
-  .login-page .hero-wrapper {
-    margin-top: 0;
-  }
-
-  .hero {
-    gap: 1em;
-  }
-} */
-
-@media only screen and (max-height: 680px) {
-  footer .custom-shape-divider-bottom-1673444937 .shape-fill {
-    display: none;
-  }
-}
-
-.login-page .sidebar {
-  background-color: rgba(33, 38, 61, 0.319);
-  /* border-left: 1px solid rgb(245, 244, 244); */
-  backdrop-filter: blur(5px);
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center;
-  align-items: flex-start; */
-  align-items: center;
-  /* justify-content: center; */
-  /* justify-content: space-around; */
-  padding: 2em;
-  gap: 1.5em;
-}
-
-.login-page .sidebar p {
-  color: white;
-  font-weight: 700;
-}
-
-.flip-card-wrapper {
-  /* background-color: red; */
-  width: clamp(250px, 100%, 300px);
 }

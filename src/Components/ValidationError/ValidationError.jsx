@@ -25,19 +25,19 @@ const expandDown = {
     opacity: 0,
     transition: {
       height: {
-        duration: 0.2,
+        duration: 0.5,
       },
       opacity: {
-        duration: 0.1,
+        duration: 0.2,
       },
     },
   },
 };
 
-export default function ValidationError({ visible, message }) {
-  if (visible) {
-    return (
-      <AnimatePresence>
+export default function ValidationError({ isVisible, message }) {
+  return (
+    <AnimatePresence>
+      {isVisible && (
         <motion.div
           initial={expandDown.initial}
           animate={expandDown.animate}
@@ -46,7 +46,7 @@ export default function ValidationError({ visible, message }) {
         >
           {message}
         </motion.div>
-      </AnimatePresence>
-    );
-  }
+      )}
+    </AnimatePresence>
+  );
 }
