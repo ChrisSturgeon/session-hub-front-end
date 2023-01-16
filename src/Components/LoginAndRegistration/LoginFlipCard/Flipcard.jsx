@@ -1,18 +1,19 @@
 import './Flipcard.css';
 import { useState } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
-import RegisterForm from '../RegisterForm/RegisterForm';
-import { motion } from 'framer-motion';
 import Button from '../../Button/Button';
+import RegisterStep from '../RegisterStep/RegisterStep';
 
 export default function FlipCard({ toggleAuth }) {
-  const [flipped, setFlipped] = useState(true);
+  const [flipped, setFlipped] = useState(false);
   const [shake, setShake] = useState(false);
 
+  // Toggles card flip state
   const handleFlip = () => {
     setFlipped(!flipped);
   };
 
+  // Sets time out to trigger div shake to indicate invalid credentials
   const triggerShake = () => {
     setShake(!shake);
     setTimeout(() => {
@@ -38,10 +39,7 @@ export default function FlipCard({ toggleAuth }) {
           <div className="flip-card-back">
             <div>
               <h2>Create Account</h2>
-              <RegisterForm
-                handleFlip={handleFlip}
-                triggerShake={triggerShake}
-              />
+              <RegisterStep triggerShake={triggerShake} />
             </div>
             <Button label="Log In" onClick={handleFlip} />
           </div>

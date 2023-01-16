@@ -1,0 +1,15 @@
+.create-user-success {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-user-success .success-tick {
+  font-size: 10rem;
+}
+
+.create-user-success .succcess-message {
+  font-size: 1.8rem;
+  position: relative;
+  top: -40px;
+  font-weight: 500;
+}
