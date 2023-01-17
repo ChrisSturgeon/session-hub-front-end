@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { redirect, useNavigate } from 'react-router-dom';
-
-import useAuthenticate from '../../hooks/useAuthenticate';
-import LoginForm from '../LoginAndRegistration/LoginForm/LoginForm';
+import { useContext } from 'react';
+import { UserContext } from '../../App';
 
 export default function Home({ isAuthenticated }) {
-  if (isAuthenticated === true) {
+  const userDetails = useContext(UserContext);
+  if (isAuthenticated === true && userDetails) {
     return (
       <div>
-        <p>This is the home page</p>
+        <p>This is the home page for {userDetails.username}</p>
+        {!userDetails.profileComplete && (
+          <div>You need to complete your profile</div>
+        )}
       </div>
     );
   }

@@ -1,0 +1,9 @@
+.friends-list {
+  padding: 1em;
+}
+
+.friends-list .column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

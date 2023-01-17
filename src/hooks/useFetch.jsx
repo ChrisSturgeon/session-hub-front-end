@@ -15,12 +15,10 @@ const useFetch = (url) => {
             Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
           },
         });
-        console.log(response.status);
 
         // Fetch successfull
         if (response.status === 200) {
           const responseData = await response.json();
-          console.log(responseData);
           setAPIData(responseData);
           setIsLoading(false);
           setIsAuthenticated(true);

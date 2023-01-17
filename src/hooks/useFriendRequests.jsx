@@ -23,13 +23,10 @@ const useFriendRequest = () => {
             },
           }
         );
-        console.log(response.status);
 
         // Fetch successfull
         if (response.status === 200) {
           const responseData = await response.json();
-          console.log(responseData);
-
           setFriendRequests(responseData.data);
           if (responseData.data) {
             setFriendRequests({
