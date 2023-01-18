@@ -7,6 +7,7 @@
   box-sizing: border-box;
   position: relative;
   animation: pulse 1s linear infinite;
+  margin-top: 2em;
 }
 .loader:after {
   content: '';

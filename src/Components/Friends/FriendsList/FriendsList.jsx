@@ -10,10 +10,11 @@ export default function FriendsList({ userID }) {
     <div className="friends-list">
       <h2>Your friends</h2>
       {isLoading && <Spinner />}
+
       {APIData && (
         <div className="column">
-          {APIData.data.map((friend) => {
-            return <FriendCard key={friend.name} friendData={friend} />;
+          {APIData.data.map((friendData) => {
+            return <FriendCard key={friendData.name} friendData={friendData} />;
           })}
         </div>
       )}

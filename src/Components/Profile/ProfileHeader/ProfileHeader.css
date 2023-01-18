@@ -1,0 +1,27 @@
+.profile-header {
+  background-color: pink;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  padding: 1em;
+  width: 100%;
+}
+
+.profile-header .profile-pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  background-color: bisque;
+}
+
+.profile-header h1 {
+  font-size: 3rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .profile-header {
+    background-color: lightblue;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

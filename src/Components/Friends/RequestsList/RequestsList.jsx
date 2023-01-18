@@ -1,3 +1,4 @@
+import './RequestsList.css';
 import Request from '../Request/Request';
 import { useContext } from 'react';
 import { RequestContext } from '../../../App';
@@ -12,8 +13,7 @@ export default function RequestsList({ decrementRequests }) {
       <p>I'm the friends requests page</p>
 
       {friendRequests.count > 0 ? (
-        <div>
-          {' '}
+        <div className="requests-column">
           {friendRequests.requests.map((request) => {
             return (
               <Request

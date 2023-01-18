@@ -2,9 +2,11 @@ import './MobileNav.css';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { RequestContext } from '../../App';
+import { UserContext } from '../../App';
 
 export default function MobileNav() {
   const friendRequests = useContext(RequestContext);
+  const userDetails = useContext(UserContext);
 
   return (
     <nav className="mobile-nav">
@@ -40,12 +42,29 @@ export default function MobileNav() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/profile">
-            <span className="icon">
-              <ion-icon name="person-outline"></ion-icon>
-            </span>
-            <span className="text">Profile</span>
-          </NavLink>
+          {userDetails ? (
+            <NavLink
+              to={`/profile/${userDetails.username}`}
+              state={{
+                profileData: {
+                  name: userDetails.username,
+                  ID: userDetails._id,
+                },
+              }}
+            >
+              <span className="icon">
+                <ion-icon name="person-outline"></ion-icon>
+              </span>
+              <span className="text">Profile</span>
+            </NavLink>
+          ) : (
+            <NavLink to="/profile">
+              <span className="icon">
+                <ion-icon name="person-outline"></ion-icon>
+              </span>
+              <span className="text">Profile</span>
+            </NavLink>
+          )}
         </li>
         <div className="indicator"></div>
       </ul>

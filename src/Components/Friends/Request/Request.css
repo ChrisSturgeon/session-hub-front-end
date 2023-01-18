@@ -1,0 +1,60 @@
+.request-card {
+  width: clamp(200px, 100%, 400px);
+
+  display: grid;
+  grid-template-rows: 63px auto;
+  align-items: center;
+  border: 1px solid rgb(243, 243, 243);
+  padding: 5px;
+  background-color: rgb(248, 248, 248);
+  border-radius: 3px;
+  text-decoration: none;
+  color: var(--dark-blue);
+}
+
+.friend-card:hover {
+  border: 1px solid rgb(203, 203, 203);
+}
+
+.request-card .upper {
+  height: 63px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.request-card .upper .profile-img {
+  height: 100%;
+  width: 63px;
+  border-radius: 100%;
+  background-color: lightblue;
+}
+
+.request-card .forms {
+  padding: 1em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.request-card .forms button {
+  width: 100px;
+}
+
+.request-card .forms .accept,
+.request-card .forms .decline {
+  border: none;
+  padding: 0.25em;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.request-card .forms .accept {
+  color: white;
+  background-color: var(--medium-blue);
+}
+
+.request-card .forms .decline {
+  color: grey;
+}

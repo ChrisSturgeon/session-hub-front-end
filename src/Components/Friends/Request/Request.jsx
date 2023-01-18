@@ -1,6 +1,8 @@
 import './Request.css';
+import { Link } from 'react-router-dom';
 
 export default function Request({ requestData, decrementRequests }) {
+  const profileURL = `/profile/${requestData.requester.ID}`;
   const responseURL = `http://localhost:3000/api/friends/request/${requestData._id}/response`;
 
   const handleSubmit = (reply) => (event) => {
@@ -44,14 +46,20 @@ export default function Request({ requestData, decrementRequests }) {
   };
 
   return (
-    <div>
-      <div>I'm a friend request from {requestData.requester.name}</div>
-      <form onSubmit={handleSubmit(true)}>
-        <button>Accept</button>
-      </form>
-      <form onSubmit={handleSubmit(false)}>
-        <button>Decline</button>
-      </form>
+    <div className="request-card">
+      <Link to={profileURL} className="upper">
+        <div className="profile-img"></div>
+        <div>I'm a friend request from {requestData.requester.name}</div>
+      </Link>
+
+      <div className="forms">
+        <form onSubmit={handleSubmit(true)}>
+          <button className="accept">Accept</button>
+        </form>
+        <form onSubmit={handleSubmit(false)}>
+          <button className="decline">Decline</button>
+        </form>
+      </div>
     </div>
   );
 }

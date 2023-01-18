@@ -80,6 +80,7 @@ function App() {
             </Route>
             <Route path="new-post" element={<NewPost />}></Route>
             <Route path="profile" element={<Profile />}></Route>
+            <Route path="profile/:username" element={<Profile />} />
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </div>
