@@ -1,23 +1,41 @@
 import './FriendsList.css';
-import useFetch from '../../../hooks/useFetch';
-import Spinner from '../../Spinner/Spinner';
 import FriendCard from '../FriendCard/FriendCard';
+import { useLoaderData } from 'react-router-dom';
 
-export default function FriendsList({ userID }) {
-  const URL = `http://localhost:3000/api/friends/${userID}/all`;
-  const { isLoading, APIData, error } = useFetch(URL);
+export default function FriendsList() {
+  const { friends } = useLoaderData();
   return (
     <div className="friends-list">
-      <h2>Your friends</h2>
-      {isLoading && <Spinner />}
-
-      {APIData && (
+      {friends && (
         <div className="column">
-          {APIData.data.map((friendData) => {
-            return <FriendCard key={friendData.name} friendData={friendData} />;
+          {friends.map((friends) => {
+            return <FriendCard key={friends.name} friendData={friends} />;
           })}
         </div>
       )}
     </div>
   );
 }
+
+export const FriendsListLoader = async (params) => {
+  const response = await fetch(
+    `http://localhost:3000/api/friends/${params.userID}/all`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
+      },
+    }
+  );
+
+  if (response.status === 404) {
+    throw new Response('Not Found', { status: 404 });
+  }
+
+  const data = await response.json();
+  const friends = data.data;
+
+  return {
+    friends,
+  };
+};

@@ -1,16 +1,13 @@
 import { useContext } from 'react';
 import { UserContext } from '../../App';
 
-export default function Home({ isAuthenticated }) {
-  const userDetails = useContext(UserContext);
-  if (isAuthenticated === true && userDetails) {
-    return (
-      <div>
-        <p>This is the home page for {userDetails.username}</p>
-        {!userDetails.profileComplete && (
-          <div>You need to complete your profile</div>
-        )}
-      </div>
-    );
-  }
+export default function Home() {
+  const user = useContext(UserContext);
+
+  return (
+    <div>
+      <p>I'm the home test page for {user.username}</p>
+      <p>Feed goes here</p>
+    </div>
+  );
 }

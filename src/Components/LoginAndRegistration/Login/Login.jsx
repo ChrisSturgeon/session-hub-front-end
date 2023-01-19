@@ -2,7 +2,7 @@ import './Login.css';
 import FlipCard from '../LoginFlipCard/Flipcard';
 import Surfer from '../../../images/ripping.jpeg';
 
-export default function Login({ toggleAuth }) {
+export default function Login({ toggleAuth, setUser }) {
   return (
     <div
       className="login-page"
@@ -16,7 +16,7 @@ export default function Login({ toggleAuth }) {
           follow their activities, plan meet ups and discuss gear.
         </p>
         <div className="flip-card-wrapper">
-          <FlipCard toggleAuth={toggleAuth} />
+          <FlipCard toggleAuth={toggleAuth} setUser={setUser} />
         </div>
       </div>
     </div>

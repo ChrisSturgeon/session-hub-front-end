@@ -1,13 +1,11 @@
 import './LoginForm.css';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Button from '../../Button/Button';
 import ValidationError from '../../ValidationError/ValidationError';
 
-export default function LoginForm({ toggleAuth, triggerShake }) {
+export default function LoginForm({ toggleAuth, setUser, triggerShake }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
   // Valiation & Login error message states
   const [usernameError, setUsernameError] = useState(false);
@@ -78,8 +76,12 @@ export default function LoginForm({ toggleAuth, triggerShake }) {
       if (response.status === 200) {
         const responseData = await response.json();
         window.localStorage.setItem('JWT', responseData.data.token);
+        setUser({
+          username: responseData.data.username,
+          ID: responseData.data.ID,
+          profileComplete: responseData.data.ID,
+        });
         toggleAuth();
-        navigate('/');
       }
 
       // Users exists but incorrect password

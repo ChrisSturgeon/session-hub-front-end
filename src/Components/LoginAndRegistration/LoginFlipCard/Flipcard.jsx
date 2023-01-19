@@ -4,7 +4,7 @@ import LoginForm from '../LoginForm/LoginForm';
 import Button from '../../Button/Button';
 import RegisterStep from '../RegisterStep/RegisterStep';
 
-export default function FlipCard({ toggleAuth }) {
+export default function FlipCard({ toggleAuth, setUser }) {
   const [flipped, setFlipped] = useState(false);
   const [shake, setShake] = useState(false);
 
@@ -28,7 +28,11 @@ export default function FlipCard({ toggleAuth }) {
           <div className="flip-card-front">
             <div>
               <h2>Log In</h2>
-              <LoginForm toggleAuth={toggleAuth} triggerShake={triggerShake} />
+              <LoginForm
+                toggleAuth={toggleAuth}
+                setUser={setUser}
+                triggerShake={triggerShake}
+              />
             </div>
             <Button
               className="create-btn"

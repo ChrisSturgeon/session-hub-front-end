@@ -1,92 +1,121 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import useAuthenticate from './hooks/useAuthenticate';
 
 // Component imports
 import Login from './Components/LoginAndRegistration/Login/Login';
 import Home from './Components/Home/Home';
-import Navbar from './Navbar/Navbar';
 import NotFound from './Components/NotFound/NotFound';
-import useCheckMobileScreen from './hooks/useWindowDimensions';
-import MobileNav from './Components/MobileNav/MobileNav';
 import Friends from './Components/Friends/Friends';
 import NewPost from './Components/NewPost/NewPost';
-import Profile from './Components/Profile/Profile';
-import MobileTopNav from './Components/MobileTopNav/MobileTopNav';
+import Profile, { ProfileLoader } from './Components/Profile/Profile';
 import AllUsers from './Components/Users/AllUsers/AllUsers';
 import RequestsList from './Components/Friends/RequestsList/RequestsList';
-import useFriendRequest from './hooks/useFriendRequests';
-import useUserDetails from './hooks/useUserDetails';
-import FriendsList from './Components/Friends/FriendsList/FriendsList';
+import FriendsList, {
+  FriendsListLoader,
+} from './Components/Friends/FriendsList/FriendsList';
+import Spinner from './Components/Spinner/Spinner';
+import NavBarWrapper from './Components/Navigation/NavBarWrapper/NavBarWrapper';
+
+// Hook imports
 
 // Request notification context
 export const RequestContext = React.createContext();
 export const UserContext = React.createContext();
 
 function App() {
-  const isMobile = useCheckMobileScreen();
-  let { isAuthenticated, setIsAuthenticated } = useAuthenticate();
-  const { userDetails } = useUserDetails();
-  const { friendRequests, decrementRequests } = useFriendRequest();
+  const {
+    isAuthenticating,
+    isAuthenticated,
+    setIsAuthenticated,
+    user,
+    setUser,
+  } = useAuthenticate();
 
   // Toggles authentication state
   const toggleAuth = () => {
     setIsAuthenticated(!isAuthenticated);
   };
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <NavBarWrapper toggleAuth={toggleAuth} setUser={setUser} />,
+      children: [
+        {
+          path: '/',
+          element: <Home user={user} />,
+        },
+        {
+          // TODO - Change this to show you are already logged in
+          path: 'login',
+          element: <Login />,
+        },
+        {
+          path: 'new-post',
+          element: <NewPost />,
+        },
+        {
+          path: 'friends',
+          element: <Friends />,
+          children: [
+            {
+              path: ':userID',
+              element: <FriendsList />,
+              loader: async ({ params }) => {
+                return FriendsListLoader(params);
+              },
+            },
+            {
+              path: 'requests',
+              element: <RequestsList />,
+            },
+            {
+              path: 'all-users',
+              element: <AllUsers />,
+            },
+          ],
+        },
+        {
+          path: 'profile/:userID',
+          element: <Profile />,
+          loader: async ({ params }) => {
+            return ProfileLoader(params);
+          },
+          children: [
+            {
+              path: 'friends',
+              element: <FriendsList />,
+              loader: async ({ params }) => {
+                return FriendsListLoader(params);
+              },
+            },
+          ],
+        },
 
-  const navigate = useNavigate();
+        {
+          path: '*',
+          element: <NotFound />,
+        },
+      ],
+    },
+  ]);
 
-  // Removes JWT from localStorage and navigates user to login page
-  const logOut = () => {
-    window.localStorage.removeItem('JWT');
-    toggleAuth();
-    navigate('/login');
-  };
+  if (isAuthenticating) {
+    return <Spinner />;
+  }
 
-  return (
-    <UserContext.Provider value={userDetails}>
-      <RequestContext.Provider value={friendRequests}>
-        <div className="App">
-          {isAuthenticated && isMobile ? (
-            <>
-              <MobileTopNav logOut={logOut} /> <MobileNav />
-            </>
-          ) : null}
-          {isAuthenticated && !isMobile ? (
-            <Navbar isAuthenticated={isAuthenticated} logOut={logOut} />
-          ) : null}
-          <Routes>
-            <Route
-              index
-              element={<Home isAuthenticated={isAuthenticated} />}
-            ></Route>
-            <Route
-              path="login"
-              element={<Login toggleAuth={toggleAuth} />}
-            ></Route>
-            <Route path="friends" element={<Friends toggleAuth={toggleAuth} />}>
-              <Route
-                path="requests"
-                element={<RequestsList decrementRequests={decrementRequests} />}
-              />
-              <Route path="all-users" element={<AllUsers />} />
-              {userDetails && (
-                <Route
-                  index
-                  element={<FriendsList userID={userDetails._id} />}
-                />
-              )}
-            </Route>
-            <Route path="new-post" element={<NewPost />}></Route>
-            <Route path="profile" element={<Profile />}></Route>
-            <Route path="profile/:username" element={<Profile />} />
-            <Route path="*" element={<NotFound />}></Route>
-          </Routes>
-        </div>
-      </RequestContext.Provider>
-    </UserContext.Provider>
-  );
+  if (!isAuthenticated) {
+    return <Login toggleAuth={toggleAuth} setUser={setUser} />;
+  }
+
+  if (isAuthenticated && user) {
+    return (
+      <UserContext.Provider value={user}>
+        <RouterProvider router={router} />
+      </UserContext.Provider>
+    );
+  }
 }
 
 export default App;

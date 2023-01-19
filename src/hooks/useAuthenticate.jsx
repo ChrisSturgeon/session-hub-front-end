@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const useAuthenticate = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const [user, setUser] = useState(null);
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   useEffect(() => {
     // Checks if JWT is present in localStorage and checks validity if so.
@@ -14,10 +13,7 @@ const useAuthenticate = () => {
 
       if (token === null) {
         setIsAuthenticated(false);
-        setIsLoading(false);
-        navigate('/login', {
-          state: { message: 'You must login to view this page' },
-        });
+        setIsAuthenticating(false);
       } else {
         try {
           // Call authentication API route to verify validity of token
@@ -34,14 +30,15 @@ const useAuthenticate = () => {
           // User is authenticated
           if (response.status === 200) {
             setIsAuthenticated(true);
-            setIsLoading(false);
+            setIsAuthenticating(false);
+            const responseData = await response.json();
+            setUser(responseData.data);
           }
 
-          // User is not authenticated so redirect them to the login page with message prompt
-          if (response.status === 401) {
+          // User does not exist or is not authenticated so redirect them to the login page with message prompt
+          if (response.status === 404 || response.status === 401) {
             setIsAuthenticated(false);
-            setIsLoading(false);
-            navigate('/login');
+            setIsAuthenticating(false);
           }
         } catch (err) {
           console.log(err);
@@ -50,8 +47,15 @@ const useAuthenticate = () => {
       }
     };
     checkAuthentication();
-  }, []);
-  return { isLoading, isAuthenticated, setIsAuthenticated, error };
+  }, [error]);
+  return {
+    isAuthenticating,
+    isAuthenticated,
+    setIsAuthenticated,
+    user,
+    setUser,
+    error,
+  };
 };
 
 export default useAuthenticate;
