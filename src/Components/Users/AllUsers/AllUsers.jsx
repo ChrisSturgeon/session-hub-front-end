@@ -1,25 +1,20 @@
-import { useState, useEffect } from 'react';
 import './AllUsers.css';
-import useFetch from '../../../hooks/useFetch';
 import UserCard from '../UserCard/UserCard';
-import Spinner from '../../Spinner/Spinner';
 
+import { useLoaderData } from 'react-router-dom';
 export default function AllUsers() {
-  const { isLoading, APIData, error } = useFetch(
-    'http://localhost:3000/api/users/all'
-  );
+  const { users } = useLoaderData();
 
   return (
     <div className="all-users">
       <h1>All users</h1>
-      {APIData && (
-        <div>
-          {APIData.data.map((user) => {
+      {users && (
+        <div className="column">
+          {users.map((user) => {
             return <UserCard key={user._id} userData={user} />;
           })}
         </div>
       )}
-      {isLoading && <Spinner />}
     </div>
   );
 }

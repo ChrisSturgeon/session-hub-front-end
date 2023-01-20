@@ -1,8 +1,7 @@
 import './RequestsList.css';
-import Request from '../Request/Request';
 import { useContext } from 'react';
 import { RequestContext } from '../../../App';
-
+import FriendRequestReply from '../FriendRequestReply/FriendRequestReply';
 export default function RequestsList({ decrementRequests }) {
   const friendRequests = useContext(RequestContext);
 

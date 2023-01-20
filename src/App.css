@@ -28,3 +28,9 @@ input:focus {
   flex-direction: column;
   align-items: center;
 }
+
+@media only screen and (max-width: 768px) {
+  .page-wrapper {
+    padding-bottom: 70px;
+  }
+}

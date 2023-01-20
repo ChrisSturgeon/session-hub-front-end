@@ -1,4 +1,5 @@
 .profile {
   padding: 1em;
   width: clamp(250px, 100%, 1400px);
+  min-height: 100vh;
 }

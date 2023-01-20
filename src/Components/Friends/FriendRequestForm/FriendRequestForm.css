@@ -1,0 +1,12 @@
+.add-friend {
+  display: flex;
+  width: 200px;
+}
+
+.add-friend button {
+  width: 100px;
+}
+
+.add-btn {
+  width: 200px;
+}

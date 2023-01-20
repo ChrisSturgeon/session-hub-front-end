@@ -1,0 +1,38 @@
+.user-card {
+  width: clamp(200px, 100%, 400px);
+  height: 75px;
+  display: grid;
+  grid-template-columns: 75px 1fr;
+  align-items: center;
+  border: 1px solid rgb(243, 243, 243);
+  padding: 5px;
+  background-color: rgb(248, 248, 248);
+  border-radius: 3px;
+  text-decoration: none;
+  color: var(--dark-blue);
+}
+
+.user-card:hover {
+  border: 1px solid rgb(203, 203, 203);
+}
+
+.profile-img {
+  height: 100%;
+  width: calc(100% - 12px);
+  border-radius: 100%;
+  background-color: lightblue;
+}
+
+.user-card .right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-card .right .username {
+  align-self: flex-start;
+}
+
+.user-card .right button {
+  width: 200px;
+}

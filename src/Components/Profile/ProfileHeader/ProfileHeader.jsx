@@ -1,10 +1,10 @@
 import './ProfileHeader.css';
 
-export default function ProfileHeader({ profileData }) {
+export default function ProfileHeader({ profile }) {
   return (
     <div className="profile-header">
       <div className="profile-pic"></div>
-      <h1>{profileData.name}</h1>
+      <h1>{profile.username}</h1>
     </div>
   );
 }

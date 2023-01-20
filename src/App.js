@@ -9,7 +9,7 @@ import Home from './Components/Home/Home';
 import NotFound from './Components/NotFound/NotFound';
 import Friends from './Components/Friends/Friends';
 import NewPost from './Components/NewPost/NewPost';
-import Profile, { ProfileLoader } from './Components/Profile/Profile';
+import ProfileIndex from './Components/Profile/ProfileIndex';
 import AllUsers from './Components/Users/AllUsers/AllUsers';
 import RequestsList from './Components/Friends/RequestsList/RequestsList';
 import FriendsList, {
@@ -17,8 +17,14 @@ import FriendsList, {
 } from './Components/Friends/FriendsList/FriendsList';
 import Spinner from './Components/Spinner/Spinner';
 import NavBarWrapper from './Components/Navigation/NavBarWrapper/NavBarWrapper';
+import Posts from './Components/Posts/Posts';
 
 // Hook imports
+
+// Router Loader Function Imports
+import { ProfileLoader } from './Components/Profile/ProfileLoader';
+import ProfileAbout from './Components/Profile/ProfileAbout/ProfileAbout';
+import { AllUsersLoader } from './Components/Users/AllUsers/AllUsersLoader';
 
 // Request notification context
 export const RequestContext = React.createContext();
@@ -73,22 +79,33 @@ function App() {
             {
               path: 'all-users',
               element: <AllUsers />,
+              loader: async () => {
+                return AllUsersLoader();
+              },
             },
           ],
         },
         {
           path: 'profile/:userID',
-          element: <Profile />,
+          element: <ProfileIndex />,
           loader: async ({ params }) => {
             return ProfileLoader(params);
           },
           children: [
+            {
+              path: 'about',
+              element: <ProfileAbout />,
+            },
             {
               path: 'friends',
               element: <FriendsList />,
               loader: async ({ params }) => {
                 return FriendsListLoader(params);
               },
+            },
+            {
+              path: 'posts',
+              element: <Posts />,
             },
           ],
         },

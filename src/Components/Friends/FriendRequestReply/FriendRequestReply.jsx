@@ -1,7 +1,7 @@
-import './Request.css';
+import './FriendRequestReply.css';
 import { Link } from 'react-router-dom';
 
-export default function Request({ requestData, decrementRequests }) {
+export default function FriendRequestReply({ requestData, decrementRequests }) {
   const profileURL = `/profile/${requestData.requester.ID}`;
   const responseURL = `http://localhost:3000/api/friends/request/${requestData._id}/response`;
 

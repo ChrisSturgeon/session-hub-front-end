@@ -4,11 +4,7 @@ import { Link } from 'react-router-dom';
 export default function FriendCard({ friendData }) {
   const profileURL = `/profile/${friendData.ID}`;
   return (
-    <Link
-      to={profileURL}
-      state={{ profileData: friendData }}
-      className="friend-card"
-    >
+    <Link to={profileURL} className="friend-card">
       <div className="profile-img"></div>
       <div>{friendData.name}</div>
     </Link>

@@ -80,6 +80,8 @@ export default function LoginForm({ toggleAuth, setUser, triggerShake }) {
           username: responseData.data.username,
           ID: responseData.data.ID,
           profileComplete: responseData.data.ID,
+          friends: responseData.data.friends,
+          pendingRequests: responseData.data.pendingRequests,
         });
         toggleAuth();
       }
