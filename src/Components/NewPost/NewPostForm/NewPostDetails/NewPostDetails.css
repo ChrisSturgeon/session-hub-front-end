@@ -1,0 +1,6 @@
+.netw-post-details {
+}
+.new-post-details .equipment {
+  display: flex;
+  flex-direction: column;
+}

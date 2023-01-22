@@ -1,12 +1,38 @@
 .add-friend {
   display: flex;
-  width: 200px;
+  width: 180px;
 }
 
 .add-friend button {
-  width: 100px;
+  width: 90px;
 }
 
 .add-btn {
-  width: 200px;
+  width: 180px;
+}
+
+.add-btn,
+.add-friend .confirm-btn {
+  background-color: var(--dark-blue);
+  color: white;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  padding: 0.3em;
+  border-radius: 4px;
+}
+
+.add-friend .confirm-btn {
+  width: 90px;
+}
+
+.add-friend .cancel-btn {
+  width: 180px;
+  background-color: #01182611;
+  color: black;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  padding: 0.3em;
+  border-radius: 4px;
 }

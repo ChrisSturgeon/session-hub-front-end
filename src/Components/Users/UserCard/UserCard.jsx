@@ -46,20 +46,42 @@ export default function UserCard({ userData }) {
   if (isPendingRequest) {
     return (
       <Link to={profileURL} className="user-card">
-        <div className="profile-img"></div>
+        <div className="left">
+          <div className="profile-img"></div>
+        </div>
         <div className="right">
           <div className="username">{userData.username}</div>
-          <button disabled={true}>Request Pending</button>
+          <button className="pending-request" disabled={true}>
+            Request Pending
+          </button>
+        </div>
+      </Link>
+    );
+  }
+
+  if (isFriend === true) {
+    return (
+      <Link to={profileURL} className="user-card">
+        <div className="left">
+          <div className="profile-img"></div>
+        </div>
+        <div className="right">
+          <div className="username">{userData.username}</div>
+          <button className="pending-request" disabled={true}>
+            Your Friend
+          </button>
         </div>
       </Link>
     );
   }
 
   // Postpone render until friends/pending friend check completed
-  if (isFriend === true || isFriend === false) {
+  if (isFriend === false) {
     return (
       <Link to={profileURL} className="user-card">
-        <div className="profile-img"></div>
+        <div className="left">
+          <div className="profile-img"></div>
+        </div>
         <div className="right">
           <div className="username">{userData.username}</div>
           {!isFriend && <FriendRequestForm userID={userData._id} />}

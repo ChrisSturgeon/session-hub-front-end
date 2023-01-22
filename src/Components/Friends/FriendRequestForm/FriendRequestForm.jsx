@@ -69,11 +69,16 @@ export default function FriendRequestForm({ userID }) {
       {showForm ? (
         <>
           <form>
-            <button onClick={(event) => handleSubmit(event)} type="submit">
+            <button
+              className="confirm-btn"
+              onClick={(event) => handleSubmit(event)}
+              type="submit"
+            >
               Confirm
             </button>
           </form>
           <button
+            className="cancel-btn"
             onClick={(event) => {
               flip(event);
             }}

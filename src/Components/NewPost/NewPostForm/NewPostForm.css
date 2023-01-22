@@ -1,0 +1,6 @@
+.new-post-form {
+  display: flex;
+  flex-direction: column;
+  width: clamp(200px, 100%, 500px);
+  background-color: rgb(225, 247, 253);
+}
