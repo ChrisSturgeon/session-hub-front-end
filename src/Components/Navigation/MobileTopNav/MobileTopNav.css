@@ -1,5 +1,6 @@
 .mobile-top-nav {
-  background-color: var(--medium-blue);
+  background-color: var(--dark-blue);
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,6 +9,7 @@
 
 .mobile-top-nav h1 {
   color: white;
+  font-weight: 900;
 }
 
 .mobile-top-nav button {

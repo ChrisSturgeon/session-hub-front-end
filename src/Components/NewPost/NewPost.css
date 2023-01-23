@@ -1,3 +1,16 @@
 .new-post {
   padding: 1em;
+  padding-bottom: 75px;
+  min-height: calc(100vh - 75px);
+  background-color: var(--bg-grey);
+}
+
+.new-post label {
+  color: var(--darkest-blue);
+}
+
+@media only screen and (max-width: 768px) {
+  .new-post {
+    padding: 0.5em;
+  }
 }

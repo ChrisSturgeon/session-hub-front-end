@@ -33,41 +33,39 @@ const expandDown = {
   },
 };
 
-export default function NewPostDetails({ handleDetailsChange }) {
-  const [sport, setSport] = useState(null);
-  const [equipment, setEquipment] = useState(null);
-  const today = new Date().toISOString().slice(0, 10);
-  console.log(today);
+export default function NewPostDetails({
+  details,
+  handleDetailsChange,
+  setEquipment,
+}) {
+  const [sport, setSport] = useState('surfing');
+  const today = new Date();
+  const weekAgo = new Date(today - 60000 * 60 * 24 * 7);
 
   const handleSelectSport = (event) => {
     setSport((prev) => event.target.value);
     setEquipment({});
-    console.log(sport);
     handleDetailsChange(event);
   };
 
-  const onEquipmentChange = (event) => {
+  const handleEquipmentChange = (event) => {
     setEquipment((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
     }));
   };
 
-  const logEquipment = (event) => {
-    event.preventDefault();
-    handleDetailsChange('gear', equipment);
-  };
-
   return (
     <div className="new-post-details">
-      <button onClick={logEquipment}>Log equipment</button>
-      <label htmlFor="date">When</label>
+      <label htmlFor="date">Date</label>
       <input
         name="date"
         id="date"
         type="date"
+        min={weekAgo.toISOString().slice(0, 10)}
+        max={today.toISOString().slice(0, 10)}
         onChange={handleDetailsChange}
-        value={today}
+        value={details.date}
       ></input>
       <fieldset className="sport">
         <legend>Sport</legend>
@@ -78,6 +76,7 @@ export default function NewPostDetails({ handleDetailsChange }) {
             id="surfing"
             value="surfing"
             onChange={handleSelectSport}
+            defaultChecked={true}
           ></input>
           <label htmlFor="surfing">Surfing</label>
         </div>
@@ -124,7 +123,7 @@ export default function NewPostDetails({ handleDetailsChange }) {
       </fieldset>
       <fieldset>
         <legend>Equipment</legend>
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           {sport === 'surfing' && (
             <motion.div
               initial={expandDown.initial}
@@ -134,7 +133,11 @@ export default function NewPostDetails({ handleDetailsChange }) {
               className="equipment"
             >
               <label>Board</label>
-              <input type="text"></input>
+              <input
+                onChange={handleEquipmentChange}
+                name="board"
+                type="text"
+              ></input>
             </motion.div>
           )}
           {sport === 'windsurfing' && (
@@ -148,11 +151,82 @@ export default function NewPostDetails({ handleDetailsChange }) {
               <label htmlFor="board">Board</label>
               <input
                 id="board"
-                onChange={onEquipmentChange}
+                name="board"
+                onChange={handleEquipmentChange}
                 type="text"
               ></input>
-              <label>Sail</label>
-              <input type="text"></input>
+              <label htmlFor="board">Sail</label>
+              <input
+                id="sail"
+                name="sail"
+                onChange={handleEquipmentChange}
+                type="text"
+              ></input>
+            </motion.div>
+          )}
+          {sport === 'kitesurfing' && (
+            <motion.div
+              initial={expandDown.initial}
+              animate={expandDown.animate}
+              exit={expandDown.exit}
+              key="kitesurfing"
+              className="equipment"
+            >
+              <label htmlFor="board">Board</label>
+              <input
+                id="board"
+                name="board"
+                onChange={handleEquipmentChange}
+                type="text"
+              ></input>
+              <label htmlFor="board">Kite</label>
+              <input
+                id="kite"
+                name="kite"
+                onChange={handleEquipmentChange}
+                type="text"
+              ></input>
+            </motion.div>
+          )}
+          {sport === 'wingsurfing' && (
+            <motion.div
+              initial={expandDown.initial}
+              animate={expandDown.animate}
+              exit={expandDown.exit}
+              key="wingsurfing"
+              className="equipment"
+            >
+              <label htmlFor="board">Board</label>
+              <input
+                id="board"
+                name="board"
+                onChange={handleEquipmentChange}
+                type="text"
+              ></input>
+              <label htmlFor="board">Wing</label>
+              <input
+                id="wing"
+                name="wing"
+                onChange={handleEquipmentChange}
+                type="text"
+              ></input>
+            </motion.div>
+          )}
+          {sport === 'paddleboarding' && (
+            <motion.div
+              initial={expandDown.initial}
+              animate={expandDown.animate}
+              exit={expandDown.exit}
+              key="paddleboarding"
+              className="equipment"
+            >
+              <label htmlFor="board">Board</label>
+              <input
+                id="board"
+                name="board"
+                onChange={handleEquipmentChange}
+                type="text"
+              ></input>
             </motion.div>
           )}
         </AnimatePresence>
