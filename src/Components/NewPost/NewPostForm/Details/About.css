@@ -42,7 +42,7 @@
 }
 
 .new-post-about .about-inputs {
-  padding: 1em;
+  padding: 0 1em 1em 1em;
   display: flex;
   flex-direction: column;
   gap: 0.5em;
@@ -60,15 +60,16 @@
 }
 
 .add-section-btn {
-  background-color: var(--medium-blue);
+  background-color: var(--light-blue);
   border: none;
   color: white;
   font-weight: 700;
   font-size: 1.1rem;
   border-radius: 4px;
   padding: 0.25em;
-  width: 100%;
+  width: 75%;
   margin: 0 auto;
+  margin-top: 0.5em;
 }
 .new-post-about .date {
   display: flex;
@@ -88,7 +89,7 @@
 
 .new-post-about .about-inputs fieldset div {
   margin-bottom: 5px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
 }

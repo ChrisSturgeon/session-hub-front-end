@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import './Equipment.css';
+import InputWithCounter from '../../../General/InputWithCounter/InputWithCounter';
 
 const expandDown = {
   initial: {
@@ -57,7 +58,10 @@ export default function Equipment({ details, equipment, setEquipment }) {
   return (
     <>
       <div className="section-header">
-        <button onClick={(event) => expand(event)}>
+        <button
+          className={expanded ? 'active' : null}
+          onClick={(event) => expand(event)}
+        >
           <span>
             <div>Equipment</div>
             <div className={expanded ? 'arrow-expanded' : 'arrow'}>
@@ -74,7 +78,11 @@ export default function Equipment({ details, equipment, setEquipment }) {
             animate={expandDown.animate}
             exit={expandDown.exit}
           >
-            <div className="equipment-inputs">
+            <div
+              className={
+                expanded ? 'equipment-inputs active' : 'equipment-inputs'
+              }
+            >
               <AnimatePresence mode="wait" initial={false}>
                 {sport === 'surfing' && (
                   <motion.div
@@ -84,12 +92,15 @@ export default function Equipment({ details, equipment, setEquipment }) {
                     key="surfing"
                     className="equipment"
                   >
-                    <label>Board</label>
-                    <input
+                    <label htmlFor="board">Board</label>
+                    <InputWithCounter
+                      id={'board'}
+                      value={equipment.board}
                       onChange={handleEquipmentChange}
-                      name="board"
-                      type="text"
-                    ></input>
+                      placeholder={"e.g. Maluku Quad Fish 6'2"}
+                      name={'board'}
+                      maxLength={40}
+                    />
                   </motion.div>
                 )}
                 {sport === 'windsurfing' && (
@@ -101,19 +112,23 @@ export default function Equipment({ details, equipment, setEquipment }) {
                     className="equipment"
                   >
                     <label htmlFor="board">Board</label>
-                    <input
-                      id="board"
-                      name="board"
+                    <InputWithCounter
+                      id={'board'}
+                      value={equipment.board}
                       onChange={handleEquipmentChange}
-                      type="text"
-                    ></input>
-                    <label htmlFor="board">Sail</label>
-                    <input
-                      id="sail"
-                      name="sail"
+                      placeholder={'e.g. JP Freestyle 93'}
+                      name={'board'}
+                      maxLength={40}
+                    />
+                    <label htmlFor="sail">Sail</label>
+                    <InputWithCounter
+                      id={'sail'}
+                      value={equipment.sail}
                       onChange={handleEquipmentChange}
-                      type="text"
-                    ></input>
+                      placeholder={'e.g. Neilpryde Wizard 5.4m'}
+                      name={'sail'}
+                      maxLength={40}
+                    />
                   </motion.div>
                 )}
                 {sport === 'kitesurfing' && (
@@ -125,19 +140,23 @@ export default function Equipment({ details, equipment, setEquipment }) {
                     className="equipment"
                   >
                     <label htmlFor="board">Board</label>
-                    <input
-                      id="board"
-                      name="board"
+                    <InputWithCounter
+                      id={'board'}
+                      value={equipment.board}
                       onChange={handleEquipmentChange}
-                      type="text"
-                    ></input>
+                      placeholder={'e.g. Duotone Gambler 142cm'}
+                      name={'board'}
+                      maxLength={40}
+                    />
                     <label htmlFor="board">Kite</label>
-                    <input
-                      id="kite"
-                      name="kite"
+                    <InputWithCounter
+                      id={'kite'}
+                      value={equipment.kite}
                       onChange={handleEquipmentChange}
-                      type="text"
-                    ></input>
+                      placeholder={'e.g. Dice SLS 12m'}
+                      name={'kite'}
+                      maxLength={40}
+                    />
                   </motion.div>
                 )}
                 {sport === 'wingsurfing' && (
@@ -149,19 +168,23 @@ export default function Equipment({ details, equipment, setEquipment }) {
                     className="equipment"
                   >
                     <label htmlFor="board">Board</label>
-                    <input
-                      id="board"
-                      name="board"
+                    <InputWithCounter
+                      id={'board'}
+                      value={equipment.board}
                       onChange={handleEquipmentChange}
-                      type="text"
-                    ></input>
+                      placeholder={"e.g. F-One Rocket Surf 4'6"}
+                      name={'board'}
+                      maxLength={40}
+                    />
                     <label htmlFor="board">Wing</label>
-                    <input
-                      id="wing"
-                      name="wing"
+                    <InputWithCounter
+                      id={'wing'}
+                      value={equipment.wing}
                       onChange={handleEquipmentChange}
-                      type="text"
-                    ></input>
+                      placeholder={'e.g. North Nova 2.5m'}
+                      name={'wing'}
+                      maxLength={40}
+                    />
                   </motion.div>
                 )}
                 {sport === 'paddleboarding' && (
@@ -173,12 +196,14 @@ export default function Equipment({ details, equipment, setEquipment }) {
                     className="equipment"
                   >
                     <label htmlFor="board">Board</label>
-                    <input
-                      id="board"
-                      name="board"
+                    <InputWithCounter
+                      id={'board'}
+                      value={equipment.board}
                       onChange={handleEquipmentChange}
-                      type="text"
-                    ></input>
+                      placeholder={"e.g. Fantic Fly 10'4"}
+                      name={'board'}
+                      maxLength={40}
+                    />
                   </motion.div>
                 )}
               </AnimatePresence>

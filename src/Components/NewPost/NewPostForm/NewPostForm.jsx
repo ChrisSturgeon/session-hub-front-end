@@ -16,13 +16,48 @@ export default function NewPostForm() {
     name: '',
     coords: [50.57422642679197, -4.915909767150879],
   });
-  const [equipment, setEquipment] = useState({});
+  const [equipment, setEquipment] = useState({
+    board: '',
+    sail: '',
+    kite: '',
+    wing: '',
+  });
   const [description, setDescription] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Submitting...', details, location, equipment);
-    console.log(description);
+
+    console.log(location.name);
+
+    console.log(equipment);
+    const sessionData = {
+      description,
+      date: details.date,
+      sport: details.sport,
+      location,
+      equipment,
+    };
+
+    try {
+      const response = await fetch('http://localhost:3000/api/sessions/new', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
+        },
+        body: JSON.stringify(sessionData),
+      });
+
+      if (response.status === 200) {
+        console.log('Success!');
+      } else {
+        const data = await response.json();
+        console.log('Something has gone wrong here...', data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

@@ -52,7 +52,12 @@ export default function About({ details, setDetails, setEquipment }) {
   const handleDetailsChange = (event) => {
     // Clear equipment state if change of sport
     if (event.target.name === 'sport') {
-      setEquipment({});
+      setEquipment({
+        board: '',
+        sail: '',
+        kite: '',
+        wing: '',
+      });
     }
 
     setDetails((prevDetails) => ({

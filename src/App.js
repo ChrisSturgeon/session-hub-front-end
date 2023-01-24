@@ -25,6 +25,7 @@ import Posts from './Components/Posts/Posts';
 import { ProfileLoader } from './Components/Profile/ProfileLoader';
 import ProfileAbout from './Components/Profile/ProfileAbout/ProfileAbout';
 import { AllUsersLoader } from './Components/Users/AllUsers/AllUsersLoader';
+import { PostsLoader } from './Components/Posts/PostsLoader';
 
 // Request notification context
 export const RequestContext = React.createContext();
@@ -106,6 +107,9 @@ function App() {
             {
               path: 'posts',
               element: <Posts />,
+              loader: async ({ params }) => {
+                return PostsLoader(params);
+              },
             },
           ],
         },

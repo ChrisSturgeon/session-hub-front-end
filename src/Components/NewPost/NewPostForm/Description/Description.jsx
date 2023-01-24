@@ -33,6 +33,7 @@ const expandDown = {
     },
   },
 };
+
 export default function Description({ description, setDescription }) {
   const [expanded, setExpanded] = useState(false);
   const [characterCount, setCharacterCount] = useState(description.length);
@@ -58,9 +59,12 @@ export default function Description({ description, setDescription }) {
   return (
     <>
       <div className="section-header">
-        <button onClick={(event) => expand(event)}>
+        <button
+          className={expanded ? 'active' : null}
+          onClick={(event) => expand(event)}
+        >
           <span>
-            <div>Add Description</div>
+            <div>Description</div>
             <div className={expanded ? 'arrow-expanded' : 'arrow'}>
               <ion-icon name="arrow-down-outline"></ion-icon>
             </div>
@@ -75,7 +79,11 @@ export default function Description({ description, setDescription }) {
             animate={expandDown.animate}
             exit={expandDown.exit}
           >
-            <div className="description-inputs">
+            <div
+              className={
+                expanded ? 'description-inputs active' : 'description-inputs'
+              }
+            >
               <label htmlFor="description">Description</label>
               <textarea
                 id="description"
@@ -86,13 +94,13 @@ export default function Description({ description, setDescription }) {
               <span className="character-count">
                 {characterCount}/2000 characters
               </span>
+              <button
+                className="add-section-btn"
+                onClick={(event) => addInputs(event)}
+              >
+                Add
+              </button>
             </div>
-            <button
-              className="add-section-btn"
-              onClick={(event) => addInputs(event)}
-            >
-              Add
-            </button>
           </motion.div>
         )}
       </AnimatePresence>

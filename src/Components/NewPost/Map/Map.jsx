@@ -13,10 +13,15 @@ export default function Map({ location, handleCoordsChange }) {
 
   return (
     <div className="test-map">
-      <MapContainer center={location.coords} zoom={6} scrollWheelZoom={false}>
+      <MapContainer
+        style={{ height: '400px', width: '100%' }}
+        center={location.coords}
+        zoom={6}
+        scrollWheelZoom={false}
+      >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         />
         <Marker position={location.coords}></Marker>
         <UpdateCoordsState handleCoordsChange={handleCoordsChange} />

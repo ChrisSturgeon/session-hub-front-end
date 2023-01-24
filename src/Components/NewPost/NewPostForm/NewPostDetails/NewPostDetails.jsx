@@ -57,16 +57,7 @@ export default function NewPostDetails({
 
   return (
     <div className="new-post-details">
-      <label htmlFor="date">Date</label>
-      <input
-        name="date"
-        id="date"
-        type="date"
-        min={weekAgo.toISOString().slice(0, 10)}
-        max={today.toISOString().slice(0, 10)}
-        onChange={handleDetailsChange}
-        value={details.date}
-      ></input>
+
       <fieldset className="sport">
         <legend>Sport</legend>
         <div>

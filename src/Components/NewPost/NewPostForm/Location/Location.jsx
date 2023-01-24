@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import './Location.css';
 import Map from '../../Map/Map';
+import InputWithCounter from '../../../General/InputWithCounter/InputWithCounter';
 
 const expandDown = {
   initial: {
@@ -91,14 +92,15 @@ export default function Location({ location, setLocation }) {
             >
               <div className="location-name">
                 <label htmlFor="location-name">Location Name</label>
-                <input
-                  id="location-name"
-                  name="name"
-                  type="text"
+
+                <InputWithCounter
+                  id={'location-name'}
                   value={location.name}
                   onChange={handleLocationChange}
-                  placeholder="e.g. Polzeath "
-                ></input>
+                  placeholder={'e.g. Polzeath'}
+                  name={'name'}
+                  maxLength={30}
+                />
               </div>
               <Map
                 location={location}

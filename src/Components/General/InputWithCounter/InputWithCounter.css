@@ -1,0 +1,20 @@
+.input-with-counter {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-counter input {
+  width: 100%;
+  padding: 0.25em 10px;
+  padding-right: 60px;
+}
+
+.count {
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  font-size: 0.8rem;
+  color: grey;
+  word-spacing: -2px;
+}

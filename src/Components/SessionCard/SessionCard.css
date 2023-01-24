@@ -1,0 +1,43 @@
+.session-card {
+  height: 200px;
+  width: clamp(200px, 100%, 500px);
+  background-color: white;
+  border: 1px solid var(--border-grey);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  border-radius: 4px;
+}
+
+.session-card .overview-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.session-card .overview-details .upper .date {
+  font-size: 0.8rem;
+  color: grey;
+}
+
+.session-card .overview-details .upper .title {
+  margin-top: 0.15em;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.session-card .overview-details .lower .likes-comments {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.session-card .overview-details .lower .likes-comments div {
+  display: flex;
+  align-items: center;
+}
+
+.session-card .overview-details .lower ion-icon {
+  margin-right: 5px;
+  font-size: 1rem;
+}
