@@ -1,14 +1,16 @@
 import './SessionCard.css';
 import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
 import SessionCardMap from './SessionCardMap/SessionCardMap';
 
 export default function SessionCard({ session }) {
+  const detailURL = `/session/${session._id}`;
   const dateObj = new Date(session.activityDate);
   const sportFormatted =
     session.sport.slice(0, 1).toUpperCase() + session.sport.slice(1);
 
   return (
-    <div className="session-card">
+    <Link to={detailURL} className="session-card">
       <div className="overview-details">
         <div className="upper">
           <div className="date">{format(dateObj, 'EEEE do MMM yy')}</div>
@@ -29,6 +31,6 @@ export default function SessionCard({ session }) {
         </div>
       </div>
       <SessionCardMap coords={session.coords} />
-    </div>
+    </Link>
   );
 }

@@ -6,10 +6,6 @@ import SessionCard from '../SessionCard/SessionCard';
 export default function Posts() {
   const { overviews } = useLoaderData();
 
-  useEffect(() => {
-    console.log(overviews);
-  }, [overviews]);
-
   return (
     <div className="overviews-column">
       {overviews && (

@@ -32,6 +32,18 @@ textarea:focus {
   align-items: center;
 }
 
+.spinner-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-layout {
+  display: grid;
+}
+
 @media only screen and (max-width: 768px) {
   .page-wrapper {
     padding-bottom: 70px;

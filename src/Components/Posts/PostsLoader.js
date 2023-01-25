@@ -1,6 +1,6 @@
 export const PostsLoader = async (params) => {
   const response = await fetch(
-    `http://localhost:3000/api/sessions//${params.userID}/overviews`,
+    `http://localhost:3000/api/sessions/user/${params.userID}/overviews`,
     {
       method: 'GET',
       headers: {

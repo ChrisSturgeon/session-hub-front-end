@@ -64,7 +64,7 @@ export default function Description({ description, setDescription }) {
           onClick={(event) => expand(event)}
         >
           <span>
-            <div>Description</div>
+            <div>Wrap Up</div>
             <div className={expanded ? 'arrow-expanded' : 'arrow'}>
               <ion-icon name="arrow-down-outline"></ion-icon>
             </div>
@@ -84,15 +84,16 @@ export default function Description({ description, setDescription }) {
                 expanded ? 'description-inputs active' : 'description-inputs'
               }
             >
-              <label htmlFor="description">Description</label>
+              <label htmlFor="description">Wrap Up</label>
               <textarea
                 id="description"
                 value={description}
                 onChange={onDescriptionChange}
-                maxLength={2000}
+                maxLength={450}
+                placeholder={'A brief summary of your time on the water...'}
               ></textarea>
               <span className="character-count">
-                {characterCount}/2000 characters
+                {characterCount}/450 characters
               </span>
               <button
                 className="add-section-btn"

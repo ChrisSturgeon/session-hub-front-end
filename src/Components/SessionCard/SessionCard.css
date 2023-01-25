@@ -6,6 +6,8 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   border-radius: 4px;
+  text-decoration: none;
+  color: var(--darkest-blue);
 }
 
 .session-card .overview-details {

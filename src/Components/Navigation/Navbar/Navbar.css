@@ -1,0 +1,13 @@
+.top-nav {
+  top: 0;
+  position: sticky;
+  box-sizing: border-box;
+  width: 100vw;
+  z-index: 2000;
+  background-color: var(--dark-blue);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25em 0.5em;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.3);
+}

@@ -26,6 +26,8 @@ import { ProfileLoader } from './Components/Profile/ProfileLoader';
 import ProfileAbout from './Components/Profile/ProfileAbout/ProfileAbout';
 import { AllUsersLoader } from './Components/Users/AllUsers/AllUsersLoader';
 import { PostsLoader } from './Components/Posts/PostsLoader';
+import SessionDetail from './Components/SessionDetail/SessionDetail';
+import { SessionDetailLoader } from './Components/SessionDetail/SessionDetailLoader';
 
 // Request notification context
 export const RequestContext = React.createContext();
@@ -115,6 +117,14 @@ function App() {
         },
 
         {
+          path: 'session/:sessionID',
+          element: <SessionDetail />,
+          loader: async ({ params }) => {
+            return SessionDetailLoader(params);
+          },
+        },
+
+        {
           path: '*',
           element: <NotFound />,
         },
@@ -123,7 +133,11 @@ function App() {
   ]);
 
   if (isAuthenticating) {
-    return <Spinner />;
+    return (
+      <div className="spinner-wrapper">
+        <Spinner />
+      </div>
+    );
   }
 
   if (!isAuthenticated) {
@@ -133,7 +147,9 @@ function App() {
   if (isAuthenticated && user) {
     return (
       <UserContext.Provider value={user}>
-        <RouterProvider router={router} />
+        <div className="app-layout">
+          <RouterProvider router={router} />
+        </div>
       </UserContext.Provider>
     );
   }
