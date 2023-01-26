@@ -1,8 +1,8 @@
 .new-post {
   padding: 1em;
-
   min-height: calc(100vh - 75px);
   background-color: var(--bg-grey);
+  overflow: auto;
 }
 
 .new-post label {

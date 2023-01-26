@@ -12,15 +12,14 @@ export default function ProfileIndex() {
   const { userID } = useParams();
 
   return (
-    <div className="page-column-wrapper">
-      <div className="profile">
+    <main className="column-wrapper">
+      <div className="profile-wrapper">
         <ProfileHeader profile={profile} />
-
         {user.ID === userID && <div>This is your profile!</div>}
 
         <ProfileNav />
         <Outlet />
       </div>
-    </div>
+    </main>
   );
 }

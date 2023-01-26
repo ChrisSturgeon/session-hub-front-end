@@ -7,6 +7,8 @@ import DetailMap from './DetailMap/DetailMap';
 import { sanitize } from 'dompurify';
 import Conditions from './Conditions/Conditions';
 
+import Comments from '../Comments/Comments';
+
 export default function SessionDetail() {
   const { session } = useLoaderData();
   const dateObj = new Date(session.activityDate);
@@ -71,7 +73,7 @@ export default function SessionDetail() {
             </div>
           )}
           <hr></hr>
-          <div className="filler">I'm the comments</div>
+          <Comments />
         </div>
       </div>
     </div>

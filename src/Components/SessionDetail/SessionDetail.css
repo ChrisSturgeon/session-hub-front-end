@@ -37,6 +37,7 @@
 .session-detail .text hr {
   border: none;
   border-bottom: 1px solid var(--border-grey);
+  margin: 1em 0;
 }
 
 .session-detail .conditions-wrapper {
@@ -112,9 +113,5 @@
   .filler {
     background-color: rgb(255, 255, 255);
     min-height: 600px;
-  }
-
-  hr {
-    margin: 1em 0;
   }
 }

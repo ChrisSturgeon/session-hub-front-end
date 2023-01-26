@@ -3,4 +3,5 @@
   width: clamp(250px, 100%, 1400px);
   min-height: 100vh;
   background-color: var(--bg-grey);
+  overflow: auto;
 }

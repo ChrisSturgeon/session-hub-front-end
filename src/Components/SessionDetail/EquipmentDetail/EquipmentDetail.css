@@ -1,5 +1,13 @@
 .equipment-detail {
   display: flex;
   flex-direction: column;
-  gap: 0.25em;
+  margin-top: 0.75em;
+  gap: 0.75em;
+}
+
+.equipment-label {
+  font-size: 0.5rem;
+  color: grey;
+  font-weight: 700;
+  line-height: 0.5;
 }
