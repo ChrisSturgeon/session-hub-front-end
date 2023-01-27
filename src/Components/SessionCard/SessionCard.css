@@ -1,11 +1,11 @@
 .session-card {
   height: 200px;
-  width: clamp(200px, 100%, 500px);
+  width: 100%;
   background-color: white;
   border: 1px solid var(--border-grey);
   display: grid;
   grid-template-columns: 2fr 1fr;
-  border-radius: 4px;
+  border-radius: 10px;
   text-decoration: none;
   color: var(--darkest-blue);
 }

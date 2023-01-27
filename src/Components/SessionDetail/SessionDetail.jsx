@@ -1,11 +1,12 @@
 import './SessionDetail.css';
-import { useEffect } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import { format } from 'date-fns';
 import EquipmentDetail from './EquipmentDetail/EquipmentDetail';
 import DetailMap from './DetailMap/DetailMap';
 import { sanitize } from 'dompurify';
 import Conditions from './Conditions/Conditions';
+import LikeForm from '../LikeForm/LikeForm';
 
 import Comments from '../Comments/Comments';
 
@@ -17,6 +18,11 @@ export default function SessionDetail() {
     session.sport.slice(1) +
     ' at ' +
     session.locationName;
+
+  const [liked, setLiked] = useState(session.hasLiked);
+  const [totalLikes, setTotalLikes] = useState(session.likesCount);
+  const [commentsCount, setCommentsCount] = useState(session.commentsCount);
+  const userProfileURL = `/profile/${session.userID}`;
 
   const conditions = {
     wind: {
@@ -42,7 +48,23 @@ export default function SessionDetail() {
         <div className="text">
           <div className="date">{format(dateObj, 'EEEE do MMM yy')}</div>
           <h1 className="title"> {title}</h1>
-          <div className="username">Username here</div>
+          <Link to={userProfileURL} className="username">
+            {session.username}
+          </Link>
+          <div className="likes-comments">
+            <LikeForm
+              sessionID={session._id}
+              type={'session'}
+              liked={liked}
+              setLiked={setLiked}
+              totalLikes={totalLikes}
+              setTotalLikes={setTotalLikes}
+            />
+            <div className="comments-count">
+              <ion-icon name="chatbox-outline"></ion-icon>
+              <div>{commentsCount}</div>
+            </div>
+          </div>
           <hr></hr>
           <h2 className="equipment-title">Conditions</h2>
           <div className="conditions-wrapper">

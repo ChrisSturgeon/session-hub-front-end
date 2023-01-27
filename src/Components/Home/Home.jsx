@@ -1,16 +1,21 @@
-import { useEffect } from 'react';
-import { useState, useContext } from 'react';
+import './Home.css';
+import { useContext } from 'react';
 import { UserContext } from '../../App';
-import InputWithCounter from '../General/InputWithCounter/InputWithCounter';
+import Feed from '../Feed/Feed';
+import useCheckMobileScreen from '../../hooks/useWindowDimensions';
 
 export default function Home() {
   const user = useContext(UserContext);
+  const isMobile = useCheckMobileScreen();
 
   return (
-    <div>
-      <p>I'm the home test page for {user.username}</p>
-      <p>Feed goes here</p>
-      <InputWithCounter max={50} />
+    <div className="home-wrapper">
+      <main className="home-main">
+        {!isMobile && <div>Do I dissapear?</div>}
+        <div className="feed-wrapper">
+          <Feed />
+        </div>
+      </main>
     </div>
   );
 }

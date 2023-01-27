@@ -1,0 +1,25 @@
+.like-form {
+  display: flex;
+  align-items: center;
+  gap: 0.1em;
+}
+
+.like-form button {
+  background-color: transparent;
+  font-size: 1.75rem;
+  padding: 0;
+  height: 27px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.like-form button ion-icon[name='heart-outline']:hover {
+  color: red;
+}
+
+.like-form button ion-icon[name='heart'] {
+  color: red;
+}

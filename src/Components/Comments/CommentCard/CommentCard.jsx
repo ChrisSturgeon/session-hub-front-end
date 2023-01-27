@@ -4,6 +4,7 @@ import { format, set } from 'date-fns';
 import { sanitize } from 'dompurify';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../../App';
+import LikeForm from '../../LikeForm/LikeForm';
 
 export default function CommentCard({ comment }) {
   const {
@@ -11,10 +12,10 @@ export default function CommentCard({ comment }) {
     editedDate,
     likes,
     sessionID,
+    _id: commentID,
     text,
     userID,
     username,
-    _id,
     likesCount,
     hasLiked,
   } = comment;
@@ -27,7 +28,7 @@ export default function CommentCard({ comment }) {
   // Updates
   async function handleLikeSubmit(event) {
     event.preventDefault();
-    const putURL = `http://localhost:3000/api/sessions/${sessionID}/comments/${_id}/like`;
+    const putURL = `http://localhost:3000/api/sessions/${sessionID}/comments/${commentID}/like`;
     setBtnActive(false);
 
     try {
@@ -79,17 +80,16 @@ export default function CommentCard({ comment }) {
         className="comment-card-text"
         dangerouslySetInnerHTML={{ __html: sanitize(text) }}
       ></div>
-      <div>I'm the ID: {_id}</div>
-      <form className="comment-card-like-form" onSubmit={handleLikeSubmit}>
-        <button disabled={!btnActive}>
-          {liked ? (
-            <ion-icon name="heart"></ion-icon>
-          ) : (
-            <ion-icon name="heart-outline"></ion-icon>
-          )}
-        </button>
-        <div> {totalLikes}</div>
-      </form>
+      <div>I'm the ID: {commentID}</div>
+      <LikeForm
+        type={'comment'}
+        sessionID={sessionID}
+        commentID={commentID}
+        liked={liked}
+        setLiked={setLiked}
+        totalLikes={totalLikes}
+        setTotalLikes={setTotalLikes}
+      />
     </div>
   );
 }

@@ -1,3 +1,10 @@
+.overviews-wrapper {
+  padding: 1em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .overviews-column {
   display: flex;
   flex-direction: column;

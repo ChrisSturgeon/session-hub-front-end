@@ -1,0 +1,32 @@
+.home-wrapper {
+  min-height: 100vh;
+  background-color: var(--bg-grey);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-wrapper .home-main {
+  width: clamp(200px, 100%, 1200px);
+  background-color: white;
+  height: 100%;
+  padding: 1em 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .home-wrapper {
+    min-height: 0;
+    max-height: 100vh;
+    height: calc(100vh - 45px);
+  }
+  .home-wrapper .home-main {
+    background-color: rgb(220, 242, 220);
+    display: grid;
+    grid-template-columns: 500px 500fr;
+    padding: 1em;
+  }
+
+  .feed-wrapper {
+    overflow-y: auto;
+  }
+}
