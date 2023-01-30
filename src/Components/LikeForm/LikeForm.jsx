@@ -15,6 +15,7 @@ export default function LikeForm({
   async function handleLikeSubmit(event) {
     event.preventDefault();
     let URL = '';
+    let fetchMethod = '';
 
     if (type === 'session') {
       URL = `http://localhost:3000/api/sessions/${sessionID}/like`;
@@ -24,23 +25,22 @@ export default function LikeForm({
       URL = `http://localhost:3000/api/sessions/${sessionID}/comments/${commentID}/like`;
     }
 
+    if (liked) {
+      fetchMethod = 'DELETE';
+    } else {
+      fetchMethod = 'PUT';
+    }
+
     setBtnActive(false);
 
     try {
-      let bodyObject;
-      if (liked) {
-        bodyObject = JSON.stringify({ wantsToLike: 'false' });
-      } else {
-        bodyObject = JSON.stringify({ wantsToLike: 'true' });
-      }
       const response = await fetch(URL, {
-        method: 'PUT',
+        method: fetchMethod,
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
         },
-        body: bodyObject,
       });
 
       const data = await response.json();

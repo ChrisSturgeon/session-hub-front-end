@@ -29,6 +29,14 @@ import { PostsLoader } from './Components/Posts/PostsLoader';
 import SessionDetail from './Components/SessionDetail/SessionDetail';
 import { SessionDetailLoader } from './Components/SessionDetail/SessionDetailLoader';
 
+// New Session Imports
+import SessionForm from './Components/SessionForm/SessionForm';
+import About from './Components/SessionForm/About/About';
+import Location from './Components/SessionForm/Location/Location';
+import Conditions from './Components/SessionForm/Conditions/Conditions';
+import Equipment from './Components/SessionForm/Equipment/Equipment';
+import WrapUp from './Components/SessionForm/WrapUp/WrapUp';
+
 // Request notification context
 export const RequestContext = React.createContext();
 export const UserContext = React.createContext();
@@ -88,6 +96,33 @@ function App() {
             },
           ],
         },
+        {
+          path: 'new-session',
+          element: <SessionForm />,
+          children: [
+            {
+              path: 'about',
+              element: <About />,
+            },
+            {
+              path: 'location',
+              element: <Location />,
+            },
+            {
+              path: 'conditions',
+              element: <Conditions />,
+            },
+            {
+              path: 'equipment',
+              element: <Equipment />,
+            },
+            {
+              path: 'wrap-up',
+              element: <WrapUp />,
+            },
+          ],
+        },
+
         {
           path: 'profile/:userID',
           element: <ProfileIndex />,

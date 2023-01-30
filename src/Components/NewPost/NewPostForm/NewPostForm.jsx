@@ -1,5 +1,6 @@
 import './NewPostForm.css';
 import { useState } from 'react';
+import { APIURL } from '../../../api';
 
 // Component Imports
 import About from './Details/About';
@@ -26,10 +27,6 @@ export default function NewPostForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    console.log(location.name);
-
-    console.log(equipment);
     const sessionData = {
       description,
       date: details.date,
@@ -39,7 +36,7 @@ export default function NewPostForm() {
     };
 
     try {
-      const response = await fetch('http://localhost:3000/api/sessions/new', {
+      const response = await fetch(`${APIURL}/sessions/`, {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -78,4 +75,3 @@ export default function NewPostForm() {
     </form>
   );
 }
-

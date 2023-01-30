@@ -1,5 +1,7 @@
+import { APIURL } from '../../../api';
+
 export const AllUsersLoader = async () => {
-  const url = 'http://localhost:3000/api/users/all';
+  const url = `${APIURL}/users/`;
   const response = await fetch(url, {
     method: 'GET',
     headers: {

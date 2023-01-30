@@ -17,7 +17,7 @@ export default function Feed() {
 
   if (data.data) {
     return (
-      <div className="feed-wrapper">
+      <div id="feed" className="feed-wrapper">
         <h3>Your feed</h3>
         <div className="feed-column">
           {data.data.map((session) => {

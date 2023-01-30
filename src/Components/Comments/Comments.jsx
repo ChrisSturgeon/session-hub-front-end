@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { APIURL } from '../../api';
 import useFetch from '../../hooks/useFetch';
 import Spinner from '../Spinner/Spinner';
 import CommentCard from './CommentCard/CommentCard';
@@ -7,7 +7,7 @@ import NewCommentForm from './NewCommentForm/NewCommentForm';
 
 export default function Comments() {
   const { sessionID } = useParams();
-  const url = `http://localhost:3000/api/sessions/${sessionID}/comments/all`;
+  const url = `${APIURL}/comments/${sessionID}`;
 
   const { isLoading, APIData: data, error } = useFetch(url);
 

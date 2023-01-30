@@ -1,4 +1,8 @@
 import './Spinner.css';
 export default function Spinner() {
-  return <span className="loader"></span>;
+  return (
+    <div className="loader-wrapper">
+      <span className="loader"></span>
+    </div>
+  );
 }

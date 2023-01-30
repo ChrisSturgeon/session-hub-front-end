@@ -11,13 +11,12 @@ export default function InputWithCounter({
   value,
   placeholder,
 }) {
-  const [input, setInput] = useState('');
-  const [count, setCount] = useState(null);
+  const [count, setCount] = useState(value.length);
 
-  // Updates count on input change
+  // Updates input vount on value change
   useEffect(() => {
-    setCount((prev) => input.length);
-  }, [input]);
+    setCount(value.length);
+  }, [value]);
 
   return (
     <div className="input-with-counter">
@@ -32,7 +31,6 @@ export default function InputWithCounter({
           if (onChange) {
             onChange(event);
           }
-          setInput((prev) => event.target.value);
         }}
         value={value}
         placeholder={placeholder}

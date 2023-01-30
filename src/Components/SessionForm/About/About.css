@@ -1,0 +1,10 @@
+.about {
+  background-color: white;
+  padding: 1em;
+}
+
+.next-previous-btns {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}

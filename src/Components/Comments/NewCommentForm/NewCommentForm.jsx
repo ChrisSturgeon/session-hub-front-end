@@ -2,10 +2,10 @@ import './NewCommentForm.css';
 import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../../App';
 import { useParams } from 'react-router-dom';
+import { APIURL } from '../../../api';
 
 export default function NewCommentForm() {
   const user = useContext(UserContext);
-
   const { sessionID } = useParams();
   const [show, setShow] = useState(true);
   const [text, setText] = useState('');
@@ -21,7 +21,7 @@ export default function NewCommentForm() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const sessionURL = `http://localhost:3000/api/sessions/${sessionID}/comments/new`;
+    const sessionURL = `${APIURL}/comments/${sessionID}`;
 
     try {
       const commentObj = {

@@ -18,32 +18,3 @@
   font-size: 0.8rem;
   font-weight: 500;
 }
-
-.comment-card .comment-card-like-form {
-  display: flex;
-  align-items: center;
-  gap: 0.1em;
-}
-
-.comment-card .comment-card-like-form button {
-  background-color: transparent;
-  font-size: 1.75rem;
-  padding: 0;
-  height: 27px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  cursor: pointer;
-}
-
-.comment-card
-  .comment-card-like-form
-  button
-  ion-icon[name='heart-outline']:hover {
-  color: red;
-}
-
-.comment-card .comment-card-like-form button ion-icon[name='heart'] {
-  color: red;
-}

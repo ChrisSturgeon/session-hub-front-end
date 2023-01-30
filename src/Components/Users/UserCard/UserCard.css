@@ -38,8 +38,6 @@
 }
 
 .user-card .right .username {
-  /* align-self: flex-start;
-  margin-left: 30px; */
   font-size: 1.2rem;
   font-weight: 700;
 }

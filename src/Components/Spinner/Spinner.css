@@ -1,3 +1,8 @@
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .loader {
   width: 60px;
   height: 60px;
@@ -7,7 +12,7 @@
   box-sizing: border-box;
   position: relative;
   animation: pulse 1s linear infinite;
-  margin-top: 2em;
+  margin-top: 5em;
 }
 .loader:after {
   content: '';
