@@ -73,19 +73,3 @@ export default function Location() {
     </div>
   );
 }
-
-// {
-//   /* <InputWithCounter
-// id={'location-name'}
-// value={location.name}
-// onChange={handleLocationChange}
-// placeholder={'e.g. Polzeath'}
-// name={'name'}
-// maxLength={30}
-// />
-// </div>
-// <Map
-// location={location}
-// handleCoordsChange={handleCoordsChange}
-// /> */
-// }

@@ -20,7 +20,8 @@ export default function SessionForm() {
     conditions: {
       wind: {
         direction: 0,
-        speed: 0,
+        speed: '',
+        gust: '',
       },
       swell: {
         direction: 0,
@@ -48,6 +49,11 @@ export default function SessionForm() {
     console.log(formState);
   }
 
+  async function handleFormSubmit(event) {
+    event.preventDefault();
+    console.log('submitting form...');
+  }
+
   return (
     <div className="session-form-wrapper">
       <div className="session-form-layout">
@@ -59,17 +65,23 @@ export default function SessionForm() {
           )}
         </div>
         <form className="session-form">
-          <h3>Form here</h3>
-          <button
+          <h2>New Session</h2>
+          {/* <button
             onClick={(event) => {
               event.preventDefault();
               testState();
             }}
           >
             Log State
-          </button>
+          </button> */}
           <Outlet
-            context={[formState, setFormState, completed, setCompleted]}
+            context={[
+              formState,
+              setFormState,
+              completed,
+              setCompleted,
+              handleFormSubmit,
+            ]}
           />
         </form>
       </div>

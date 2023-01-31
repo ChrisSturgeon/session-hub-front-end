@@ -1,0 +1,16 @@
+.session-form .equipment {
+  background-color: white;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.session-form .equipment .inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.session-form .equipment .inputs input {
+  width: 100%;
+}

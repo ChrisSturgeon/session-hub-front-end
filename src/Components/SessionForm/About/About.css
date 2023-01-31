@@ -1,10 +1,33 @@
 .about {
   background-color: white;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   padding: 1em;
+  border-radius: 10px;
 }
 
 .next-previous-btns {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
+  margin-top: 1em;
+}
+
+.next-previous-btns button {
+  cursor: pointer;
+}
+
+.next-previous-btns button:first-of-type {
+  background-color: var(--medium-blue);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 0.25em 1em;
+  font-weight: 500;
+}
+
+.next-previous-btns button:nth-of-type(2) {
+  background-color: transparent;
+  border: none;
+  color: rgba(128, 128, 128, 0.681);
+  font-weight: 500;
 }
