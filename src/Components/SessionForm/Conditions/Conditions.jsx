@@ -10,6 +10,7 @@ export default function Conditions() {
   const { conditions } = formState;
   const [speedIsValid, setSpeedIsValid] = useState(true);
   const [gustIsValid, setGustIsValid] = useState(true);
+  const [heightIsValid, setHeightIsValid] = useState(true);
   const [frequencyIsValid, setFrequencyIsValid] = useState(true);
 
   function handleDirectionChange(event) {
@@ -82,6 +83,27 @@ export default function Conditions() {
     setGustIsValid(true);
   }, [conditions.wind.gust]);
 
+  function handleHeightChange(event) {
+    setFormState({
+      ...formState,
+      conditions: {
+        ...formState.conditions,
+        [event.target.name]: {
+          ...formState.conditions.swell,
+          height: Number(event.target.value),
+        },
+      },
+    });
+  }
+
+  useEffect(() => {
+    if (conditions.swell.height > 50) {
+      setHeightIsValid(false);
+      return;
+    }
+    setHeightIsValid(true);
+  }, [conditions.swell.height]);
+
   function handleFrequencyChange(event) {
     setFormState({
       ...formState,
@@ -119,7 +141,6 @@ export default function Conditions() {
 
   function previous(event) {
     event.preventDefault();
-
     navigate('/new-session/location');
   }
 
@@ -174,7 +195,27 @@ export default function Conditions() {
       <hr></hr>
       <h3>Swell</h3>
       <div className="swell-conditions">
-        <div className="frequency">
+        <div className="height-frequency">
+          <div className="">
+            <div>
+              <label htmlFor="swell-height">Swell Height (m)</label>
+              <input
+                onChange={handleHeightChange}
+                name="swell"
+                id="swell-height"
+                type="number"
+                value={conditions.swell.height}
+                min={0}
+                max={50}
+              />
+              {!heightIsValid && (
+                <SessionValidationError
+                  isVisible={!heightIsValid}
+                  message="Height must be less than 50 metres"
+                />
+              )}
+            </div>
+          </div>
           <div>
             <label htmlFor="swell-frequency">Swell Period (second)</label>
             <input
@@ -182,7 +223,7 @@ export default function Conditions() {
               name="swell"
               id="swell-frequency"
               type="number"
-              value={Number(conditions.swell.frequency).toString()}
+              value={conditions.swell.frequency}
               min={0}
               max={50}
             />

@@ -2,22 +2,28 @@
   background-color: white;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   padding: 1em;
-  border-radius: 10px;
 }
 
 .next-previous-btns {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 .next-previous-btns button {
   cursor: pointer;
 }
 
+.about fieldset {
+  border: 1px solid rgba(128, 128, 128, 0.681);
+  border-radius: 10px;
+  padding: 1em;
+}
+
 .next-previous-btns button:first-of-type {
-  background-color: var(--medium-blue);
+  background-color: var(--dark-blue);
+  border: 1px solid red;
   color: white;
   border-radius: 10px;
   border: none;
@@ -30,4 +36,58 @@
   border: none;
   color: rgba(128, 128, 128, 0.681);
   font-weight: 500;
+}
+
+.date .date-selection,
+.sport-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.date-input,
+.sport-input {
+  width: clamp(200px, 100%, 300px);
+}
+
+.date-input input[type='radio'],
+.sport-selection input[type='radio'] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.date-input label,
+.sport-selection label {
+  display: inline-block;
+  background-color: rgb(251, 251, 251);
+  width: 100%;
+  padding: 0.5em;
+  text-align: center;
+  color: var(--dark-blue);
+  border: 1.5px solid var(--border-grey);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.date-input input[type='radio']:checked + label,
+.sport-input input[type='radio']:checked + label {
+  background-color: var(--light-blue);
+  color: white;
+  border: 1.5px solid var(--light-blue);
+}
+
+@media only screen and (min-width: 768px) {
+  .date .date-selection,
+  .sport-selection {
+    flex-direction: row;
+  }
+
+  .about {
+    border-radius: 10px;
+    padding: 1.5em 2em;
+  }
 }

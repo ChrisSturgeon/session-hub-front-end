@@ -1,7 +1,6 @@
 .session-form .equipment {
   background-color: white;
   padding: 1em;
-  border-radius: 10px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -13,4 +12,11 @@
 
 .session-form .equipment .inputs input {
   width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .session-form-layout .equipment {
+    padding: 1.5em 2em;
+    border-radius: 10px;
+  }
 }

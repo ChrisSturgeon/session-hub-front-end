@@ -1,4 +1,3 @@
-import { warning } from '@remix-run/router';
 import './Conditions.css';
 
 export default function Conditions({ type, conditions }) {
@@ -12,7 +11,7 @@ export default function Conditions({ type, conditions }) {
         <h4>Wind</h4>
         <div className="arrow-wrapper">
           <ion-icon
-            style={{ transform: windArrowDirection }}
+            style={{ transform: `${windArrowDirection} rotateZ(180deg)` }}
             name="navigate"
           ></ion-icon>
         </div>
@@ -28,7 +27,7 @@ export default function Conditions({ type, conditions }) {
         <h4>Swell</h4>
         <div className="arrow-wrapper">
           <ion-icon
-            style={{ transform: swellArrowDirection }}
+            style={{ transform: `${swellArrowDirection} rotateZ(180deg)` }}
             name="navigate"
           ></ion-icon>
         </div>

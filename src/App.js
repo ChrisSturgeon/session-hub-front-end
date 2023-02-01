@@ -18,6 +18,7 @@ import FriendsList, {
 import Spinner from './Components/Spinner/Spinner';
 import NavBarWrapper from './Components/Navigation/NavBarWrapper/NavBarWrapper';
 import Posts from './Components/Posts/Posts';
+import ScrollToTop from './Components/General/ScrollToTop/ScrollToTop';
 
 // Hook imports
 

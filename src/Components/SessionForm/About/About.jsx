@@ -1,12 +1,26 @@
 import './About.css';
+import { useEffect, useState } from 'react';
 import { useOutletContext, useNavigate } from 'react-router-dom';
+import { format } from 'date-fns';
+import uuid from 'react-uuid';
 
 export default function About() {
+  const navigate = useNavigate();
+
   const [formState, setFormState, completed, setCompleted] = useOutletContext();
   const { about } = formState;
-  const today = new Date();
-  const weekAgo = new Date(today - 60000 * 60 * 24 * 7);
-  const navigate = useNavigate();
+  const [days, setDays] = useState([]);
+
+  // Adds each day of last week into days state
+  useEffect(() => {
+    const today = new Date();
+    let daysArr = [today];
+    for (let i = 1; i < 3; i++) {
+      const day = new Date(today - 60000 * 60 * 24 * i);
+      daysArr.push(day);
+    }
+    setDays(daysArr);
+  }, []);
 
   function handleDateChange(event) {
     setFormState({
@@ -41,20 +55,42 @@ export default function About() {
   return (
     <div className="about">
       <div className="date">
-        <label htmlFor="date">Session Date</label>
-        <input
-          name="date"
-          id="date"
-          type="date"
-          min={weekAgo.toISOString().slice(0, 10)}
-          max={today.toISOString().slice(0, 10)}
-          onChange={handleDateChange}
-          value={about.date}
-        ></input>
+        <h3>Date</h3>
+        <div className="date-selection">
+          {days.map((day, index) => {
+            let labelText;
+            if (index === 0) {
+              labelText = 'Today';
+            } else if (index === 1) {
+              labelText = 'Yesterday';
+            } else {
+              labelText = format(day, 'EEEE');
+            }
+            const isChecked =
+              day.toString().slice(3, 10) ===
+              about.date.toString().slice(3, 10);
+            return (
+              <div key={day.toDateString()} className="date-input">
+                <input
+                  type="radio"
+                  name="date "
+                  value={day}
+                  onChange={handleDateChange}
+                  id={day.toDateString()}
+                  checked={isChecked}
+                />
+                <label htmlFor={day.toDateString()}>{labelText}</label>
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <fieldset className="sport">
-        <legend>Sport</legend>
-        <div>
+
+      <hr></hr>
+
+      <h3>Sport</h3>
+      <div className="sport-selection">
+        <div className="sport-input">
           <input
             type="radio"
             name="sport"
@@ -65,7 +101,7 @@ export default function About() {
           ></input>
           <label htmlFor="surfing">Surfing</label>
         </div>
-        <div>
+        <div className="sport-input">
           <input
             type="radio"
             name="sport"
@@ -76,7 +112,7 @@ export default function About() {
           ></input>
           <label htmlFor="windsurfing">Windsurfing</label>
         </div>
-        <div>
+        <div className="sport-input">
           <input
             type="radio"
             name="sport"
@@ -87,7 +123,7 @@ export default function About() {
           ></input>
           <label htmlFor="kitesurfing">Kitesurfing</label>
         </div>
-        <div>
+        <div className="sport-input">
           <input
             type="radio"
             name="sport"
@@ -98,7 +134,7 @@ export default function About() {
           ></input>
           <label htmlFor="wingsurfing">Wingsurfing</label>
         </div>
-        <div>
+        <div className="sport-input">
           <input
             type="radio"
             name="sport"
@@ -109,7 +145,8 @@ export default function About() {
           ></input>
           <label htmlFor="paddleboarding">Paddleboarding</label>
         </div>
-      </fieldset>
+      </div>
+
       <div className="next-previous-btns">
         <button onClick={(event) => next(event)}>Next</button>
       </div>

@@ -7,8 +7,15 @@ import { useEffect } from 'react';
 export default function WrapUp() {
   const navigate = useNavigate();
   const [characterCount, setCharacterCount] = useState(0);
-  const [formState, setFormState, completed, setCompleted, handleFormSubmit] =
-    useOutletContext();
+  const [postButtonVisible, setPostButtonVisible] = useState(false);
+  const [
+    formState,
+    setFormState,
+    completed,
+    setCompleted,
+    handleFormSubmit,
+    allSectionsComplete,
+  ] = useOutletContext();
   const { wrapUp } = formState;
 
   function handleChange(event) {
@@ -25,11 +32,16 @@ export default function WrapUp() {
 
   function next(event) {
     event.preventDefault();
-    setCompleted({
-      ...completed,
-      equipment: true,
-    });
-    navigate('/new-session/wrap-up');
+    setCompleted((prevState) => ({
+      ...prevState,
+      wrapUp: true,
+    }));
+    setPostButtonVisible(true);
+  }
+
+  function postSession(event) {
+    event.preventDefault();
+    handleFormSubmit(event);
   }
 
   function previous(event) {
@@ -48,11 +60,18 @@ export default function WrapUp() {
       ></textarea>
       <span className="character-count">{characterCount}/450 characters</span>
       <div className="next-previous-btns">
-        <button onClick={(event) => handleFormSubmit(event)}>
-          Post Session
-        </button>
+        {postButtonVisible ? (
+          <button onClick={(event) => postSession(event)}>Post Session</button>
+        ) : (
+          <button onClick={(event) => next(event)}>Next</button>
+        )}
         <button onClick={(event) => previous(event)}>Previous</button>
       </div>
+
+      <SessionValidationError
+        isVisible={!allSectionsComplete}
+        message="Please complete all sections"
+      />
     </div>
   );
 }

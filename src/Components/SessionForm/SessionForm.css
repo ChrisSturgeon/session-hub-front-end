@@ -23,9 +23,25 @@
   margin-bottom: 1em;
   color: var(--dark-blue);
 }
+
+.session-form h3 {
+  color: var(--dark-blue);
+  margin-bottom: 0.25em;
+}
 .sticky {
   display: grid;
   grid-template-columns: 1fr;
+}
+
+.session-form hr {
+  width: 100%;
+  border-top: 0.5px solid var(--border-grey);
+  margin: 1.25em 0;
+}
+
+.session-form label {
+  color: grey;
+  font-size: 0.8rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -40,13 +56,19 @@
     box-sizing: border-box;
   }
 
-  .session-form {
-    /* min-height: 300vh; */
-  }
-
   .sticky {
     position: sticky;
     top: 0;
     align-self: start;
+  }
+
+  .date .date-selection {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .session-form-wrapper {
+    padding-bottom: 75px;
   }
 }

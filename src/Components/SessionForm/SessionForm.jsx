@@ -1,20 +1,22 @@
 import './SessionForm.css';
 import { useState } from 'react';
-import { Outlet, useOutletContext } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import useCheckMobileScreen from '../../hooks/useWindowDimensions';
 import SessionFormMobileNav from './SessionFormMobileNav/SessionFormMobileNav';
 import SessionFormNav from './SessionFormNav/SessionFormNav';
+import { APIURL } from '../../api';
 
 export default function SessionForm() {
+  const navigate = useNavigate();
   const isMobile = useCheckMobileScreen();
-
+  const [allSectionsComplete, setAllSectionsComplete] = useState(true);
   const [formState, setFormState] = useState({
     about: {
-      date: new Date().toISOString().slice(0, 10),
+      date: new Date(),
       sport: 'surfing',
     },
     location: {
-      name: 'Hellos',
+      name: '',
       coords: [50.57422642679197, -4.915909767150879],
     },
     conditions: {
@@ -25,7 +27,8 @@ export default function SessionForm() {
       },
       swell: {
         direction: 0,
-        frequency: 0,
+        height: '',
+        frequency: '',
       },
     },
     equipment: {
@@ -51,7 +54,50 @@ export default function SessionForm() {
 
   async function handleFormSubmit(event) {
     event.preventDefault();
+
+    const allAreCompleted = Object.values(completed).every(
+      (section) => section === true
+    );
+
+    if (!allAreCompleted) {
+      console.log('not all sections completed');
+      setAllSectionsComplete(false);
+      return;
+    }
+
     console.log('submitting form...');
+
+    const sessionData = {
+      description: formState.wrapUp,
+      date: formState.about.date,
+      sport: formState.about.sport,
+      location: formState.location,
+      equipment: formState.equipment,
+      conditions: formState.conditions,
+    };
+    try {
+      const response = await fetch(`${APIURL}/sessions/`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
+        },
+        body: JSON.stringify(sessionData),
+      });
+
+      if (response.status === 200) {
+        const data = await response.json();
+        const newPostURL = data.data;
+        console.log('Success!');
+        navigate(`/session/${newPostURL}`);
+      } else {
+        const data = await response.json();
+        console.log('Something has gone wrong here...', data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -65,15 +111,15 @@ export default function SessionForm() {
           )}
         </div>
         <form className="session-form">
-          <h2>New Session</h2>
-          {/* <button
+          {!isMobile && <h2>New Session</h2>}
+          <button
             onClick={(event) => {
               event.preventDefault();
               testState();
             }}
           >
             Log State
-          </button> */}
+          </button>
           <Outlet
             context={[
               formState,
@@ -81,6 +127,7 @@ export default function SessionForm() {
               completed,
               setCompleted,
               handleFormSubmit,
+              allSectionsComplete,
             ]}
           />
         </form>

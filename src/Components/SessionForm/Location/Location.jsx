@@ -53,6 +53,8 @@ export default function Location() {
 
   return (
     <div className="location">
+      <h3>Location</h3>
+      <label htmlFor="location-name">Name</label>
       <InputWithCounter
         id={'location-name'}
         value={location.name}
@@ -65,7 +67,13 @@ export default function Location() {
         isVisible={!nameIsValid}
         message={'Location name required'}
       />
-      <Map coords={location.coords} handleCoordsChange={handleCoordsChange} />
+      <hr></hr>
+      <label>Drop a Pin</label>
+      <Map
+        id="location-map"
+        coords={location.coords}
+        handleCoordsChange={handleCoordsChange}
+      />
       <div className="next-previous-btns">
         <button onClick={(event) => next(event)}>Next</button>
         <button onClick={(event) => previous(event)}>Previous</button>

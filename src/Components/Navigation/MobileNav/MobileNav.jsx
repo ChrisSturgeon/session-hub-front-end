@@ -35,7 +35,7 @@ export default function MobileNav() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/new-post">
+          <NavLink to="/new-session/about">
             <span className="icon">
               <ion-icon name="add-outline"></ion-icon>
             </span>

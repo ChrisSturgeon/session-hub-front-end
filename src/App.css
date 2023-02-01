@@ -1,16 +1,19 @@
 :root {
   --darkest-blue: #011826;
   --dark-blue: #024059;
-  --medium-blue: #03738c;
+  --medium-blue: #0082a0;
   --light-blue: #82c9d9;
   --turquoise: #0396a6;
   --bg-grey: rgb(248, 248, 248);
   --border-grey: rgb(236, 236, 236);
   --input-border: rgb(212, 211, 211);
+  --accent-orange: rgb(255, 220, 156);
+  --accent-orange-strong: rgb(253, 214, 143);
   overflow-y: scroll;
 }
 
-main .column-wrapper {
+::placeholder {
+  color: rgb(179, 179, 179);
 }
 
 label {
@@ -20,8 +23,7 @@ label {
 input,
 textarea {
   border: 1px solid var(--input-border);
-  border-radius: 3px;
-  font-size: 1.1rem;
+  border-radius: 6px;
   padding: 0 0.25em;
 }
 

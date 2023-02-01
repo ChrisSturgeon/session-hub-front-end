@@ -24,18 +24,18 @@ export default function SessionDetail() {
   const [commentsCount, setCommentsCount] = useState(session.commentsCount);
   const userProfileURL = `/profile/${session.userID}`;
 
-  const conditions = {
-    wind: {
-      direction: 210,
-      speed: 20,
-      gust: 25,
-    },
-    swell: {
-      direction: 32,
-      height: 0.4,
-      frequency: 12,
-    },
-  };
+  // const conditions = {
+  //   wind: {
+  //     direction: 210,
+  //     speed: 20,
+  //     gust: 25,
+  //   },
+  //   swell: {
+  //     direction: 32,
+  //     height: 0.4,
+  //     frequency: 12,
+  //   },
+  // };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -68,12 +68,12 @@ export default function SessionDetail() {
           <hr></hr>
           <h2 className="equipment-title">Conditions</h2>
           <div className="conditions-wrapper">
-            {conditions.wind && (
-              <Conditions type="wind" conditions={conditions} />
+            {session.conditions.wind && (
+              <Conditions type="wind" conditions={session.conditions} />
             )}
 
-            {conditions.swell && (
-              <Conditions type="swell" conditions={conditions} />
+            {session.conditions.swell && (
+              <Conditions type="swell" conditions={session.conditions} />
             )}
           </div>
           <hr></hr>
