@@ -23,7 +23,6 @@
 
 .next-previous-btns button:first-of-type {
   background-color: var(--dark-blue);
-  border: 1px solid red;
   color: white;
   border-radius: 10px;
   border: none;
@@ -48,7 +47,7 @@
 
 .date-input,
 .sport-input {
-  width: clamp(200px, 100%, 300px);
+  width: clamp(100px, 100%, 300px);
 }
 
 .date-input input[type='radio'],
@@ -63,7 +62,7 @@
   display: inline-block;
   background-color: rgb(251, 251, 251);
   width: 100%;
-  padding: 0.5em;
+  padding: 0.5em 0.25em;
   text-align: center;
   color: var(--dark-blue);
   border: 1.5px solid var(--border-grey);

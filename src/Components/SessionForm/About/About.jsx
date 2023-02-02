@@ -1,26 +1,21 @@
 import './About.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useOutletContext, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
-import uuid from 'react-uuid';
 
 export default function About() {
   const navigate = useNavigate();
-
   const [formState, setFormState, completed, setCompleted] = useOutletContext();
   const { about } = formState;
-  const [days, setDays] = useState([]);
-
-  // Adds each day of last week into days state
-  useEffect(() => {
+  const [days] = useState(() => {
     const today = new Date();
     let daysArr = [today];
     for (let i = 1; i < 3; i++) {
       const day = new Date(today - 60000 * 60 * 24 * i);
       daysArr.push(day);
     }
-    setDays(daysArr);
-  }, []);
+    return daysArr;
+  });
 
   function handleDateChange(event) {
     setFormState({
@@ -42,9 +37,12 @@ export default function About() {
     });
   }
 
-  function next(event) {
+  function nextSection(event) {
     event.preventDefault();
-    console.log('hi');
+    window.sessionStorage.setItem(
+      'new-session-inputs',
+      JSON.stringify(formState)
+    );
     setCompleted({
       ...completed,
       about: true,
@@ -85,9 +83,7 @@ export default function About() {
           })}
         </div>
       </div>
-
       <hr></hr>
-
       <h3>Sport</h3>
       <div className="sport-selection">
         <div className="sport-input">
@@ -148,7 +144,9 @@ export default function About() {
       </div>
 
       <div className="next-previous-btns">
-        <button onClick={(event) => next(event)}>Next</button>
+        <button name="about" onClick={(event) => nextSection(event)}>
+          Next
+        </button>
       </div>
     </div>
   );

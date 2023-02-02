@@ -8,7 +8,6 @@ import Login from './Components/LoginAndRegistration/Login/Login';
 import Home from './Components/Home/Home';
 import NotFound from './Components/NotFound/NotFound';
 import Friends from './Components/Friends/Friends';
-import NewPost from './Components/NewPost/NewPost';
 import ProfileIndex from './Components/Profile/ProfileIndex';
 import AllUsers from './Components/Users/AllUsers/AllUsers';
 import RequestsList from './Components/Friends/RequestsList/RequestsList';
@@ -18,7 +17,6 @@ import FriendsList, {
 import Spinner from './Components/Spinner/Spinner';
 import NavBarWrapper from './Components/Navigation/NavBarWrapper/NavBarWrapper';
 import Posts from './Components/Posts/Posts';
-import ScrollToTop from './Components/General/ScrollToTop/ScrollToTop';
 
 // Hook imports
 
@@ -69,10 +67,7 @@ function App() {
           path: 'login',
           element: <Login />,
         },
-        {
-          path: 'new-post',
-          element: <NewPost />,
-        },
+
         {
           path: 'friends',
           element: <Friends />,

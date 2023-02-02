@@ -1,43 +1,53 @@
 import './SessionForm.css';
 import { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { APIURL } from '../../api';
 import useCheckMobileScreen from '../../hooks/useWindowDimensions';
+
+// Component imports
 import SessionFormMobileNav from './SessionFormMobileNav/SessionFormMobileNav';
 import SessionFormNav from './SessionFormNav/SessionFormNav';
-import { APIURL } from '../../api';
+
+const blankFormState = {
+  about: {
+    date: new Date(),
+    sport: 'surfing',
+  },
+  location: {
+    name: '',
+    coords: [50.57422642679197, -4.915909767150879],
+  },
+  conditions: {
+    wind: {
+      direction: 0,
+      speed: '',
+      gust: '',
+    },
+    swell: {
+      direction: 0,
+      height: '',
+      frequency: '',
+    },
+  },
+  equipment: {
+    board: '',
+    sail: '',
+    kite: '',
+    wing: '',
+  },
+  wrapUp: '',
+};
 
 export default function SessionForm() {
   const navigate = useNavigate();
   const isMobile = useCheckMobileScreen();
   const [allSectionsComplete, setAllSectionsComplete] = useState(true);
-  const [formState, setFormState] = useState({
-    about: {
-      date: new Date(),
-      sport: 'surfing',
-    },
-    location: {
-      name: '',
-      coords: [50.57422642679197, -4.915909767150879],
-    },
-    conditions: {
-      wind: {
-        direction: 0,
-        speed: '',
-        gust: '',
-      },
-      swell: {
-        direction: 0,
-        height: '',
-        frequency: '',
-      },
-    },
-    equipment: {
-      board: '',
-      sail: '',
-      kite: '',
-      wing: '',
-    },
-    wrapUp: '',
+  const [formState, setFormState] = useState(() => {
+    if (window.sessionStorage.getItem('new-session-inputs')) {
+      return JSON.parse(window.sessionStorage.getItem('new-session-inputs'));
+    } else {
+      return blankFormState;
+    }
   });
 
   const [completed, setCompleted] = useState({
@@ -48,13 +58,8 @@ export default function SessionForm() {
     wrapUp: false,
   });
 
-  function testState() {
-    console.log(formState);
-  }
-
   async function handleFormSubmit(event) {
     event.preventDefault();
-
     const allAreCompleted = Object.values(completed).every(
       (section) => section === true
     );
@@ -65,8 +70,6 @@ export default function SessionForm() {
       return;
     }
 
-    console.log('submitting form...');
-
     const sessionData = {
       description: formState.wrapUp,
       date: formState.about.date,
@@ -75,6 +78,7 @@ export default function SessionForm() {
       equipment: formState.equipment,
       conditions: formState.conditions,
     };
+
     try {
       const response = await fetch(`${APIURL}/sessions/`, {
         method: 'POST',
@@ -89,7 +93,7 @@ export default function SessionForm() {
       if (response.status === 200) {
         const data = await response.json();
         const newPostURL = data.data;
-        console.log('Success!');
+        window.sessionStorage.removeItem('new-session-inputs');
         navigate(`/session/${newPostURL}`);
       } else {
         const data = await response.json();
@@ -112,14 +116,6 @@ export default function SessionForm() {
         </div>
         <form className="session-form">
           {!isMobile && <h2>New Session</h2>}
-          <button
-            onClick={(event) => {
-              event.preventDefault();
-              testState();
-            }}
-          >
-            Log State
-          </button>
           <Outlet
             context={[
               formState,

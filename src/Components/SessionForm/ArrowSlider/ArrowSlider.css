@@ -1,4 +1,4 @@
-.arrow-slider {
+.arrow-slider-wrapper .arrow-slider {
   width: 200px;
   min-width: 200px;
   height: 250px;
@@ -6,14 +6,13 @@
   grid-template-rows: 200px 50px;
 }
 
-.arrow-slider .top {
+.arrow-slider-wrapper .arrow-slider .top {
   padding: 60px;
-  /* background-color: rgb(201, 229, 183); */
   border-radius: 100vw;
   position: relative;
 }
 
-.arrow-slider .top .rose {
+.arrow-slider-wrapper .arrow-slider .top .rose {
   border: 1px solid rgba(128, 128, 128, 0.681);
   width: 100%;
   height: 100%;
@@ -23,77 +22,67 @@
   align-items: center;
 }
 
-.arrow-slider .top .rose ion-icon {
+.arrow-slider-wrapper .arrow-slider .top .rose ion-icon {
   font-size: 2.75rem;
   color: var(--dark-blue);
-  /* position: absolute; */
-  /* transform: rotate('45deg'); */
 }
 
-.arrow-slider .top .arrow-wrapper {
-  /* background-color: rgba(173, 216, 230, 0.606); */
+.arrow-slider-wrapper .arrow-slider .top .arrow-wrapper {
   height: 80px;
   padding-top: 60px;
 }
 
-.arrow-slider .top .north-south {
+.arrow-slider-wrapper .arrow-slider .top .north-south {
   position: absolute;
   height: 140px;
-  /* bottom: 36px; */
   bottom: 28px;
   right: 50%;
   border-left: 1px solid rgba(128, 128, 128, 0.681);
 }
 
-.arrow-slider .top .east-west {
+.arrow-slider-wrapper .arrow-slider .top .east-west {
   position: absolute;
   height: 120px;
-  /* bottom: 36px; */
-  /* bottom: 28px;
-  right: 50%; */
   top: 40px;
   right: 100px;
   border-left: 1px solid rgba(128, 128, 128, 0.681);
   transform: rotate(90deg);
 }
 
-.compass-symbol {
+.arrow-slider-wrapper .arrow-slider .compass-symbol {
   position: absolute;
   font-size: 1.2rem;
   font-weight: 500;
   color: rgba(128, 128, 128, 0.681);
 }
 
-.compass-symbol.north {
+.arrow-slider-wrapper .arrow-slider .compass-symbol.north {
   right: 47.5%;
   top: 0;
 }
 
-.compass-symbol.south {
+.arrow-slider-wrapper .arrow-slider .compass-symbol.south {
   right: 47.5%;
   bottom: 0;
 }
 
-.compass-symbol.east {
+.arrow-slider-wrapper .arrow-slider .compass-symbol.east {
   right: 5%;
   bottom: 86px;
 }
 
-.compass-symbol.west {
+.arrow-slider-wrapper .arrow-slider .compass-symbol.west {
   left: 5%;
   bottom: 86px;
 }
 
-.bottom {
+.arrow-slider-wrapper .arrow-slider .bottom {
   padding: 0 1em;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
-.bottom input {
+.arrow-slider-wrapper .arrow-slider .bottom input {
   width: 100%;
-}
-
-@media only screen and (max-width: 768px) {
 }

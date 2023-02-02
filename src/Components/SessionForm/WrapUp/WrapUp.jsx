@@ -1,8 +1,7 @@
 import './WrapUp.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useOutletContext, useNavigate } from 'react-router-dom';
 import SessionValidationError from '../ValidationError/SessionValidationError';
-import { useEffect } from 'react';
 
 export default function WrapUp() {
   const navigate = useNavigate();
@@ -11,7 +10,6 @@ export default function WrapUp() {
   const [
     formState,
     setFormState,
-    completed,
     setCompleted,
     handleFormSubmit,
     allSectionsComplete,
@@ -30,8 +28,12 @@ export default function WrapUp() {
     setCharacterCount(wrapUp.length);
   }, [wrapUp]);
 
-  function next(event) {
+  function nextSection(event) {
     event.preventDefault();
+    window.sessionStorage.setItem(
+      'new-session-inputs',
+      JSON.stringify(formState)
+    );
     setCompleted((prevState) => ({
       ...prevState,
       wrapUp: true,
@@ -39,14 +41,18 @@ export default function WrapUp() {
     setPostButtonVisible(true);
   }
 
-  function postSession(event) {
+  function previousSection(event) {
     event.preventDefault();
-    handleFormSubmit(event);
+    window.sessionStorage.setItem(
+      'new-session-inputs',
+      JSON.stringify(formState)
+    );
+    navigate('/new-session/conditions');
   }
 
-  function previous(event) {
+  function triggerPostSession(event) {
     event.preventDefault();
-    navigate('/new-session/conditions');
+    handleFormSubmit(event);
   }
 
   return (
@@ -61,11 +67,13 @@ export default function WrapUp() {
       <span className="character-count">{characterCount}/450 characters</span>
       <div className="next-previous-btns">
         {postButtonVisible ? (
-          <button onClick={(event) => postSession(event)}>Post Session</button>
+          <button onClick={(event) => triggerPostSession(event)}>
+            Post Session
+          </button>
         ) : (
-          <button onClick={(event) => next(event)}>Next</button>
+          <button onClick={(event) => nextSection(event)}>Next</button>
         )}
-        <button onClick={(event) => previous(event)}>Previous</button>
+        <button onClick={(event) => previousSection(event)}>Previous</button>
       </div>
 
       <SessionValidationError

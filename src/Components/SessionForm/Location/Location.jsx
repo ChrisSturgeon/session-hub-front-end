@@ -1,8 +1,10 @@
-import { useOutletContext, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import './Location.css';
-import InputWithCounter from '../../General/InputWithCounter/InputWithCounter';
+import { useState } from 'react';
+import { useOutletContext, useNavigate } from 'react-router-dom';
+
+// Component imports
 import Map from './Map/Map';
+import InputWithCounter from '../../General/InputWithCounter/InputWithCounter';
 import SessionValidationError from '../ValidationError/SessionValidationError';
 
 export default function Location() {
@@ -31,13 +33,16 @@ export default function Location() {
     });
   }
 
-  function next(event) {
+  function nextSection(event) {
     event.preventDefault();
-
     if (location.name.length < 2) {
       setNameIsValid(false);
       return;
     }
+    window.sessionStorage.setItem(
+      'new-session-inputs',
+      JSON.stringify(formState)
+    );
     setCompleted({
       ...completed,
       location: true,
@@ -45,9 +50,12 @@ export default function Location() {
     navigate('/new-session/conditions');
   }
 
-  function previous(event) {
+  function previousSection(event) {
     event.preventDefault();
-
+    window.sessionStorage.setItem(
+      'new-session-inputs',
+      JSON.stringify(formState)
+    );
     navigate('/new-session/about');
   }
 
@@ -68,15 +76,15 @@ export default function Location() {
         message={'Location name required'}
       />
       <hr></hr>
-      <label>Drop a Pin</label>
+      <h3>Drop a Pin</h3>
       <Map
         id="location-map"
         coords={location.coords}
         handleCoordsChange={handleCoordsChange}
       />
       <div className="next-previous-btns">
-        <button onClick={(event) => next(event)}>Next</button>
-        <button onClick={(event) => previous(event)}>Previous</button>
+        <button onClick={(event) => nextSection(event)}>Next</button>
+        <button onClick={(event) => previousSection(event)}>Previous</button>
       </div>
     </div>
   );

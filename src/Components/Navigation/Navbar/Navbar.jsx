@@ -12,8 +12,7 @@ export default function Navbar({ logOut }) {
       <div className="links">
         <Link to="/">Home</Link>
         <Link to="/friends">My Friends</Link>
-        <Link to="/new-session/about">NEW SESSION </Link>
-        <Link to="/new-post">New Session</Link>
+        <Link to="/new-session/about">New Session </Link>
         <Link to={userURL}>My Profile</Link>
       </div>
       <button onClick={logOut}>Log Out</button>

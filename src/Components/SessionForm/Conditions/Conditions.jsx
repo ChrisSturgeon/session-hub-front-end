@@ -1,6 +1,8 @@
 import './Conditions.css';
 import { useEffect, useState } from 'react';
-import { useOutletContext, navigate, useNavigate } from 'react-router-dom';
+import { useOutletContext, useNavigate } from 'react-router-dom';
+
+// Component imports
 import ArrowSlider from '../ArrowSlider/ArrowSlider';
 import SessionValidationError from '../ValidationError/SessionValidationError';
 
@@ -8,10 +10,12 @@ export default function Conditions() {
   const navigate = useNavigate();
   const [formState, setFormState, completed, setCompleted] = useOutletContext();
   const { conditions } = formState;
-  const [speedIsValid, setSpeedIsValid] = useState(true);
-  const [gustIsValid, setGustIsValid] = useState(true);
-  const [heightIsValid, setHeightIsValid] = useState(true);
-  const [frequencyIsValid, setFrequencyIsValid] = useState(true);
+  const [valid, setValid] = useState({
+    speed: true,
+    gust: true,
+    height: true,
+    frequency: true,
+  });
 
   function handleDirectionChange(event) {
     if (event.target.name === 'wind') {
@@ -52,13 +56,19 @@ export default function Conditions() {
     });
   }
 
-  // Validates wind speed on input change
+  // Validates wind speed float on input change
   useEffect(() => {
     if (conditions.wind.speed > 201) {
-      setSpeedIsValid(false);
+      setValid((prev) => ({
+        ...prev,
+        speed: false,
+      }));
       return;
     }
-    setSpeedIsValid(true);
+    setValid((prev) => ({
+      ...prev,
+      speed: true,
+    }));
   }, [conditions.wind.speed]);
 
   function handleGustChange(event) {
@@ -74,13 +84,19 @@ export default function Conditions() {
     });
   }
 
-  // Validates wind gust on input change
+  // Validates wind gust float on input change
   useEffect(() => {
     if (conditions.wind.gust > 201) {
-      setGustIsValid(false);
+      setValid((prev) => ({
+        ...prev,
+        gust: false,
+      }));
       return;
     }
-    setGustIsValid(true);
+    setValid((prev) => ({
+      ...prev,
+      gust: true,
+    }));
   }, [conditions.wind.gust]);
 
   function handleHeightChange(event) {
@@ -96,12 +112,19 @@ export default function Conditions() {
     });
   }
 
+  // Validates swell height on input change
   useEffect(() => {
     if (conditions.swell.height > 50) {
-      setHeightIsValid(false);
+      setValid((prev) => ({
+        ...prev,
+        height: false,
+      }));
       return;
     }
-    setHeightIsValid(true);
+    setValid((prev) => ({
+      ...prev,
+      height: true,
+    }));
   }, [conditions.swell.height]);
 
   function handleFrequencyChange(event) {
@@ -120,18 +143,30 @@ export default function Conditions() {
   // Validates swell frequency on input change
   useEffect(() => {
     if (conditions.swell.frequency > 50) {
-      setFrequencyIsValid(false);
+      setValid((prev) => ({
+        ...prev,
+        frequency: false,
+      }));
       return;
     }
-    setFrequencyIsValid(true);
+    setValid((prev) => ({
+      ...prev,
+      frequency: true,
+    }));
   }, [conditions.swell.frequency]);
 
-  function next(event) {
+  function nextSection(event) {
     event.preventDefault();
 
-    if (!speedIsValid || !gustIsValid || !frequencyIsValid) {
+    const allValid = Object.values(valid).every((input) => input === true);
+    if (!allValid) {
+      console.log('not all valid');
       return;
     }
+    window.sessionStorage.setItem(
+      'new-session-inputs',
+      JSON.stringify(formState)
+    );
     setCompleted({
       ...completed,
       conditions: true,
@@ -139,8 +174,12 @@ export default function Conditions() {
     navigate('/new-session/equipment');
   }
 
-  function previous(event) {
+  function previousSection(event) {
     event.preventDefault();
+    window.sessionStorage.setItem(
+      'new-session-inputs',
+      JSON.stringify(formState)
+    );
     navigate('/new-session/location');
   }
 
@@ -160,12 +199,10 @@ export default function Conditions() {
               min={0}
               max={200}
             />
-            {!speedIsValid && (
-              <SessionValidationError
-                isVisible={!speedIsValid}
-                message="Speed must be less than 200mph"
-              />
-            )}
+            <SessionValidationError
+              isVisible={!valid.speed}
+              message="Speed must be less than 200mph"
+            />
           </div>
           <div>
             <label htmlFor="wind-gust">Wind Gust (mph)</label>
@@ -178,12 +215,10 @@ export default function Conditions() {
               min={0}
               max={200}
             />
-            {!gustIsValid && (
-              <SessionValidationError
-                isVisible={!gustIsValid}
-                message="Gust speed must be less than 200mph"
-              />
-            )}
+            <SessionValidationError
+              isVisible={!valid.gust}
+              message="Gust speed must be less than 200mph"
+            />
           </div>
         </div>
         <ArrowSlider
@@ -208,12 +243,10 @@ export default function Conditions() {
                 min={0}
                 max={50}
               />
-              {!heightIsValid && (
-                <SessionValidationError
-                  isVisible={!heightIsValid}
-                  message="Height must be less than 50 metres"
-                />
-              )}
+              <SessionValidationError
+                isVisible={!valid.height}
+                message="Height must be less than 50 metres"
+              />
             </div>
           </div>
           <div>
@@ -227,12 +260,11 @@ export default function Conditions() {
               min={0}
               max={50}
             />
-            {!frequencyIsValid && (
-              <SessionValidationError
-                isVisible={!frequencyIsValid}
-                message="Frequency must be less than 50 seconds"
-              />
-            )}
+
+            <SessionValidationError
+              isVisible={!valid.frequency}
+              message="Frequency must be less than 50 seconds"
+            />
           </div>
         </div>
         <ArrowSlider
@@ -242,8 +274,8 @@ export default function Conditions() {
         />
       </div>
       <div className="next-previous-btns">
-        <button onClick={(event) => next(event)}>Next</button>
-        <button onClick={(event) => previous(event)}>Previous</button>
+        <button onClick={(event) => nextSection(event)}>Next</button>
+        <button onClick={(event) => previousSection(event)}>Previous</button>
       </div>
     </div>
   );

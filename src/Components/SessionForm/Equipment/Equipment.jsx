@@ -1,9 +1,6 @@
 import './Equipment.css';
 import { useOutletContext, useNavigate } from 'react-router-dom';
-
 import InputWithCounter from '../../General/InputWithCounter/InputWithCounter';
-import SessionValidationError from '../ValidationError/SessionValidationError';
-import { motion } from 'framer-motion';
 
 export default function Equipment() {
   const navigate = useNavigate();
@@ -21,8 +18,13 @@ export default function Equipment() {
     });
   }
 
-  function next(event) {
+  function nextSection(event) {
     event.preventDefault();
+
+    window.sessionStorage.setItem(
+      'new-session-inputs',
+      JSON.stringify(formState)
+    );
     setCompleted({
       ...completed,
       equipment: true,
@@ -30,8 +32,12 @@ export default function Equipment() {
     navigate('/new-session/wrap-up');
   }
 
-  function previous(event) {
+  function previousSection(event) {
     event.preventDefault();
+    window.sessionStorage.setItem(
+      'new-session-inputs',
+      JSON.stringify(formState)
+    );
     navigate('/new-session/conditions');
   }
 
@@ -133,8 +139,8 @@ export default function Equipment() {
         )}
       </div>
       <div className="next-previous-btns">
-        <button onClick={(event) => next(event)}>Next</button>
-        <button onClick={(event) => previous(event)}>Previous</button>
+        <button onClick={(event) => nextSection(event)}>Next</button>
+        <button onClick={(event) => previousSection(event)}>Previous</button>
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import './ArrowSlider.css';
-import { useEffect, useState } from 'react';
 
 export default function ArrowSlider({ type, handleDirectionChange, degree }) {
   return (

@@ -1,33 +1,66 @@
 import './Feed.css';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../../App';
-import useFetch from '../../hooks/useFetch';
+
+// Component imports
 import SessionCard from '../SessionCard/SessionCard';
-import { useParams } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
 
 export default function Feed() {
   const user = useContext(UserContext);
-  const url = `http://localhost:3000/api/sessions/feed/${user.ID}`;
-  const { isLoading, APIData: data, error } = useFetch(url);
+  const [isLoading, setIsLoading] = useState(true);
+  const [feedData, setFeedData] = useState(null);
+
+  // Fetches user's feeds posts
+  useEffect(() => {
+    async function getFeedPosts() {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/sessions/feed/${user.ID}`,
+          {
+            method: 'GET',
+            headers: {
+              Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
+            },
+          }
+        );
+
+        console.log(response.status);
+        const data = await response.json();
+
+        if (response.status === 200) {
+          setIsLoading(false);
+          setFeedData(data.data);
+        } else {
+          console.log(data.message);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getFeedPosts();
+  }, [user.ID]);
 
   if (isLoading) {
     return <Spinner />;
   }
 
-  if (data.data) {
+  if (feedData) {
     return (
       <div id="feed" className="feed-wrapper">
         <h3>Your feed</h3>
         <div className="feed-column">
-          {data.data.map((session) => {
-            return (
-              <SessionCard
-                key={session._id}
-                session={session.post[0]}
-                feed={true}
-              />
-            );
+          {feedData.map((session) => {
+            if (session.post.length) {
+              return (
+                <SessionCard
+                  key={session._id}
+                  session={session.post[0]}
+                  feed={true}
+                />
+              );
+            }
+            return null;
           })}
         </div>
       </div>
