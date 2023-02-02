@@ -1,7 +1,8 @@
 import './WrapUp.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useOutletContext, useNavigate } from 'react-router-dom';
 import SessionValidationError from '../ValidationError/SessionValidationError';
+import { useEffect } from 'react';
 
 export default function WrapUp() {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ export default function WrapUp() {
   const [
     formState,
     setFormState,
+    completed,
     setCompleted,
     handleFormSubmit,
     allSectionsComplete,
@@ -28,7 +30,7 @@ export default function WrapUp() {
     setCharacterCount(wrapUp.length);
   }, [wrapUp]);
 
-  function nextSection(event) {
+  function next(event) {
     event.preventDefault();
     window.sessionStorage.setItem(
       'new-session-inputs',
@@ -41,18 +43,14 @@ export default function WrapUp() {
     setPostButtonVisible(true);
   }
 
-  function previousSection(event) {
-    event.preventDefault();
-    window.sessionStorage.setItem(
-      'new-session-inputs',
-      JSON.stringify(formState)
-    );
-    navigate('/new-session/conditions');
-  }
-
-  function triggerPostSession(event) {
+  function postSession(event) {
     event.preventDefault();
     handleFormSubmit(event);
+  }
+
+  function previous(event) {
+    event.preventDefault();
+    navigate('/new-session/conditions');
   }
 
   return (
@@ -67,13 +65,11 @@ export default function WrapUp() {
       <span className="character-count">{characterCount}/450 characters</span>
       <div className="next-previous-btns">
         {postButtonVisible ? (
-          <button onClick={(event) => triggerPostSession(event)}>
-            Post Session
-          </button>
+          <button onClick={(event) => postSession(event)}>Post Session</button>
         ) : (
-          <button onClick={(event) => nextSection(event)}>Next</button>
+          <button onClick={(event) => next(event)}>Next</button>
         )}
-        <button onClick={(event) => previousSection(event)}>Previous</button>
+        <button onClick={(event) => previous(event)}>Previous</button>
       </div>
 
       <SessionValidationError

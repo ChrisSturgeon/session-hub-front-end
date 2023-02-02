@@ -25,7 +25,6 @@ export default function Feed() {
           }
         );
 
-        console.log(response.status);
         const data = await response.json();
 
         if (response.status === 200) {
@@ -48,7 +47,6 @@ export default function Feed() {
   if (feedData) {
     return (
       <div id="feed" className="feed-wrapper">
-        <h3>Your feed</h3>
         <div className="feed-column">
           {feedData.map((session) => {
             if (session.post.length) {

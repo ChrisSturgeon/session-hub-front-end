@@ -14,7 +14,7 @@ export default function Map({ coords, handleCoordsChange }) {
   return (
     <div className="test-map">
       <MapContainer
-        style={{ height: '400px', width: '100%' }}
+        style={{ height: '400px', width: '100%', borderRadius: '10px' }}
         center={coords}
         zoom={6}
         scrollWheelZoom={false}

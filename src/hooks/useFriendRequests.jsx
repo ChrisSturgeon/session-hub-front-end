@@ -43,7 +43,7 @@ const useFriendRequest = () => {
 
         // Fetch unsuccessful - user is not authenticated
         if (response.status === 401) {
-          setError('You must login');
+          setError('You must login first');
         }
       } catch (err) {
         console.log(err);

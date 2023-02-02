@@ -1,8 +1,11 @@
 import './Home.css';
-import Feed from '../Feed/Feed';
 import useCheckMobileScreen from '../../hooks/useWindowDimensions';
 import { useState, useContext } from 'react';
 import { UserContext } from '../../App';
+
+// Component imports
+import Feed from '../Feed/Feed';
+import HomeSidebar from './HomeSidebar/HomeSidebar';
 
 export default function Home() {
   const isMobile = useCheckMobileScreen();
@@ -11,7 +14,7 @@ export default function Home() {
   return (
     <div className="home-wrapper">
       <main className="home-main">
-        {!isMobile && <div>Do I dissapear?</div>}
+        <div className="sticky-column">{!isMobile && <HomeSidebar />}</div>
         <div className="feed-wrapper">
           <Feed />
         </div>

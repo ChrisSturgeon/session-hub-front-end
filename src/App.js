@@ -35,6 +35,7 @@ import Location from './Components/SessionForm/Location/Location';
 import Conditions from './Components/SessionForm/Conditions/Conditions';
 import Equipment from './Components/SessionForm/Equipment/Equipment';
 import WrapUp from './Components/SessionForm/WrapUp/WrapUp';
+import useFriendRequest from './hooks/useFriendRequests';
 
 // Request notification context
 export const RequestContext = React.createContext();
@@ -49,10 +50,14 @@ function App() {
     setUser,
   } = useAuthenticate();
 
-  // Toggles authentication state
-  const toggleAuth = () => {
+  const { friendRequests, setFriendRequests, decrementRequests } =
+    useFriendRequest();
+
+  // Toggles authentication state for logging out
+  function toggleAuth() {
     setIsAuthenticated(!isAuthenticated);
-  };
+  }
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -178,9 +183,11 @@ function App() {
   if (isAuthenticated && user) {
     return (
       <UserContext.Provider value={user}>
-        <div className="app-layout">
-          <RouterProvider router={router} />
-        </div>
+        <RequestContext.Provider value={[friendRequests, decrementRequests]}>
+          <div className="app-layout">
+            <RouterProvider router={router} />
+          </div>
+        </RequestContext.Provider>
       </UserContext.Provider>
     );
   }

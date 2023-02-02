@@ -1,35 +1,32 @@
 .home-wrapper {
-  min-height: 100vh;
+  min-height: 100%;
   background: radial-gradient(
     circle at 18.7% 37.8%,
     rgb(250, 250, 250) 0%,
     rgb(225, 234, 238) 90%
   );
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .home-wrapper .home-main {
-  width: clamp(200px, 100%, 1200px);
-  /* background-color: white; */
-  height: 100%;
+  width: clamp(200px, 100%, 1000px);
 }
 
 @media only screen and (min-width: 768px) {
-  .home-wrapper {
-    min-height: 0;
-    max-height: 100vh;
-    height: calc(100vh - 45px);
-  }
   .home-wrapper .home-main {
-    /* background-color: rgb(220, 242, 220); */
     display: grid;
-    grid-template-columns: 500px 500fr;
+    grid-template-columns: 400px 1fr;
   }
 
-  .feed-wrapper {
-    overflow-y: auto;
+  .sticky-column {
+    display: grid;
+    grid-template-columns: 1fr;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    padding-top: 45px;
   }
 
   .feed-wrapper::-webkit-scrollbar {

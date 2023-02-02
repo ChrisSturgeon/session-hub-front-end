@@ -1,0 +1,26 @@
+.home-sidebar {
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 0.5em 1em;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.home-sidebar .friends-request-notification {
+  background-color: var(--light-blue);
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.5em 1em;
+  font-weight: 500;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.home-sidebar .friends-request-notification ion-icon {
+  font-size: 1.5rem;
+}
