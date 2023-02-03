@@ -34,8 +34,8 @@
 
 .arrow-slider-wrapper .arrow-slider .top .north-south {
   position: absolute;
-  height: 140px;
-  bottom: 28px;
+  height: 120px;
+  bottom: 39px;
   right: 50%;
   border-left: 1px solid rgba(128, 128, 128, 0.681);
 }
@@ -57,22 +57,22 @@
 }
 
 .arrow-slider-wrapper .arrow-slider .compass-symbol.north {
-  right: 47.5%;
-  top: 0;
+  right: 46.5%;
+  top: 3%;
 }
 
 .arrow-slider-wrapper .arrow-slider .compass-symbol.south {
   right: 47.5%;
-  bottom: 0;
+  bottom: 3%;
 }
 
 .arrow-slider-wrapper .arrow-slider .compass-symbol.east {
-  right: 5%;
+  right: 9%;
   bottom: 86px;
 }
 
 .arrow-slider-wrapper .arrow-slider .compass-symbol.west {
-  left: 5%;
+  left: 6%;
   bottom: 86px;
 }
 

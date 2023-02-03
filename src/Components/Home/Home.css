@@ -20,7 +20,7 @@
     grid-template-columns: 400px 1fr;
   }
 
-  .sticky-column {
+  .home-wrapper .sticky-column {
     display: grid;
     grid-template-columns: 1fr;
     position: sticky;

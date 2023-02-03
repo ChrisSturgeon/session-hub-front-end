@@ -1,10 +1,11 @@
 .profile-header {
-  background-color: pink;
-  display: flex;
-  align-items: center;
-  gap: 2em;
-  padding: 1em;
+  display: grid;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  gap: 10px;
   width: 100%;
+  padding: 1em;
+  background: linear-gradient(0deg, lightblue, white);
 }
 
 .profile-header .profile-pic {
@@ -12,16 +13,50 @@
   height: 200px;
   border-radius: 100%;
   background-color: bisque;
+  object-fit: cover;
+  margin: 0 auto;
 }
 
 .profile-header h1 {
   font-size: 3rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 768px) {
   .profile-header {
-    background-color: lightblue;
-    flex-direction: column;
-    gap: 10px;
+    position: relative;
+    padding: 1em 0 0 0;
+    background: linear-gradient(0deg, var(--medium-blue), rgb(229, 251, 252));
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 80px 145px;
+    gap: 0;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: -30px;
+  }
+
+  .profile-header .username {
+    background-color: white;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .profile-header .username h1 {
+    grid-column: 2 / 3;
+    color: var(--dark-blue);
+  }
+
+  .filler-box {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    grid-column: 1/ 2;
+    grid-row: 2/ 3;
+  }
+
+  .profile-header .profile-pic {
+    position: absolute;
+    top: 15px;
+    left: 40px;
+    border: 10px solid white;
+    box-sizing: content-box;
   }
 }

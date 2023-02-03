@@ -1,11 +1,11 @@
 import './MobileNav.css';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
-// import { RequestContext } from '../../../App';
+import { RequestContext } from '../../../App';
 import { UserContext } from '../../../App';
 
 export default function MobileNav() {
-  // const friendRequests = useContext(RequestContext);
+  const [friendRequests] = useContext(RequestContext);
   const user = useContext(UserContext);
   const userURL = `profile/${user.ID}`;
 
@@ -24,11 +24,11 @@ export default function MobileNav() {
           <NavLink to="/friends">
             <span className="icon">
               <ion-icon name="people-outline"></ion-icon>
-              {/* {friendRequests.count > 0 && (
+              {friendRequests.count > 0 && (
                 <div className="friend-request-notification">
                   {friendRequests.count}
                 </div>
-              )} */}
+              )}
             </span>
 
             <span className="text">Friends</span>

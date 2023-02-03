@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 
 export default function ProfileNav() {
   return (
-    <nav>
+    <nav className="">
       <ul>
         <li>
           <Link to="posts">Posts</Link>
         </li>
         <li>
-          <Link to="about">About</Link>{' '}
+          <Link to="about">About</Link>
         </li>
         <li>
           <Link to="friends">Friends</Link>
