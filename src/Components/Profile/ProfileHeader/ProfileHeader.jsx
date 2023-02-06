@@ -1,6 +1,12 @@
 import './ProfileHeader.css';
+import { useContext } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
 
 export default function ProfileHeader({ profile }) {
+  const { userID } = useParams();
+  const user = useContext(UserContext);
+
   return (
     <div className="profile-header">
       {profile.imgURL ? (
@@ -12,6 +18,11 @@ export default function ProfileHeader({ profile }) {
 
       <div className="username">
         <h1>{profile.username}</h1>
+        <Link to="edit">
+          <span>
+            <ion-icon name="brush-outline"></ion-icon>Edit my profile
+          </span>
+        </Link>
       </div>
     </div>
   );

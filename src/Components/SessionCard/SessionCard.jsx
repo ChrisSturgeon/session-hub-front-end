@@ -2,10 +2,11 @@ import './SessionCard.css';
 import { useState } from 'react';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
+
 import SessionCardMap from './SessionCardMap/SessionCardMap';
 import LikeForm from '../LikeForm/LikeForm';
 
-export default function SessionCard({ session, feed }) {
+export default function SessionCard({ session, feed, thumbURL }) {
   const detailURL = `/session/${session._id}`;
   const dateObj = new Date(session.activityDate);
   const sportFormatted =
@@ -28,7 +29,13 @@ export default function SessionCard({ session, feed }) {
             <div className="title">
               {sportFormatted} at {session.locationName}
             </div>
-            {feed && <div>{session.username}</div>}
+            {feed && (
+              <div className="user-details ">
+                {thumbURL && <img src={thumbURL} alt="profile"></img>}
+
+                <div>{session.username}</div>
+              </div>
+            )}
           </div>
           <div
             onClick={(e) => {

@@ -55,6 +55,7 @@ export default function Feed() {
                   key={session._id}
                   session={session.post[0]}
                   feed={true}
+                  thumbURL={session.thumbURL}
                 />
               );
             }

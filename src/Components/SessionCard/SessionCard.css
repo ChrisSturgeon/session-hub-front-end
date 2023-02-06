@@ -24,9 +24,21 @@
 }
 
 .session-card .overview-details .upper .title {
-  margin-top: 0.15em;
+  /* margin-top: 0.15em; */
+  margin-bottom: 0.5em;
   font-size: 1.3rem;
   font-weight: 500;
+}
+
+.session-card .overview-details .upper .user-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.session-card .overview-details .upper .user-details img {
+  max-height: 30px;
+  border-radius: 100vw;
 }
 
 .session-card .overview-details .lower .likes-comments {

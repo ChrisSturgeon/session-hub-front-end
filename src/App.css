@@ -46,6 +46,10 @@ textarea:focus {
   align-items: center;
 }
 
+.app-layout {
+  min-height: 100dvh;
+}
+
 @media only screen and (max-width: 768px) {
   .page-wrapper {
     padding-bottom: 70px;

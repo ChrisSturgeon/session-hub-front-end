@@ -36,6 +36,7 @@ import Conditions from './Components/SessionForm/Conditions/Conditions';
 import Equipment from './Components/SessionForm/Equipment/Equipment';
 import WrapUp from './Components/SessionForm/WrapUp/WrapUp';
 import useFriendRequest from './hooks/useFriendRequests';
+import ProfileEdit from './Components/Profile/ProfileEdit/ProfileEdit';
 
 // Request notification context
 export const RequestContext = React.createContext();
@@ -122,6 +123,14 @@ function App() {
               element: <WrapUp />,
             },
           ],
+        },
+
+        {
+          path: 'profile/:userID/edit',
+          element: <ProfileEdit />,
+          loader: async ({ params }) => {
+            return ProfileLoader(params);
+          },
         },
 
         {
