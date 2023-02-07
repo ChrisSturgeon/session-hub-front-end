@@ -143,6 +143,9 @@ function App() {
             {
               path: 'about',
               element: <ProfileAbout />,
+              loader: async ({ params }) => {
+                return ProfileLoader(params);
+              },
             },
             {
               path: 'friends',

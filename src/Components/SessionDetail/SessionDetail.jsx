@@ -24,19 +24,6 @@ export default function SessionDetail() {
   const [commentsCount, setCommentsCount] = useState(session.commentsCount);
   const userProfileURL = `/profile/${session.userID}`;
 
-  // const conditions = {
-  //   wind: {
-  //     direction: 210,
-  //     speed: 20,
-  //     gust: 25,
-  //   },
-  //   swell: {
-  //     direction: 32,
-  //     height: 0.4,
-  //     frequency: 12,
-  //   },
-  // };
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

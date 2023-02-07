@@ -1,0 +1,28 @@
+.profile-about {
+  margin-top: 17px;
+  background-color: white;
+  padding: 1em 1.5em;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-about h3:nth-of-type(2) {
+  margin-top: 1em;
+}
+
+.profile-about .joined {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: grey;
+  margin-bottom: 0.25em;
+}
+
+.profile-about .favourite-sports {
+  padding-left: 20px;
+  margin: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .profile-about {
+    border-radius: 10px;
+  }
+}
