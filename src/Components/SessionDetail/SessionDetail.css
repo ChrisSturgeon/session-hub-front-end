@@ -22,6 +22,26 @@
   color: var(--darkest-blue);
 }
 
+.session-detail .header .username {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: var(--dark-blue);
+}
+
+.session-detail .header .username img {
+  max-height: 40px;
+  border-radius: 100vw;
+}
+
+.session-detail .header .user-likes-comments {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
 .session-detail .text {
   padding: 1em;
 }
@@ -35,6 +55,8 @@
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.2;
+  color: var(--dark-blue);
+  margin: 0.2em 0;
 }
 
 .session-detail .likes-comments {
@@ -105,6 +127,10 @@
     grid-template-columns: 2fr clamp(200px, 400px, 600px);
     grid-template-rows: 1fr;
     height: 100%;
+  }
+
+  .session-detail .header .user-likes-comments {
+    gap: 0.75em;
   }
 
   .session-detail .header .text {

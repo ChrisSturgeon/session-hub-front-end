@@ -1,0 +1,44 @@
+.latest-users .latest-users-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+}
+
+.latest-users h3 {
+  margin-bottom: 0.25em;
+}
+
+.new-user-link {
+  display: flex;
+  align-items: center;
+
+  gap: 0.75em;
+  padding: 0.5em;
+  border: 1.5px solid var(--border-grey);
+  border-radius: 10px;
+  transition: transform 200ms ease-in-out;
+}
+
+.latest-users .new-user-link,
+.latest-users .new-user-link:visited {
+  color: var(--dark-blue);
+  text-decoration: none;
+}
+
+.new-user-link:hover {
+  position: relative;
+  transform: translateY(-3px);
+  background-color: var(--border-grey);
+}
+
+.new-user-link .placeholder-img {
+  height: 50px;
+  width: 50px;
+  background-color: rgb(219, 219, 219);
+  border-radius: 100vw;
+}
+
+.new-user-link img {
+  max-height: 50px;
+  border-radius: 100vw;
+}

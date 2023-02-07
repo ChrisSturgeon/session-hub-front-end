@@ -1,8 +1,14 @@
 .comment-card {
-  padding: 1em;
   border: 1px solid var(--border-grey);
   margin-bottom: 1em;
   border-radius: 5px;
+}
+
+.comment-card .card-top {
+  background-color: rgb(249, 249, 249);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  padding: 0.5em 0.5em;
 }
 
 .comment-card .comment-card-username {
@@ -14,7 +20,31 @@
   text-decoration: none;
 }
 
+.comment-card .comment-card-username a span {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  color: var(--dark-blue);
+}
+
+.comment-card .comment-card-username a span img {
+  max-height: 30px;
+  border-radius: 100vw;
+}
+
+.comment-card .card-bottom {
+  padding: 0.5em;
+}
+
 .comment-card .comment-card-date {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  color: grey;
   font-weight: 500;
+  margin-top: 0.5em;
+}
+
+.comment-card .comment-card-text {
+  margin-bottom: 1em;
+  color: var(--dark-blue);
+  white-space: pre-wrap;
 }

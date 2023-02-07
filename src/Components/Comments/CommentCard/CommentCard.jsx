@@ -17,31 +17,45 @@ export default function CommentCard({ comment }) {
     likesCount,
     hasLiked,
   } = comment;
-  const formattedDate = format(new Date(createdDate), 'EEEE do MMM yy pp');
+  const formattedDate = format(new Date(createdDate), 'EEEE do MMM yy');
+  const formattedTime = format(new Date(createdDate), "hh:mmaaaaa'm'");
   const profileURL = `/profile/${userID}`;
   const [liked, setLiked] = useState(hasLiked);
   const [totalLikes, setTotalLikes] = useState(likesCount);
+  const imgURL = comment.userDetails[0].thumbURL;
 
   return (
     <div className="comment-card">
-      <div className="comment-card-username">
-        <Link to={profileURL}>{username}</Link>
+      <div className="card-top">
+        <div className="comment-card-username">
+          <Link to={profileURL}>
+            <span>
+              {imgURL && <img src={imgURL} alt="profile"></img>}
+              <div>{comment.username}</div>
+            </span>
+          </Link>
+        </div>
+        <div className="comment-card-date">
+          {formattedDate} at {formattedTime}
+        </div>
       </div>
-      <div className="comment-card-date">{formattedDate}</div>
-      <div
-        className="comment-card-text"
-        dangerouslySetInnerHTML={{ __html: sanitize(text) }}
-      ></div>
-      <div>I'm the ID: {commentID}</div>
-      <LikeForm
-        type={'comment'}
-        sessionID={sessionID}
-        commentID={commentID}
-        liked={liked}
-        setLiked={setLiked}
-        totalLikes={totalLikes}
-        setTotalLikes={setTotalLikes}
-      />
+
+      <div className="card-bottom">
+        <div
+          className="comment-card-text"
+          dangerouslySetInnerHTML={{ __html: sanitize(text) }}
+        ></div>
+
+        <LikeForm
+          type={'comment'}
+          sessionID={sessionID}
+          commentID={commentID}
+          liked={liked}
+          setLiked={setLiked}
+          totalLikes={totalLikes}
+          setTotalLikes={setTotalLikes}
+        />
+      </div>
     </div>
   );
 }

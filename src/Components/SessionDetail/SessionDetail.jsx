@@ -35,21 +35,28 @@ export default function SessionDetail() {
         <div className="text">
           <div className="date">{format(dateObj, 'EEEE do MMM yy')}</div>
           <h1 className="title"> {title}</h1>
-          <Link to={userProfileURL} className="username">
-            {session.username}
-          </Link>
-          <div className="likes-comments">
-            <LikeForm
-              sessionID={session._id}
-              type={'session'}
-              liked={liked}
-              setLiked={setLiked}
-              totalLikes={totalLikes}
-              setTotalLikes={setTotalLikes}
-            />
-            <div className="comments-count">
-              <ion-icon name="chatbox-outline"></ion-icon>
-              <div>{commentsCount}</div>
+          <div className="user-likes-comments">
+            <Link to={userProfileURL} className="username">
+              {session.userDetails[0].thumbURL ? (
+                <img src={session.userDetails[0].thumbURL} alt="profile"></img>
+              ) : (
+                <div>Hi</div>
+              )}
+              {session.username}
+            </Link>
+            <div className="likes-comments">
+              <LikeForm
+                sessionID={session._id}
+                type={'session'}
+                liked={liked}
+                setLiked={setLiked}
+                totalLikes={totalLikes}
+                setTotalLikes={setTotalLikes}
+              />
+              <div className="comments-count">
+                <ion-icon name="chatbox-outline"></ion-icon>
+                <div>{commentsCount}</div>
+              </div>
             </div>
           </div>
           <hr></hr>

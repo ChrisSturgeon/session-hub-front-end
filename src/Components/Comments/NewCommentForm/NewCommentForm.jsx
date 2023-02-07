@@ -1,10 +1,43 @@
 import './NewCommentForm.css';
 import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../../App';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { APIURL } from '../../../api';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const expandDown = {
+  initial: {
+    height: 0,
+    opacity: 0,
+  },
+  animate: {
+    height: 'auto',
+    opacity: 1,
+    transition: {
+      height: {
+        duration: 0.2,
+      },
+      opacity: {
+        duration: 0.3,
+      },
+    },
+  },
+  exit: {
+    height: 0,
+    opacity: 0,
+    transition: {
+      height: {
+        duration: 0.5,
+      },
+      opacity: {
+        duration: 0.2,
+      },
+    },
+  },
+};
 
 export default function NewCommentForm() {
+  const navigate = useNavigate();
   const user = useContext(UserContext);
   const { sessionID } = useParams();
   const [show, setShow] = useState(true);
@@ -42,6 +75,7 @@ export default function NewCommentForm() {
 
       if (response.status === 201) {
         console.log(data.message);
+        setShow(false);
         return;
       }
 
@@ -56,14 +90,24 @@ export default function NewCommentForm() {
 
   return (
     <>
-      {show && (
-        <form onSubmit={handleSubmit} className="new-comment-form">
-          <label>New Comment as {user.username}</label>
-          <textarea onChange={handleChange} value={text}></textarea>
-          <div className="character-count">{characterCount} / 1500 </div>
-          <button>Submit Comment</button>
-        </form>
-      )}
+      <AnimatePresence mode="wait">
+        {show && (
+          <motion.form
+            initial={expandDown.initial}
+            animate={expandDown.animate}
+            exit={expandDown.exit}
+            onSubmit={handleSubmit}
+            className="new-comment-form"
+          >
+            <label>New Comment as {user.username}</label>
+            <textarea onChange={handleChange} value={text}></textarea>
+            <div className="character-count">{characterCount} / 1500 </div>
+            <button>Submit Comment</button>
+          </motion.form>
+        )}
+      </AnimatePresence>
+
+      {!show && <div>Thanks for your comment!</div>}
     </>
   );
 }

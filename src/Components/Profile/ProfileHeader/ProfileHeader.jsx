@@ -18,11 +18,14 @@ export default function ProfileHeader({ profile }) {
 
       <div className="username">
         <h1>{profile.username}</h1>
-        <Link to="edit">
-          <span>
-            <ion-icon name="brush-outline"></ion-icon>Edit my profile
-          </span>
-        </Link>
+
+        {userID === user.ID && (
+          <Link to="edit">
+            <span>
+              <ion-icon name="brush-outline"></ion-icon>Edit my profile
+            </span>
+          </Link>
+        )}
       </div>
     </div>
   );

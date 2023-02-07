@@ -9,18 +9,36 @@
   gap: 0.5em;
 }
 
-.home-sidebar .friends-request-notification {
-  background-color: var(--light-blue);
+.home-sidebar .home-sidebar-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  margin-bottom: 1em;
+}
+
+.home-sidebar .home-sidebar-actions a {
+  background-color: rgba(204, 224, 229, 0.276);
+  border: 1px solid rgb(230, 230, 230);
   display: flex;
   align-items: center;
   gap: 1em;
   padding: 0.5em 1em;
   font-weight: 500;
-  color: white;
+  color: var(--dark-blue);
   border-radius: 5px;
   text-decoration: none;
 }
 
-.home-sidebar .friends-request-notification ion-icon {
-  font-size: 1.5rem;
+.home-sidebar .home-sidebar-actions a:hover {
+  background-color: rgba(204, 224, 229, 0.693);
+}
+
+.home-sidebar .home-sidebar-actions a span {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.home-sidebar .home-sidebar-actions a span ion-icon {
+  font-size: 1.2rem;
 }

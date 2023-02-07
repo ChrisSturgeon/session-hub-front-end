@@ -4,6 +4,15 @@
   width: 100%;
 }
 
+.new-comment-form button {
+  background-color: var(--medium-blue);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 0.25em;
+  margin: 0.5em 0;
+}
+
 .new-comment-form textarea {
   min-width: 100%;
   max-width: 100%;
@@ -12,4 +21,11 @@
 
 .new-comment-form .character-count {
   text-align: right;
+}
+
+@media only screen and (min-width: 768px) {
+  .new-comment-form button {
+    width: 200px;
+    align-self: flex-end;
+  }
 }

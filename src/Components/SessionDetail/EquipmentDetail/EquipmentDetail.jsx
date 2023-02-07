@@ -1,4 +1,5 @@
 import './EquipmentDetail.css';
+import { sanitize } from 'dompurify';
 
 export default function EquipmentDetail({ sport, equipment }) {
   if (sport === 'surfing') {
@@ -17,11 +18,15 @@ export default function EquipmentDetail({ sport, equipment }) {
       <div className="equipment-detail">
         <div>
           <div className="equipment-label">BOARD</div>
-          <div>{equipment.board}</div>
+          <div
+            dangerouslySetInnerHTML={{ __html: sanitize(equipment.board) }}
+          ></div>
         </div>
         <div>
           <div className="equipment-label">SAIL</div>
-          <div>{equipment.sail}</div>
+          <div
+            dangerouslySetInnerHTML={{ __html: sanitize(equipment.sail) }}
+          ></div>
         </div>
       </div>
     );
@@ -32,11 +37,15 @@ export default function EquipmentDetail({ sport, equipment }) {
       <div className="equipment-detail">
         <div>
           <div className="equipment-label">BOARD</div>
-          <div>{equipment.board}</div>
+          <div
+            dangerouslySetInnerHTML={{ __html: sanitize(equipment.board) }}
+          ></div>
         </div>
         <div>
           <div className="equipment-label">KITE</div>
-          <div>{equipment.kite}</div>
+          <div
+            dangerouslySetInnerHTML={{ __html: sanitize(equipment.kite) }}
+          ></div>
         </div>
       </div>
     );
@@ -47,11 +56,15 @@ export default function EquipmentDetail({ sport, equipment }) {
       <div className="equipment-detail">
         <div>
           <div className="equipment-label">BOARD</div>
-          <div>{equipment.board}</div>
+          <div
+            dangerouslySetInnerHTML={{ __html: sanitize(equipment.board) }}
+          ></div>
         </div>
         <div>
           <div className="equipment-label">WING</div>
-          <div>{equipment.wing}</div>
+          <div
+            dangerouslySetInnerHTML={{ __html: sanitize(equipment.wing) }}
+          ></div>
         </div>
       </div>
     );
@@ -62,7 +75,9 @@ export default function EquipmentDetail({ sport, equipment }) {
       <div className="equipment-detail">
         <div>
           <div className="equipment-label">BOARD</div>
-          <div>{equipment.board}</div>
+          <div
+            dangerouslySetInnerHTML={{ __html: sanitize(equipment.board) }}
+          ></div>
         </div>
       </div>
     );
