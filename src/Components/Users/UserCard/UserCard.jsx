@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { UserContext } from '../../../App';
 import { useEffect } from 'react';
-
 import FriendRequestForm from '../../Friends/FriendRequestForm/FriendRequestForm';
 
 export default function UserCard({ userData }) {
@@ -47,7 +46,11 @@ export default function UserCard({ userData }) {
     return (
       <Link to={profileURL} className="user-card">
         <div className="left">
-          <div className="profile-img"></div>
+          {userData.thumbURL ? (
+            <img src={userData.thumbURL} alt="profile-pic"></img>
+          ) : (
+            <div className="profile-img"></div>
+          )}
         </div>
         <div className="right">
           <div className="username">{userData.username}</div>
@@ -63,7 +66,11 @@ export default function UserCard({ userData }) {
     return (
       <Link to={profileURL} className="user-card">
         <div className="left">
-          <div className="profile-img"></div>
+          {userData.thumbURL ? (
+            <img src={userData.thumbURL} alt="profile-pic"></img>
+          ) : (
+            <div className="profile-img"></div>
+          )}
         </div>
         <div className="right">
           <div className="username">{userData.username}</div>
@@ -80,7 +87,11 @@ export default function UserCard({ userData }) {
     return (
       <Link to={profileURL} className="user-card">
         <div className="left">
-          <div className="profile-img"></div>
+          {userData.thumbURL ? (
+            <img src={userData.thumbURL} alt="profile-pic"></img>
+          ) : (
+            <div className="profile-img"></div>
+          )}
         </div>
         <div className="right">
           <div className="username">{userData.username}</div>

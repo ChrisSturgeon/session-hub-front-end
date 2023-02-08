@@ -1,17 +1,18 @@
-import { Link } from 'react-router-dom';
+import './ProfileNav.css';
+import { NavLink } from 'react-router-dom';
 
 export default function ProfileNav() {
   return (
-    <nav className="">
+    <nav className="profile-nav">
       <ul>
         <li>
-          <Link to="posts">Posts</Link>
+          <NavLink to="posts">Posts</NavLink>
         </li>
         <li>
-          <Link to="about">About</Link>
+          <NavLink to="about">About</NavLink>
         </li>
         <li>
-          <Link to="friends">Friends</Link>
+          <NavLink to="friends">Friends</NavLink>
         </li>
       </ul>
     </nav>

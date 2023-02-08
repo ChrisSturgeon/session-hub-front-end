@@ -8,16 +8,29 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  min-height: calc(100vh - 75px);
 }
 
 .home-wrapper .home-main {
   width: clamp(200px, 100%, 1000px);
 }
 
+@media only screen and (min-width: 420px) {
+  .home-wrapper .home-main {
+    padding: 0 1em;
+  }
+}
+
 @media only screen and (min-width: 768px) {
+  .home-wrapper {
+    padding: 1em;
+  }
   .home-wrapper .home-main {
     display: grid;
     grid-template-columns: 400px 1fr;
+    gap: 1em;
+    padding: 1em 1em;
+    margin-top: -61px;
   }
 
   .home-wrapper .sticky-column {
@@ -26,7 +39,7 @@
     position: sticky;
     top: 0;
     align-self: start;
-    padding-top: 45px;
+    padding-top: 52px;
   }
 
   .feed-wrapper::-webkit-scrollbar {

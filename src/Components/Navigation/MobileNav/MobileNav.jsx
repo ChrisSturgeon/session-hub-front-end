@@ -8,6 +8,7 @@ export default function MobileNav() {
   const [friendRequests] = useContext(RequestContext);
   const user = useContext(UserContext);
   const userURL = `profile/${user.ID}`;
+  const friendsURL = `friends/${user.ID}`;
 
   return (
     <nav className="mobile-nav">
@@ -21,7 +22,7 @@ export default function MobileNav() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/friends">
+          <NavLink to={friendsURL}>
             <span className="icon">
               <ion-icon name="people-outline"></ion-icon>
               {friendRequests.count > 0 && (

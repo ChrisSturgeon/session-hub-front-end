@@ -1,28 +1,28 @@
 .request-card {
   width: clamp(200px, 100%, 400px);
-
   display: grid;
-  grid-template-rows: 63px auto;
+  grid-template-rows: 75px auto;
   align-items: center;
-  border: 1px solid rgb(243, 243, 243);
-  padding: 5px;
+  padding: 0.5em 1em;
   background-color: rgb(248, 248, 248);
-  border-radius: 3px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--dark-blue);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.request-card .upper {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 1em;
   text-decoration: none;
   color: var(--dark-blue);
 }
 
-.friend-card:hover {
-  border: 1px solid rgb(203, 203, 203);
-}
-
-.request-card .upper {
-  height: 63px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: black;
+.request-card .upper img {
+  max-height: 65px;
+  border-radius: 100vw;
 }
 
 .request-card .upper .profile-img {

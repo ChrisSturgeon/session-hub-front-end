@@ -13,7 +13,7 @@
 
 .add-btn,
 .add-friend .confirm-btn {
-  background-color: var(--dark-blue);
+  background-color: var(--medium-blue);
   color: white;
   font-weight: 500;
   border: none;
@@ -29,7 +29,7 @@
 .add-friend .cancel-btn {
   width: 180px;
   background-color: #01182611;
-  color: black;
+  color: grey;
   font-weight: 500;
   border: none;
   outline: none;

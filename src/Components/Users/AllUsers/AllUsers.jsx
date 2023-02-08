@@ -7,14 +7,9 @@ export default function AllUsers() {
 
   return (
     <div className="all-users">
-      <h1>All users</h1>
-      {users && (
-        <div className="column">
-          {users.map((user) => {
-            return <UserCard key={user._id} userData={user} />;
-          })}
-        </div>
-      )}
+      {users.map((user) => {
+        return <UserCard key={user._id} userData={user} />;
+      })}
     </div>
   );
 }

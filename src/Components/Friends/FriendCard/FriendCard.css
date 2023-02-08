@@ -1,24 +1,33 @@
 .friend-card {
-  width: clamp(200px, 100%, 400px);
-  height: 75px;
-  display: grid;
-  grid-template-columns: 75px 1fr;
+  width: clamp(200px, 100%, 450px);
+  display: flex;
+  gap: 1em;
   align-items: center;
-  border: 1px solid var(--border-grey);
-  padding: 5px;
+  padding: 0.5em 1em;
   background-color: var(--bg-grey);
-  border-radius: 3px;
+  border-radius: 10px;
   text-decoration: none;
   color: var(--dark-blue);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 150ms ease-in-out;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.friend-card img {
+  max-height: 70px;
+  border-radius: 100vw;
 }
 
 .friend-card:hover {
-  border: 1px solid rgb(203, 203, 203);
+  position: relative;
+  transform: translateX(10px);
 }
 
-.profile-img {
-  height: 100%;
-  width: calc(100% - 12px);
+.profile-dummy-img {
+  height: 70px;
+  width: 70px;
+
   border-radius: 100%;
   background-color: lightblue;
 }

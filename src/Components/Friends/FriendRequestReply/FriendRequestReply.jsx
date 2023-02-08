@@ -2,12 +2,12 @@ import './FriendRequestReply.css';
 import { Link } from 'react-router-dom';
 
 export default function FriendRequestReply({ requestData, decrementRequests }) {
-  const profileURL = `/profile/${requestData.requester.ID}`;
   const responseURL = `http://localhost:3000/api/friends/request/${requestData._id}/response`;
+  const requester = requestData.requesterDetails[0];
+  const profileURL = `/profile/${requester._id}/posts`;
 
   const handleSubmit = (reply) => (event) => {
     event.preventDefault();
-    console.log(reply);
 
     // Define response function
     const giveReply = async (reply) => {
@@ -48,10 +48,14 @@ export default function FriendRequestReply({ requestData, decrementRequests }) {
   return (
     <div className="request-card">
       <Link to={profileURL} className="upper">
-        <div className="profile-img"></div>
-        <div>I'm a friend request from {requestData.requester.name}</div>
-      </Link>
+        {requester.thumbURL ? (
+          <img src={requester.thumbURL} alt="profile-pic"></img>
+        ) : (
+          <div className="profile-img"></div>
+        )}
 
+        <div>{requester.username} wants to be your friend!</div>
+      </Link>
       <div className="forms">
         <form onSubmit={handleSubmit(true)}>
           <button className="accept">Accept</button>

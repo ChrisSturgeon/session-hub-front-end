@@ -43,7 +43,7 @@ export default function FriendRequestForm({ userID }) {
           Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
         },
         body: JSON.stringify({
-          userID: userID,
+          requesteeID: userID,
         }),
       });
 

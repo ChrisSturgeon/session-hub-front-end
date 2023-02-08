@@ -2,11 +2,16 @@ import './FriendCard.css';
 import { Link } from 'react-router-dom';
 
 export default function FriendCard({ friendData }) {
-  const profileURL = `/profile/${friendData.ID}`;
+  const profileURL = `/profile/${friendData._id}/posts`;
   return (
     <Link to={profileURL} className="friend-card">
-      <div className="profile-img"></div>
-      <div>{friendData.name}</div>
+      {friendData.thumbURL ? (
+        <img src={friendData.thumbURL} alt="display-pic"></img>
+      ) : (
+        <div className="profile-dummy-img"></div>
+      )}
+
+      <div>{friendData.username}</div>
     </Link>
   );
 }

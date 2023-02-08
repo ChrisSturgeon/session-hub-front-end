@@ -19,6 +19,7 @@
 
 .profile-header h1 {
   font-size: 3rem;
+  color: var(--dark-blue);
 }
 
 @media only screen and (min-width: 768px) {
@@ -41,7 +42,6 @@
 
   .profile-header .username h1 {
     grid-column: 2 / 3;
-    color: var(--dark-blue);
   }
 
   .filler-box {

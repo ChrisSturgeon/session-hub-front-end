@@ -6,8 +6,14 @@
   min-height: 200vh;
 }
 
+@media only screen and (min-width: 420px) {
+  .feed-column {
+    padding: 62px 0;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .feed-column {
-    padding: 55px 1em;
+    padding: 62px 0;
   }
 }

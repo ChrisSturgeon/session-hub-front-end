@@ -20,7 +20,7 @@
 }
 .session-form h2 {
   font-size: 1.5rem;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
   color: var(--dark-blue);
 }
 
@@ -47,6 +47,7 @@
 @media only screen and (min-width: 768px) {
   .session-form-wrapper {
     min-height: 100%;
+    padding: 1em 0;
   }
   .session-form-layout {
     display: grid;
@@ -60,6 +61,8 @@
     position: sticky;
     top: 0;
     align-self: start;
+    padding-top: 75px;
+    margin-top: -77px;
   }
 
   .date .date-selection {

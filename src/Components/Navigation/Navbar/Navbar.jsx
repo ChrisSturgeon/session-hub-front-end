@@ -8,6 +8,7 @@ export default function Navbar({ logOut }) {
   const user = useContext(UserContext);
   const [friendRequests] = useContext(RequestContext);
   const userURL = `profile/${user.ID}`;
+  const friendsURL = `friends/${user.ID}`;
 
   return (
     <nav className="top-nav">
@@ -25,7 +26,7 @@ export default function Navbar({ logOut }) {
             </Link>
           </li>
           <li>
-            <Link to="/friends">
+            <Link to={friendsURL}>
               <span style={{ position: 'relative' }}>
                 <ion-icon name="people"></ion-icon>
                 {friendRequests.count > 0 && (

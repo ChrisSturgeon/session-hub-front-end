@@ -115,7 +115,6 @@ export default function SessionForm() {
           )}
         </div>
         <form className="session-form">
-          {!isMobile && <h2>New Session</h2>}
           <Outlet
             context={[
               formState,

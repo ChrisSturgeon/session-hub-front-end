@@ -52,6 +52,7 @@ export default function About() {
 
   return (
     <div className="about">
+      <h2>New Session</h2>
       <div className="date">
         <h3>Date</h3>
         <div className="date-selection">
