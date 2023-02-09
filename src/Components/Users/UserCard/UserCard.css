@@ -1,5 +1,5 @@
 .user-card {
-  width: clamp(200px, 100%, 400px);
+  width: clamp(200px, 100%, 500px);
   height: 100px;
   display: grid;
   grid-template-columns: 90px 1fr;
@@ -35,6 +35,7 @@
   width: 70px;
   border-radius: 100%;
   background-color: lightblue;
+  border: 1px solid var(--border-grey);
 }
 
 .user-card .right {

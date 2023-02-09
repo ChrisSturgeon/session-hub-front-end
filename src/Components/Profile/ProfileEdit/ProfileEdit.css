@@ -9,6 +9,7 @@
     rgb(225, 234, 238) 90%
   );
   padding-bottom: 75px;
+  color: var(--dark-blue);
 }
 
 .profile-edit-wrapper main {
@@ -47,7 +48,7 @@
 
 .profile-edit-wrapper form textarea {
   min-height: 200px;
-  padding: 0.25em;
+  padding: 0.25em 0.5em;
   resize: none;
 }
 

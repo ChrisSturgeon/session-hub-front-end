@@ -5,7 +5,7 @@
 }
 
 .comment-card .card-top {
-  background-color: rgb(249, 249, 249);
+  background-color: rgb(243, 243, 243);
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
   padding: 0.5em 0.5em;
@@ -47,4 +47,9 @@
   margin-bottom: 1em;
   color: var(--dark-blue);
   white-space: pre-wrap;
+}
+@media only screen and (min-width: 768px) {
+  .comment-card .card-bottom {
+    padding: 1em;
+  }
 }

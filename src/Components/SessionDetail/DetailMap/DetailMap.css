@@ -1,5 +1,16 @@
-@media only screen and (min-width: 1001px) {
+.detail-map {
+  height: 100%;
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
   .detail-map {
     border-right: 1px solid rgb(222, 222, 222);
+    height: calc(100vh);
+    /* position: fixed; */
+    position: sticky;
+    top: 0;
+    padding-top: 45px;
+    margin-top: -45px;
   }
 }

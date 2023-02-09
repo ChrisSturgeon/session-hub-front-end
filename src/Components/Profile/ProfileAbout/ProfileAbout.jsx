@@ -10,14 +10,25 @@ export default function ProfileAbout() {
     <main className="profile-about">
       <div className="joined">Member since {joinedDate}</div>
       <h3>Favourite Sports</h3>
-      <ul className="favourite-sports">
-        {profile.sports.map((sport) => {
-          const capitalised = sport.slice(0, 1).toUpperCase() + sport.slice(1);
-          return <li key={sport}>{capitalised}</li>;
-        })}
-      </ul>
+      <div className="favourite-sports">
+        {profile.sports.length > 0 ? (
+          <ul>
+            {profile.sports.map((sport) => {
+              const capitalised =
+                sport.slice(0, 1).toUpperCase() + sport.slice(1);
+              return <li key={sport}>{capitalised}</li>;
+            })}
+          </ul>
+        ) : (
+          <div>{profile.username} hasn't added any favourite sports yet.</div>
+        )}
+      </div>
       <h3>Bio</h3>
-      <div dangerouslySetInnerHTML={{ __html: sanitize(profile.bio) }}></div>
+      {profile.bio ? (
+        <div dangerouslySetInnerHTML={{ __html: sanitize(profile.bio) }}></div>
+      ) : (
+        <div>{profile.username} hasn't written a bio yet.</div>
+      )}
     </main>
   );
 }

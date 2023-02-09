@@ -1,4 +1,4 @@
-.session-detail {
+.session-detail-wrapper {
   background: radial-gradient(
     circle at 18.7% 37.8%,
     rgb(250, 250, 250) 0%,
@@ -6,23 +6,26 @@
   );
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 75px;
+  justify-content: center;
 }
 
-.session-detail .header {
+.session-detail-wrapper main {
+  background-color: white;
+  width: clamp(200px, 100%, 1100px);
+  display: grid;
+  grid-template-rows: 250px auto;
+}
+
+.session-detail-wrapper .session-details .header {
   display: grid;
   grid-template-rows: auto auto auto auto;
   grid-template-columns: 1fr;
   width: clamp(200px, 100%, 1200px);
   background-color: white;
-  border: 1px solid var(--border-grey);
-  border-radius: 4px;
   color: var(--darkest-blue);
 }
 
-.session-detail .header .username {
+.session-detail-wrapper .session-details .header .username {
   display: flex;
   align-items: center;
   gap: 0.5em;
@@ -31,27 +34,28 @@
   color: var(--dark-blue);
 }
 
-.session-detail .header .username img {
+.session-detail-wrapper .session-details .header .username img {
   max-height: 40px;
   border-radius: 100vw;
 }
 
-.session-detail .header .user-likes-comments {
+.session-detail-wrapper .session-details .header .user-likes-comments {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
 }
 
-.session-detail .text {
+.session-detail-wrapper .session-details .text {
   padding: 1em;
+  padding-bottom: 75px;
 }
 
-.session-detail .text .date {
+.session-detail-wrapper .session-details .text .date {
   color: grey;
   font-size: 0.8rem;
 }
 
-.session-detail .text .title {
+.session-detail-wrapper .session-details .text .title {
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.2;
@@ -59,53 +63,53 @@
   margin: 0.2em 0;
 }
 
-.session-detail .likes-comments {
+.session-detail-wrapper .session-details .likes-comments {
   display: flex;
   align-items: center;
   gap: 1em;
 }
 
-.session-detail .likes-comments .comments-count {
+.session-detail-wrapper .session-details .likes-comments .comments-count {
   display: flex;
   gap: 0.1em;
 }
 
-.session-detail .likes-comments ion-icon {
+.session-detail-wrapper .session-details .likes-comments ion-icon {
   font-size: 1.5rem;
 }
 
-.session-detail .text hr {
+.session-detail-wrapper .session-details .text hr {
   border: none;
   border-bottom: 1px solid var(--border-grey);
   margin: 1em 0;
 }
 
-.session-detail .conditions-wrapper {
+.session-detail-wrapper .session-details .conditions-wrapper {
   display: flex;
   justify-content: space-around;
 }
 
-.session-detail .text .equipment-title {
+.session-detail-wrapper .session-details .text .equipment-title {
   font-size: 1.5rem;
   margin: 0 auto;
   margin-bottom: 0.25em;
 }
 
-.session-detail .map {
+.session-detail-wrapper .session-details .session-details.map {
   background-color: rgb(207, 207, 243);
   border-bottom-left-radius: inherit;
   border-bottom-right-radius: inherit;
 }
 
-.session-detail .session-description {
+.session-detail-wrapper .session-details .session-description {
   white-space: pre-wrap;
 }
 
-.session-detail .detail-map {
+.session-detail-wrapper .session-details .detail-map {
   height: 300px;
 }
 
-.wrap-up {
+.session-detail-wrapper .session-details.wrap-up {
   margin-top: 1em;
   width: clamp(200px, 100%, 1200px);
   padding: 1em;
@@ -116,46 +120,25 @@
 }
 
 @media only screen and (min-width: 1000px) {
-  .session-detail {
-    /* display: grid; */
-    min-height: 0;
-    max-height: 100vh;
-    height: calc(100vh - 45px);
-    padding: 0;
-  }
-  .session-detail .header {
-    grid-template-columns: 2fr clamp(200px, 400px, 600px);
+  .session-detail-wrapper main {
+    background-color: white;
+    width: clamp(200px, 100%, 1100px);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr;
-    height: 100%;
   }
 
-  .session-detail .header .user-likes-comments {
+  .session-detail-wrapper .session-details .text {
+    padding: 1em 2em;
+  }
+
+  .session-detail-wrapper .session-details .header .user-likes-comments {
     gap: 0.75em;
   }
 
-  .session-detail .header .text {
-    grid-column-start: 1;
-    overflow: auto;
-  }
-
-  .session-detail .conditions-wrapper {
+  .session-detail-wrapper .session-details .conditions-wrapper {
     display: flex;
     justify-content: flex-start;
     gap: 4em;
-  }
-
-  .session-detail .description {
-    grid-column: 1/3;
-  }
-
-  .session-detail .detail-map {
-    grid-column-start: 2;
-    grid-row: 1/2;
-    height: 100%;
-  }
-
-  .filler {
-    background-color: rgb(255, 255, 255);
-    min-height: 600px;
   }
 }

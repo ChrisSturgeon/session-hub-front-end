@@ -1,0 +1,22 @@
+.session-edit-wrapper .equipment {
+  background-color: white;
+  padding: 1em;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.session-edit-wrapper .equipment .inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.session-edit-wrapper .equipment .inputs input {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .session-edit-wrapper .equipment {
+    padding: 1.5em 2em;
+    border-radius: 10px;
+  }
+}

@@ -1,3 +1,4 @@
-.session-form .validation-error {
+.session-form .validation-error,
+.session-edit-wrapper .validation-error {
   color: red;
 }

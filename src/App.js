@@ -37,6 +37,12 @@ import Equipment from './Components/SessionForm/Equipment/Equipment';
 import WrapUp from './Components/SessionForm/WrapUp/WrapUp';
 import useFriendRequest from './hooks/useFriendRequests';
 import ProfileEdit from './Components/Profile/ProfileEdit/ProfileEdit';
+import SessionEdit from './Components/SessionEdit/SessionEdit';
+import AboutEdit from './Components/SessionEdit/AboutEdit/AboutEdit';
+import ConditionsEdit from './Components/SessionEdit/ConditionsEdit/ConditionsEdit';
+import EquipmentEdit from './Components/SessionEdit/EquipmentEdit/EquipmentEdit';
+import WrapUpEdit from './Components/SessionEdit/WrapUpEdit/WrapUpEdit';
+import LocationEdit from './Components/SessionEdit/LocationEdit/LocationEdit';
 
 // Request notification context
 export const RequestContext = React.createContext();
@@ -160,6 +166,36 @@ function App() {
               loader: async ({ params }) => {
                 return PostsLoader(params);
               },
+            },
+          ],
+        },
+
+        {
+          path: 'session/:sessionID/edit',
+          element: <SessionEdit />,
+          loader: async ({ params }) => {
+            return SessionDetailLoader(params);
+          },
+          children: [
+            {
+              path: 'about',
+              element: <AboutEdit />,
+            },
+            {
+              path: 'location',
+              element: <LocationEdit />,
+            },
+            {
+              path: 'conditions',
+              element: <ConditionsEdit />,
+            },
+            {
+              path: 'equipment',
+              element: <EquipmentEdit />,
+            },
+            {
+              path: 'wrap-up',
+              element: <WrapUpEdit />,
             },
           ],
         },

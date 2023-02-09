@@ -5,6 +5,16 @@ import { APIURL } from '../../../api';
 
 export default function FriendsList() {
   const { friends } = useLoaderData();
+
+  if (friends.length === 0) {
+    return (
+      <div className="friends-list">
+        <div className="column">
+          <div>This user doesn't have any friends yet!</div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="friends-list">
       {friends && (

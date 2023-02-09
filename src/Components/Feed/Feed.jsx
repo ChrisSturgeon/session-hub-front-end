@@ -1,6 +1,7 @@
 import './Feed.css';
 import { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../../App';
+import { Link } from 'react-router-dom';
 
 // Component imports
 import SessionCard from '../SessionCard/SessionCard';
@@ -45,6 +46,19 @@ export default function Feed() {
   }
 
   if (feedData) {
+    if (feedData.length === 0) {
+      return (
+        <div className="feed-wrapper">
+          <div className="feed-column" style={{ textAlign: 'center' }}>
+            Add some friends to start creating a feed!{' '}
+            <Link className="feed-to-users-link" to="/friends/all-users">
+              See all users
+            </Link>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div id="feed" className="feed-wrapper">
         <div className="feed-column">

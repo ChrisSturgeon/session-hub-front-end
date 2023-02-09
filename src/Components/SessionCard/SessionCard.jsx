@@ -21,46 +21,44 @@ export default function SessionCard({ session, feed, thumbURL }) {
   }
 
   return (
-    <div>
-      <Link to={detailURL} className="session-card">
-        <div className="overview-details">
-          <div className="upper">
-            <div className="date">{format(dateObj, 'EEEE do MMM yy')}</div>
-            <div className="title">
-              {sportFormatted} at {session.locationName}
-            </div>
-            {feed && (
-              <div className="user-details ">
-                {thumbURL && <img src={thumbURL} alt="profile"></img>}
-
-                <div>{session.username}</div>
-              </div>
-            )}
+    <Link to={detailURL} className="session-card">
+      <div className="overview-details">
+        <div className="upper">
+          <div className="date">{format(dateObj, 'EEEE do MMM yy')}</div>
+          <div className="title">
+            {sportFormatted} at {session.locationName}
           </div>
-          <div
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            className="lower"
-          >
-            <div className="likes-comments">
-              <LikeForm
-                sessionID={session._id}
-                type={'session'}
-                liked={liked}
-                setLiked={setLiked}
-                totalLikes={totalLikes}
-                setTotalLikes={setTotalLikes}
-              />
-              <div>
-                <ion-icon name="chatbox-outline"></ion-icon>
-                {session.commentsCount}
-              </div>
+          {feed && (
+            <div className="user-details ">
+              {thumbURL && <img src={thumbURL} alt="profile"></img>}
+
+              <div>{session.username}</div>
+            </div>
+          )}
+        </div>
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className="lower"
+        >
+          <div className="likes-comments">
+            <LikeForm
+              sessionID={session._id}
+              type={'session'}
+              liked={liked}
+              setLiked={setLiked}
+              totalLikes={totalLikes}
+              setTotalLikes={setTotalLikes}
+            />
+            <div>
+              <ion-icon name="chatbox-outline"></ion-icon>
+              {session.commentsCount}
             </div>
           </div>
         </div>
-        <SessionCardMap coords={session.coords} />
-      </Link>
-    </div>
+      </div>
+      <SessionCardMap coords={session.coords} />
+    </Link>
   );
 }

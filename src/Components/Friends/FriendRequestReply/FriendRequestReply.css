@@ -1,5 +1,5 @@
 .request-card {
-  width: clamp(200px, 100%, 400px);
+  width: clamp(200px, 100%, 500px);
   display: grid;
   grid-template-rows: 75px auto;
   align-items: center;
@@ -35,11 +35,13 @@
 .request-card .forms {
   padding: 1em;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 2em;
 }
 
 .request-card .forms button {
   width: 100px;
+  cursor: pointer;
 }
 
 .request-card .forms .accept,
@@ -55,6 +57,14 @@
   background-color: var(--medium-blue);
 }
 
+.request-card .forms .accept:hover {
+  background-color: var(--dark-blue);
+}
+
 .request-card .forms .decline {
   color: grey;
+}
+
+.request-card .forms .decline:hover {
+  background-color: rgb(221, 221, 221);
 }

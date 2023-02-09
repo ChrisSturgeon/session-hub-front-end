@@ -1,0 +1,28 @@
+.session-edit-wrapper {
+  display: flex;
+  justify-content: center;
+  background: radial-gradient(
+    circle at 18.7% 37.8%,
+    rgb(250, 250, 250) 0%,
+    #e1eaee 90%
+  );
+  min-height: 100dvh;
+  padding-bottom: 75px;
+}
+
+.session-edit-wrapper form {
+  width: clamp(200px, 100%, 550px);
+}
+
+.session-edit-wrapper hr {
+  width: 100%;
+  border-top: 0.5px solid var(--border-grey);
+  margin: 1.25em 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .session-edit-wrapper {
+    min-height: 100%;
+    padding: 1em;
+  }
+}
