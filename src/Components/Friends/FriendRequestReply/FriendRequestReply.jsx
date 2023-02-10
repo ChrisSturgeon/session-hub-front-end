@@ -1,49 +1,42 @@
 import './FriendRequestReply.css';
 import { Link } from 'react-router-dom';
+import { APIURL } from '../../../api';
 
 export default function FriendRequestReply({ requestData, decrementRequests }) {
-  const responseURL = `http://localhost:3000/api/friends/request/${requestData._id}/response`;
   const requester = requestData.requesterDetails[0];
   const profileURL = `/profile/${requester._id}/posts`;
 
-  const handleSubmit = (reply) => (event) => {
+  async function handleResponse(event, hasAccepted) {
     event.preventDefault();
+    const url = `${APIURL}/friends/request/${requestData._id}`;
+    let fetchMethod;
+    if (hasAccepted) {
+      fetchMethod = 'PUT';
+    } else {
+      fetchMethod = 'DELETE';
+    }
 
-    // Define response function
-    const giveReply = async (reply) => {
-      try {
-        const response = await fetch(responseURL, {
-          method: 'POST',
-          mode: 'cors',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
-          },
-          body: JSON.stringify({
-            accepted: reply.toString(),
-          }),
-        });
+    try {
+      const response = await fetch(url, {
+        method: fetchMethod,
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
+        },
+      });
 
-        if (response.status === 200) {
-          console.log('Response successfully submitted!');
-          decrementRequests();
-        }
-
-        if (response.status === 404) {
-          console.log('The user who sent this request no longer exists');
-        }
-
-        if (response.status === 400) {
-          console.log('Something has gone wrong...');
-        }
-      } catch (error) {
-        console.log(error);
+      if (response.status === 200) {
+        console.log('Success');
+        decrementRequests();
+        return;
       }
-    };
 
-    // Invoke with response
-    giveReply(reply);
-  };
+      console.log('An error has occured');
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div className="request-card">
@@ -57,10 +50,10 @@ export default function FriendRequestReply({ requestData, decrementRequests }) {
         <div>{requester.username} wants to be your friend!</div>
       </Link>
       <div className="forms">
-        <form onSubmit={handleSubmit(true)}>
+        <form onSubmit={(event) => handleResponse(event, true)}>
           <button className="accept">Accept</button>
         </form>
-        <form onSubmit={handleSubmit(false)}>
+        <form onSubmit={(event) => handleResponse(event, false)}>
           <button className="decline">Decline</button>
         </form>
       </div>

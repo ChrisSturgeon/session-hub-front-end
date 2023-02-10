@@ -1,7 +1,7 @@
 .like-form {
   display: flex;
   align-items: center;
-  gap: 0.1em;
+  gap: 0.25em;
 }
 
 .like-form button {

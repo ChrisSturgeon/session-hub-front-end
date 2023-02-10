@@ -37,8 +37,6 @@ const expandDown = {
 };
 
 export default function NewCommentForm() {
-  const navigate = useNavigate();
-  const user = useContext(UserContext);
   const { sessionID } = useParams();
   const [show, setShow] = useState(true);
   const [text, setText] = useState('');
@@ -90,7 +88,7 @@ export default function NewCommentForm() {
 
   return (
     <>
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         {show && (
           <motion.form
             initial={expandDown.initial}
@@ -99,10 +97,13 @@ export default function NewCommentForm() {
             onSubmit={handleSubmit}
             className="new-comment-form"
           >
-            <label>New Comment as {user.username}</label>
-            <textarea onChange={handleChange} value={text}></textarea>
+            <textarea
+              onChange={handleChange}
+              value={text}
+              placeholder="Leave a comment!"
+            ></textarea>
             <div className="character-count">{characterCount} / 1500 </div>
-            <button>Submit Comment</button>
+            <button>Add Comment</button>
           </motion.form>
         )}
       </AnimatePresence>

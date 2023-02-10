@@ -1,11 +1,13 @@
 import './FriendRequestForm.css';
 import { useState } from 'react';
+import { APIURL } from '../../../api';
 
 export default function FriendRequestForm({ userID }) {
   const [showForm, setShowForm] = useState(false);
   const [requestSent, setRequestSent] = useState(null);
   const [addButtonText, setAddButtonText] = useState('Add Friend');
 
+  // Flips button to show confirmation prompt
   const flip = (event) => {
     if (event) {
       event.preventDefault();
@@ -13,7 +15,6 @@ export default function FriendRequestForm({ userID }) {
     setShowForm(!showForm);
   };
 
-  // Flips button to show confirmation prompt
   if (!showForm) {
     return (
       <button
@@ -28,11 +29,9 @@ export default function FriendRequestForm({ userID }) {
     );
   }
 
-  // Sends POST request to API route
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Submitting friend request...');
-    const url = 'http://localhost:3000/api/friends/request/create';
+    const url = `${APIURL}/friends/request/${userID}`;
 
     try {
       const response = await fetch(url, {
@@ -42,9 +41,6 @@ export default function FriendRequestForm({ userID }) {
           'Content-Type': 'application/json',
           Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
         },
-        body: JSON.stringify({
-          requesteeID: userID,
-        }),
       });
 
       if (response.status === 201) {

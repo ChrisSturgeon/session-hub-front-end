@@ -25,11 +25,40 @@
   color: var(--darkest-blue);
 }
 
+.session-detail-wrapper .session-details .header .text .date-and-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.session-detail-wrapper .session-details .header .text .date-and-edit a,
+.session-detail-wrapper .session-details .text .title-and-edit a {
+  text-decoration: none;
+  color: var(--dark-blue);
+  font-size: 0.8rem;
+  padding: 0.25em 0.5em;
+}
+
+.session-detail-wrapper .session-details .header .text .date-and-edit a:hover,
+.session-detail-wrapper .session-details .text .title-and-edit a:hover {
+  background-color: rgb(236, 236, 236);
+  border-radius: 5px;
+}
+
+.session-detail-wrapper .session-details .header .text .date-and-edit span,
+.session-detail-wrapper .session-details .text .title-and-edit span {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  text-decoration: none;
+}
+
 .session-detail-wrapper .session-details .header .username {
   display: flex;
   align-items: center;
   gap: 0.5em;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 700;
   text-decoration: none;
   color: var(--dark-blue);
 }
@@ -42,7 +71,7 @@
 .session-detail-wrapper .session-details .header .user-likes-comments {
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 1em;
 }
 
 .session-detail-wrapper .session-details .text {
@@ -58,20 +87,21 @@
 .session-detail-wrapper .session-details .text .title {
   font-size: 2.5rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1;
   color: var(--dark-blue);
-  margin: 0.2em 0;
+  margin-bottom: 0.35em;
 }
 
 .session-detail-wrapper .session-details .likes-comments {
   display: flex;
   align-items: center;
   gap: 1em;
+  color: var(--dark-blue);
 }
 
 .session-detail-wrapper .session-details .likes-comments .comments-count {
   display: flex;
-  gap: 0.1em;
+  gap: 0.25em;
 }
 
 .session-detail-wrapper .session-details .likes-comments ion-icon {
@@ -89,10 +119,17 @@
   justify-content: space-around;
 }
 
+.session-detail-wrapper .session-details .text .title-and-edit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+
 .session-detail-wrapper .session-details .text .equipment-title {
-  font-size: 1.5rem;
-  margin: 0 auto;
-  margin-bottom: 0.25em;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark-blue);
 }
 
 .session-detail-wrapper .session-details .session-details.map {
@@ -105,10 +142,6 @@
   white-space: pre-wrap;
 }
 
-.session-detail-wrapper .session-details .detail-map {
-  height: 300px;
-}
-
 .session-detail-wrapper .session-details.wrap-up {
   margin-top: 1em;
   width: clamp(200px, 100%, 1200px);
@@ -119,7 +152,7 @@
   color: var(--darkest-blue);
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 768px) {
   .session-detail-wrapper main {
     background-color: white;
     width: clamp(200px, 100%, 1100px);
@@ -133,7 +166,8 @@
   }
 
   .session-detail-wrapper .session-details .header .user-likes-comments {
-    gap: 0.75em;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .session-detail-wrapper .session-details .conditions-wrapper {
