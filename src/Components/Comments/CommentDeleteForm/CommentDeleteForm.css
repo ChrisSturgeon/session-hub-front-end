@@ -1,0 +1,35 @@
+.comment-delete.activate-btn,
+.comment-delete.confirm-cancel .cancel-btn {
+  color: grey;
+  font-size: 0.7rem;
+  border: 1px solid var(--border-grey);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.comment-delete.activate-btn:hover,
+.comment-delete.confirm-cancel .cancel-btn:hover {
+  background-color: rgb(222, 222, 222);
+  /* color: white; */
+  border: 1px solid rgb(222, 222, 222);
+}
+
+.comment-delete.activate-btn span,
+.comment-delete.confirm-cancel span {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+}
+
+.comment-delete.confirm-cancel {
+  font-size: 0.7rem;
+  display: flex;
+}
+
+.comment-delete.confirm-cancel .confirm-btn {
+  color: white;
+  background-color: var(--dark-blue);
+  border: 1px solid var(--dark-blue);
+  border-radius: 5px;
+  cursor: pointer;
+}

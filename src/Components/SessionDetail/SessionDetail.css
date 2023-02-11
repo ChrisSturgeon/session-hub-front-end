@@ -163,6 +163,7 @@
 
   .session-detail-wrapper .session-details .text {
     padding: 1em 2em;
+    padding-bottom: 200px;
   }
 
   .session-detail-wrapper .session-details .header .user-likes-comments {
