@@ -16,15 +16,14 @@ const useUserDetails = () => {
             },
           }
         );
-        // Fetch successful
         if (response.status === 200) {
-          const responseData = await response.json();
-          setUserDetails(responseData.data);
+          const data = await response.json();
+          setUserDetails(data.data);
         }
 
-        // Fetch failed
         if (response.status === 404) {
-          const responseData = await response.json();
+          const data = await response.json();
+          console.log(data);
         }
       } catch (err) {
         console.log(err);

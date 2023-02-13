@@ -16,18 +16,18 @@ const useFetch = (url) => {
           },
         });
 
-        // Fetch successfull
         if (response.status === 200) {
           const responseData = await response.json();
           setAPIData(responseData);
           setIsLoading(false);
           setIsAuthenticated(true);
+          return;
         }
 
-        // Fetch unsuccessful - user is not authenticated
         if (response.status === 401) {
           setIsLoading(false);
           setIsAuthenticated(false);
+          return;
         }
       } catch (err) {
         console.log(err);

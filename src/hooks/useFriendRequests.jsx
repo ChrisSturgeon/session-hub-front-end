@@ -24,7 +24,6 @@ const useFriendRequest = () => {
           }
         );
 
-        // Fetch successfull
         if (response.status === 200) {
           const responseData = await response.json();
           setFriendRequests(responseData.data);
@@ -41,7 +40,6 @@ const useFriendRequest = () => {
           }
         }
 
-        // Fetch unsuccessful - user is not authenticated
         if (response.status === 401) {
           setError('You must login first');
         }
