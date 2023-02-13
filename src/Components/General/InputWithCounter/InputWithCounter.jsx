@@ -35,7 +35,7 @@ export default function InputWithCounter({
         value={value}
         placeholder={placeholder}
       ></input>
-      <div className="count">
+      <div className="count" data-testid="counter">
         {count} / {maxLength}
       </div>
     </div>
