@@ -68,6 +68,7 @@ export default function CommentCard({ comment }) {
           animate={expandDown.animate}
           exit={expandDown.exit}
           className="comment-card"
+          data-testid="comment-card"
         >
           <div className="card-top">
             <div className="comment-card-username">
