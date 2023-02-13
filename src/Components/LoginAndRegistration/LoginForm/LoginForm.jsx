@@ -2,6 +2,7 @@ import './LoginForm.css';
 import { useEffect, useState } from 'react';
 import Button from '../../Button/Button';
 import ValidationError from '../../ValidationError/ValidationError';
+import { APIURL } from '../../../api';
 
 export default function LoginForm({ toggleAuth, setUser, triggerShake }) {
   const [username, setUsername] = useState('');
@@ -13,12 +14,10 @@ export default function LoginForm({ toggleAuth, setUser, triggerShake }) {
   const [passwordMissingError, setPasswordMissingError] = useState(false);
   const [incorrectPasswordError, setIncorrectPasswordError] = useState('');
 
-  // Updates username state on input change
   const handleUsernameChange = (event) => {
     setUsername((prev) => event.target.value);
   };
 
-  // Updates password state on input change
   const handlePasswordChange = (event) => {
     setPassword((prev) => event.target.value);
   };
@@ -40,11 +39,9 @@ export default function LoginForm({ toggleAuth, setUser, triggerShake }) {
     setPassword('SessionHub2023!');
   };
 
-  // Logs in user if valid credentials or retrieves error json for validation
   const onSubmit = async (event, exampleAccount = false) => {
     event.preventDefault();
 
-    // Check inputs are not empty
     !username.length ? setUsernameError(true) : setUsernameError(false);
     !password.length
       ? setPasswordMissingError(true)
@@ -55,15 +52,13 @@ export default function LoginForm({ toggleAuth, setUser, triggerShake }) {
       return;
     }
 
-    // Create object with inputted credentials for fetch POST request
     const postData = {
       username,
       password,
     };
 
-    // Fetch POST method and handle response
     try {
-      const response = await fetch('http://localhost:3000/api/users/login', {
+      const response = await fetch(`${APIURL}/users/login`, {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -72,7 +67,6 @@ export default function LoginForm({ toggleAuth, setUser, triggerShake }) {
         body: JSON.stringify(postData),
       });
 
-      // Credentials are valid, store JWT and redirect to home page
       if (response.status === 200) {
         const responseData = await response.json();
         window.localStorage.setItem('JWT', responseData.data.token);

@@ -45,12 +45,10 @@ const expandDown = {
 export default function CommentCard({ comment }) {
   const {
     createdDate,
-    editedDate,
     sessionID,
     _id: commentID,
     text,
     userID,
-    username,
     likesCount,
     hasLiked,
   } = comment;

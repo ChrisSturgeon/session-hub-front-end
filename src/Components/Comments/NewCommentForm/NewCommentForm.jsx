@@ -1,10 +1,8 @@
 import './NewCommentForm.css';
-import { useState, useEffect, useContext } from 'react';
-import { UserContext } from '../../../App';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { APIURL } from '../../../api';
 import { motion, AnimatePresence } from 'framer-motion';
-import ValidationError from '../../ValidationError/ValidationError';
 import SessionValidationError from '../../SessionForm/ValidationError/SessionValidationError';
 
 const expandDown = {

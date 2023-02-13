@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 
 // Component imports
-
 import ArrowSlider from '../../SessionForm/ArrowSlider/ArrowSlider';
 import SessionValidationError from '../../SessionForm/ValidationError/SessionValidationError';
 

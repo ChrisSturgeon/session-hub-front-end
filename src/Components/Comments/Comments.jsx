@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { APIURL } from '../../api';
 import useFetch from '../../hooks/useFetch';
+
+// Component imports
 import Spinner from '../Spinner/Spinner';
 import CommentCard from './CommentCard/CommentCard';
 import NewCommentForm from './NewCommentForm/NewCommentForm';
@@ -13,7 +15,6 @@ export default function Comments() {
     isLoading,
     APIData: comments,
     setAPIData: setComments,
-    error,
   } = useFetch(url);
 
   if (isLoading) {

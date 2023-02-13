@@ -4,8 +4,8 @@ import { MapContainer } from 'react-leaflet/MapContainer';
 import { TileLayer } from 'react-leaflet/TileLayer';
 
 export default function Map({ coords, handleCoordsChange }) {
-  // Extracts coordinates of clicked location and updates form coordinates state
   const UpdateCoordsState = ({ handleCoordsChange }) => {
+    // eslint-disable-next-line
     const map = useMapEvent('click', (event) => {
       handleCoordsChange([event.latlng.lat, event.latlng.lng]);
     });

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import Button from '../../Button/Button';
 import './RegisterForm.css';
-import ValidationError from '../../ValidationError/ValidationError';
 import { motion } from 'framer-motion';
+import { APIURL } from '../../../api';
+import Button from '../../Button/Button';
+import ValidationError from '../../ValidationError/ValidationError';
 
 const fadeIn = {
   initial: {
@@ -106,7 +107,7 @@ export default function RegisterForm({
     };
 
     try {
-      const response = await fetch('http://localhost:3000/api/users/register', {
+      const response = await fetch(`${APIURL}/users/register`, {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -115,7 +116,6 @@ export default function RegisterForm({
         body: JSON.stringify(userData),
       });
 
-      // Show success message
       if (response.status === 200) {
         toggleSuccess();
       }

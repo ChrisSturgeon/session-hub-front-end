@@ -46,7 +46,6 @@ export default function FriendRequestReply({ requestData, decrementRequests }) {
         ) : (
           <div className="profile-img"></div>
         )}
-
         <div>{requester.username} wants to be your friend!</div>
       </Link>
       <div className="forms">

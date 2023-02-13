@@ -7,7 +7,6 @@ export default function CommentDeleteForm({ commentID, setCommentIsVisible }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
     const url = `${APIURL}/comments/${commentID}`;
 
     try {

@@ -2,13 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* height: 100%; */
 }
 
 .account-requirements ul {
   padding: 0;
   margin: 0;
-  /* list-style: none; */
 }
 
 .account-requirements li {
@@ -16,9 +14,6 @@
   font-size: 1rem;
   font-weight: 700;
 }
-/* .account-requirements span {
-  margin-top: 1em;
-} */
 
 .account-requirements .username-requirements {
   margin-bottom: 1em;

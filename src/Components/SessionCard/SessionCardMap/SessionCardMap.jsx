@@ -17,10 +17,7 @@ export default function SessionCardMap({ coords }) {
           scrollWheelZoom={false}
           dragging={false}
         >
-          <TileLayer
-            // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'"
-          />
+          <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'" />
           <Marker position={coords}></Marker>
         </MapContainer>
       </div>

@@ -5,11 +5,9 @@ import Spinner from '../Spinner/Spinner';
 import { Link } from 'react-router-dom';
 
 export default function LatestUsers() {
-  const {
-    isLoading,
-    APIData: latestUsers,
-    error,
-  } = useFetch(`${APIURL}/users/latest`);
+  const { isLoading, APIData: latestUsers } = useFetch(
+    `${APIURL}/users/latest`
+  );
 
   if (isLoading) {
     return <Spinner />;

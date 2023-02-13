@@ -2,6 +2,7 @@ import './Feed.css';
 import { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../../App';
 import { Link } from 'react-router-dom';
+import { APIURL } from '../../api';
 
 // Component imports
 import SessionCard from '../SessionCard/SessionCard';
@@ -16,15 +17,12 @@ export default function Feed() {
   useEffect(() => {
     async function getFeedPosts() {
       try {
-        const response = await fetch(
-          `http://localhost:3000/api/sessions/feed/${user.ID}`,
-          {
-            method: 'GET',
-            headers: {
-              Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
-            },
-          }
-        );
+        const response = await fetch(`${APIURL}/sessions/feed/${user.ID}`, {
+          method: 'GET',
+          headers: {
+            Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
+          },
+        });
 
         const data = await response.json();
 

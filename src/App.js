@@ -1,6 +1,8 @@
 import './App.css';
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+// Hook imports
 import useAuthenticate from './hooks/useAuthenticate';
 
 // Component imports
@@ -17,8 +19,6 @@ import FriendsList, {
 import Spinner from './Components/Spinner/Spinner';
 import NavBarWrapper from './Components/Navigation/NavBarWrapper/NavBarWrapper';
 import Posts from './Components/Posts/Posts';
-
-// Hook imports
 
 // Router Loader Function Imports
 import { ProfileLoader } from './Components/Profile/ProfileLoader';
@@ -44,7 +44,7 @@ import EquipmentEdit from './Components/SessionEdit/EquipmentEdit/EquipmentEdit'
 import WrapUpEdit from './Components/SessionEdit/WrapUpEdit/WrapUpEdit';
 import LocationEdit from './Components/SessionEdit/LocationEdit/LocationEdit';
 
-// Request notification context
+// Context Exports
 export const RequestContext = React.createContext();
 export const UserContext = React.createContext();
 
@@ -57,8 +57,7 @@ function App() {
     setUser,
   } = useAuthenticate();
 
-  const { friendRequests, setFriendRequests, decrementRequests } =
-    useFriendRequest();
+  const { friendRequests, decrementRequests } = useFriendRequest();
 
   // Toggles authentication state for logging out
   function toggleAuth() {
@@ -75,11 +74,9 @@ function App() {
           element: <Home user={user} />,
         },
         {
-          // TODO - Change this to show you are already logged in
           path: 'login',
           element: <Login />,
         },
-
         {
           path: 'friends',
           element: <Friends />,
@@ -130,7 +127,6 @@ function App() {
             },
           ],
         },
-
         {
           path: 'profile/:userID/edit',
           element: <ProfileEdit />,
@@ -138,7 +134,6 @@ function App() {
             return ProfileLoader(params);
           },
         },
-
         {
           path: 'profile/:userID',
           element: <ProfileIndex />,
@@ -169,7 +164,6 @@ function App() {
             },
           ],
         },
-
         {
           path: 'session/:sessionID/edit',
           element: <SessionEdit />,
@@ -199,7 +193,6 @@ function App() {
             },
           ],
         },
-
         {
           path: 'session/:sessionID',
           element: <SessionDetail />,
@@ -207,7 +200,6 @@ function App() {
             return SessionDetailLoader(params);
           },
         },
-
         {
           path: '*',
           element: <NotFound />,

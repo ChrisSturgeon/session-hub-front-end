@@ -1,4 +1,3 @@
-// import './WrapUp.css';
 import './WrapUpEdit.css';
 import { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';

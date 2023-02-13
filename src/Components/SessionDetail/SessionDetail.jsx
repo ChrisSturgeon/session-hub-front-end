@@ -25,7 +25,7 @@ export default function SessionDetail() {
 
   const [liked, setLiked] = useState(session.hasLiked);
   const [totalLikes, setTotalLikes] = useState(session.likesCount);
-  const [commentsCount, setCommentsCount] = useState(session.commentsCount);
+  const [commentsCount] = useState(session.commentsCount);
   const userProfileURL = `/profile/${session.userID}/posts`;
   const isOwnSession = user.ID === session.userID[0];
 

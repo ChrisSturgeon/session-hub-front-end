@@ -1,5 +1,6 @@
 import './LikeForm.css';
 import { useState } from 'react';
+import { APIURL } from '../../api';
 
 export default function LikeForm({
   type,
@@ -18,11 +19,11 @@ export default function LikeForm({
     let fetchMethod = '';
 
     if (type === 'session') {
-      URL = `http://localhost:3000/api/sessions/${sessionID}/like`;
+      URL = `${APIURL}/sessions/${sessionID}/like`;
     }
 
     if (type === 'comment') {
-      URL = `http://localhost:3000/api/sessions/${sessionID}/comments/${commentID}/like`;
+      URL = `${APIURL}/sessions/${sessionID}/comments/${commentID}/like`;
     }
 
     if (liked) {

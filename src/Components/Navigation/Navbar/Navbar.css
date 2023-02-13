@@ -59,9 +59,6 @@
 
 .top-nav .links ul li span:hover,
 .top-nav button:hover {
-  /* transform: scale(1.05); */
-  /* text-decoration: underline 1px solid white;
-  text-underline-offset: 3px; */
   color: var(--hover-blue);
 }
 

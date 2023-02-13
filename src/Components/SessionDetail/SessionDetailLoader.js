@@ -1,5 +1,7 @@
+import { APIURL } from '../../api';
+
 export const SessionDetailLoader = async (params) => {
-  const url = `http://localhost:3000/api/sessions/${params.sessionID}`;
+  const url = `${APIURL}/sessions/${params.sessionID}`;
   const response = await fetch(url, {
     method: 'GET',
     headers: {

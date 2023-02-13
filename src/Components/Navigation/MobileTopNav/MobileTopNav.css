@@ -1,6 +1,5 @@
 .mobile-top-nav {
   background-color: var(--dark-blue);
-
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -2,7 +2,6 @@ import './SessionCard.css';
 import { useState } from 'react';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
-
 import SessionCardMap from './SessionCardMap/SessionCardMap';
 import LikeForm from '../LikeForm/LikeForm';
 
@@ -13,12 +12,6 @@ export default function SessionCard({ session, feed, thumbURL }) {
     session.sport.slice(0, 1).toUpperCase() + session.sport.slice(1);
   const [liked, setLiked] = useState(session.hasLiked);
   const [totalLikes, setTotalLikes] = useState(session.likesCount);
-
-  function click(event) {
-    console.log('Event triggered');
-
-    event.stopPropagation();
-  }
 
   return (
     <Link to={detailURL} className="session-card">
