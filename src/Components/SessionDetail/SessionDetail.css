@@ -22,7 +22,7 @@
   grid-template-columns: 1fr;
   width: clamp(200px, 100%, 1200px);
   background-color: white;
-  color: var(--darkest-blue);
+  color: var(--dark-blue);
 }
 
 .session-detail-wrapper .session-details .header .text .date-and-edit {

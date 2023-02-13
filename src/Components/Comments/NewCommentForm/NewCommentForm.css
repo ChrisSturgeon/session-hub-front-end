@@ -7,7 +7,7 @@
 .new-comment-form button {
   background-color: var(--medium-blue);
   color: white;
-  border-radius: 5px;
+  border-radius: 8px;
   border: none;
   padding: 0.25em;
   margin: 0.5em 0;

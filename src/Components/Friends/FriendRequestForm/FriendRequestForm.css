@@ -19,11 +19,12 @@
   border: none;
   outline: none;
   padding: 0.3em;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 .add-friend .confirm-btn {
   width: 90px;
+  margin-right: 0.25em;
 }
 
 .add-friend .cancel-btn {
@@ -34,5 +35,5 @@
   border: none;
   outline: none;
   padding: 0.3em;
-  border-radius: 4px;
+  border-radius: 8px;
 }

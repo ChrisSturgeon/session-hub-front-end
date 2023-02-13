@@ -23,8 +23,8 @@
 }
 
 .profile-sidebar ul li a {
-  background-color: rgb(251, 251, 251);
-  border: 1.5px solid var(--border-grey);
+  background-color: var(--btn-grey);
+  border: 1px solid var(--border-grey);
   color: var(--dark-blue);
   width: 100%;
   padding: 0.25em 1em;
@@ -39,12 +39,12 @@
 }
 
 .profile-sidebar ul li a:hover {
-  background-color: var(--border-grey);
+  background-color: var(--btn-hover-grey);
 }
 
 .profile-sidebar ul li a.active {
-  background-color: var(--light-blue);
-  border: 1.5px solid var(--light-blue);
+  background-color: var(--medium-blue);
+  border: 1.5px solid var(--medium-blue);
   color: white;
   width: 100%;
 }

@@ -1,32 +1,32 @@
-.comment-delete.activate-btn,
-.comment-delete.confirm-cancel .cancel-btn {
+.session-delete.activate-btn,
+.session-delete.confirm-cancel .cancel-btn {
   color: grey;
   font-size: 0.7rem;
   border: 1px solid var(--border-grey);
   border-radius: 5px;
   cursor: pointer;
+  margin-bottom: 1em;
 }
 
-.comment-delete.activate-btn:hover,
-.comment-delete.confirm-cancel .cancel-btn:hover {
+.session-delete.activate-btn:hover,
+.session-delete.confirm-cancel .cancel-btn:hover {
   background-color: rgb(222, 222, 222);
   border: 1px solid rgb(222, 222, 222);
 }
 
-.comment-delete.activate-btn span,
-.comment-delete.confirm-cancel span {
+.session-delete.activate-btn span,
+.session-delete.confirm-cancel span {
   display: flex;
   align-items: center;
   gap: 0.25em;
 }
 
-.comment-delete.confirm-cancel {
+.session-delete.confirm-cancel {
   font-size: 0.7rem;
   display: flex;
-  gap: 0.25em;
 }
 
-.comment-delete.confirm-cancel .confirm-btn {
+.session-delete.confirm-cancel .confirm-btn {
   color: white;
   background-color: var(--dark-blue);
   border: 1px solid var(--dark-blue);

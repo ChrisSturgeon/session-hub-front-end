@@ -7,7 +7,7 @@ import { UserContext } from '../../../App';
 export default function MobileNav() {
   const [friendRequests] = useContext(RequestContext);
   const user = useContext(UserContext);
-  const userURL = `profile/${user.ID}`;
+  const userURL = `profile/${user.ID}/posts`;
   const friendsURL = `friends/${user.ID}`;
 
   return (

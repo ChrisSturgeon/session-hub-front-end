@@ -9,6 +9,7 @@
   text-decoration: none;
   color: var(--dark-blue);
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
 }
 
 .request-card .upper {
@@ -48,7 +49,7 @@
 .request-card .forms .decline {
   border: none;
   padding: 0.25em;
-  border-radius: 4px;
+  border-radius: 8px;
   font-weight: 500;
 }
 

@@ -12,9 +12,13 @@
   width: 200px;
   height: 200px;
   border-radius: 100%;
-  background-color: bisque;
   object-fit: cover;
   margin: 0 auto;
+  background-color: white;
+}
+
+.profile-header .profile-pic.default {
+  background-color: white;
 }
 
 .profile-header h1 {

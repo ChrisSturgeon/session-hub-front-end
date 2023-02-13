@@ -21,13 +21,12 @@
 
 .friend-card:hover {
   position: relative;
-  transform: translateX(10px);
+  transform: translateX(5px);
 }
 
 .profile-dummy-img {
   height: 70px;
   width: 70px;
-
   border-radius: 100%;
   background-color: lightblue;
 }

@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { format } from 'date-fns';
 import { sanitize } from 'dompurify';
+import { UserContext } from '../../App';
 
 // Component imports
 import EquipmentDetail from './EquipmentDetail/EquipmentDetail';
@@ -10,7 +11,7 @@ import DetailMap from './DetailMap/DetailMap';
 import Conditions from './Conditions/Conditions';
 import LikeForm from '../LikeForm/LikeForm';
 import Comments from '../Comments/Comments';
-import { UserContext } from '../../App';
+import SessionDeleteForm from './SessionDeleteForm/SessionDeleteForm';
 
 export default function SessionDetail() {
   const user = useContext(UserContext);
@@ -25,7 +26,7 @@ export default function SessionDetail() {
   const [liked, setLiked] = useState(session.hasLiked);
   const [totalLikes, setTotalLikes] = useState(session.likesCount);
   const [commentsCount, setCommentsCount] = useState(session.commentsCount);
-  const userProfileURL = `/profile/${session.userID}`;
+  const userProfileURL = `/profile/${session.userID}/posts`;
   const isOwnSession = user.ID === session.userID[0];
 
   useEffect(() => {
@@ -53,6 +54,7 @@ export default function SessionDetail() {
                 )}
               </div>
               <h1 className="title"> {title}</h1>
+              {isOwnSession && <SessionDeleteForm sessionID={session._id} />}
               <div className="user-likes-comments">
                 <Link to={userProfileURL} className="username">
                   {session.userDetails[0].thumbURL && (

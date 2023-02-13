@@ -66,11 +66,15 @@
   padding: 0.5em 0.25em;
   text-align: center;
   color: var(--dark-blue);
-  border: 1.5px solid var(--border-grey);
+  border: 1px solid var(--border-grey);
   font-size: 0.9rem;
   font-weight: 500;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.date-input label:hover {
+  background-color: var(--btn-hover-grey);
 }
 
 .date-input input[type='radio']:checked + label,

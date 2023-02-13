@@ -7,7 +7,7 @@ import { RequestContext } from '../../../App';
 export default function Navbar({ logOut }) {
   const user = useContext(UserContext);
   const [friendRequests] = useContext(RequestContext);
-  const userURL = `profile/${user.ID}`;
+  const userURL = `profile/${user.ID}/posts`;
   const friendsURL = `friends/${user.ID}`;
 
   return (

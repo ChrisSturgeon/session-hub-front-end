@@ -15,12 +15,6 @@
   cursor: pointer;
 }
 
-.about fieldset {
-  border: 1px solid rgba(128, 128, 128, 0.681);
-  border-radius: 10px;
-  padding: 1em;
-}
-
 .next-previous-btns button:first-of-type {
   background-color: var(--dark-blue);
   color: white;
@@ -35,6 +29,11 @@
   border: none;
   color: rgba(128, 128, 128, 0.681);
   font-weight: 500;
+}
+
+.next-previous-btns button:nth-of-type(2):hover {
+  background-color: var(--btn-hover-grey);
+  border-radius: 8px;
 }
 
 .date .date-selection,
@@ -60,16 +59,21 @@
 .date-input label,
 .sport-selection label {
   display: inline-block;
-  background-color: rgb(251, 251, 251);
+  background-color: var(--btn-grey);
   width: 100%;
   padding: 0.5em 0.25em;
   text-align: center;
   color: var(--dark-blue);
-  border: 1.5px solid var(--border-grey);
+  border: 1px solid var(--border-grey);
   font-size: 0.9rem;
   font-weight: 500;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.date-input label:hover,
+.sport-input label:hover {
+  background-color: var(--btn-hover-grey);
 }
 
 .date-input input[type='radio']:checked + label,

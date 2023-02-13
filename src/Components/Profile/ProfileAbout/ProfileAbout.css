@@ -10,10 +10,8 @@
 }
 
 .profile-about .joined {
-  font-size: 0.9rem;
-  font-weight: 300;
+  font-size: 0.8rem;
   color: grey;
-  margin-bottom: 0.25em;
 }
 
 .profile-about .favourite-sports ul {

@@ -9,6 +9,11 @@
   gap: 0.5em;
 }
 
+.home-sidebar h2 {
+  color: var(--dark-blue);
+  font-size: 1.5rem;
+}
+
 .home-sidebar .home-sidebar-actions {
   display: flex;
   flex-direction: column;
@@ -17,20 +22,20 @@
 }
 
 .home-sidebar .home-sidebar-actions a {
-  background-color: rgba(204, 224, 229, 0.276);
-  border: 1px solid rgb(230, 230, 230);
   display: flex;
   align-items: center;
   gap: 1em;
   padding: 0.5em 1em;
   font-weight: 500;
   color: var(--dark-blue);
-  border-radius: 5px;
+  border-radius: 10px;
   text-decoration: none;
+  background-color: var(--btn-grey);
+  border: 1px solid var(--border-grey);
 }
 
 .home-sidebar .home-sidebar-actions a:hover {
-  background-color: rgba(204, 224, 229, 0.693);
+  background-color: var(--btn-hover-grey);
 }
 
 .home-sidebar .home-sidebar-actions a span {

@@ -6,29 +6,31 @@
 
 .latest-users h3 {
   margin-bottom: 0.25em;
+  color: var(--dark-blue);
 }
 
 .new-user-link {
   display: flex;
   align-items: center;
-
+  background-color: rgb(255, 254, 254);
   gap: 0.75em;
   padding: 0.5em;
-  border: 1.5px solid var(--border-grey);
   border-radius: 10px;
   transition: transform 200ms ease-in-out;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-grey);
 }
 
 .latest-users .new-user-link,
 .latest-users .new-user-link:visited {
   color: var(--dark-blue);
   text-decoration: none;
+  font-weight: 500;
 }
 
 .new-user-link:hover {
   position: relative;
   transform: translateY(-3px);
-  background-color: var(--border-grey);
 }
 
 .new-user-link .placeholder-img {

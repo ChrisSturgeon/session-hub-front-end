@@ -12,7 +12,7 @@ export default function ProfileHeader({ profile }) {
       {profile.imgURL ? (
         <img src={profile.imgURL} alt="profile" className="profile-pic"></img>
       ) : (
-        <div className="profile-pic"></div>
+        <div className="profile-pic default"></div>
       )}
       <div className="filler-box"></div>
 

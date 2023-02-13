@@ -59,7 +59,10 @@
 
 .top-nav .links ul li span:hover,
 .top-nav button:hover {
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
+  /* text-decoration: underline 1px solid white;
+  text-underline-offset: 3px; */
+  color: var(--hover-blue);
 }
 
 .top-nav button {
@@ -85,8 +88,6 @@
   border: none;
   font-size: 0.45rem;
   position: absolute;
-  /* left: 25px; */
-  /* bottom: 48px; */
   bottom: 17px;
   left: -3px;
   display: flex;

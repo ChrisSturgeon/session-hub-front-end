@@ -74,7 +74,9 @@ export default function SessionEdit() {
     <div className="session-edit-wrapper">
       <form onSubmit={handleSubmit}>
         <Outlet context={[sessionState, setSessionState]} />
-        <button>Update</button>
+        <div className="confirm-update">
+          <button>Update</button>
+        </div>
       </form>
     </div>
   );

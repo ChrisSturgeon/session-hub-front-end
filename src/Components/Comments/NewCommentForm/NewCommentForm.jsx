@@ -4,6 +4,8 @@ import { UserContext } from '../../../App';
 import { useParams, useNavigate } from 'react-router-dom';
 import { APIURL } from '../../../api';
 import { motion, AnimatePresence } from 'framer-motion';
+import ValidationError from '../../ValidationError/ValidationError';
+import SessionValidationError from '../../SessionForm/ValidationError/SessionValidationError';
 
 const expandDown = {
   initial: {
@@ -36,11 +38,12 @@ const expandDown = {
   },
 };
 
-export default function NewCommentForm() {
+export default function NewCommentForm({ setComments }) {
   const { sessionID } = useParams();
   const [show, setShow] = useState(true);
   const [text, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
+  const [showInputError, setShowInputError] = useState(false);
 
   function handleChange(event) {
     setText((prev) => event.target.value);
@@ -52,6 +55,13 @@ export default function NewCommentForm() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+
+    if (characterCount < 2) {
+      setShowInputError(true);
+      return;
+    } else {
+      setShowInputError(false);
+    }
     const sessionURL = `${APIURL}/comments/${sessionID}`;
 
     try {
@@ -72,7 +82,6 @@ export default function NewCommentForm() {
       const data = await response.json();
 
       if (response.status === 201) {
-        console.log(data.message);
         setShow(false);
         return;
       }
@@ -103,12 +112,20 @@ export default function NewCommentForm() {
               placeholder="Leave a comment!"
             ></textarea>
             <div className="character-count">{characterCount} / 1500 </div>
+            <SessionValidationError
+              isVisible={showInputError}
+              message={'Min. comment length is 3 characters'}
+            />
             <button>Add Comment</button>
           </motion.form>
         )}
       </AnimatePresence>
 
-      {!show && <div>Thanks for your comment!</div>}
+      {!show && (
+        <div style={{ color: 'var(--dark-blue', margin: '0.5em 0' }}>
+          Thanks for your comment!
+        </div>
+      )}
     </>
   );
 }

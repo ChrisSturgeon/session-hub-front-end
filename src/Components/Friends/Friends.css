@@ -29,15 +29,14 @@
   text-decoration: none;
   padding: 0.25em 1em;
   width: clamp(200px, 100%, 388px);
-  border-radius: 5px;
-  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  background-color: var(--btn-grey);
   color: grey;
-  border: 1px solid rgb(226, 226, 226);
+  border: 1px solid var(--border-grey);
 }
 
 .friends-page-wrapper main nav a:hover {
-  background-color: var(--light-blue);
-  color: white;
+  background-color: var(--btn-hover-grey);
 }
 
 .friends-page-wrapper main nav a.active {
@@ -95,7 +94,11 @@
 
   .friends-page-wrapper main nav a,
   .friends-page-wrapper main nav a.active {
-    border: none;
+    border: 1px solid var(--border-grey);
     padding: 0.35em 1em;
+  }
+
+  .friends-page-wrapper main nav a.active {
+    border: 1px solid var(--medium-grey);
   }
 }

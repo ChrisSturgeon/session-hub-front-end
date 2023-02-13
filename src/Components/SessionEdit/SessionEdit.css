@@ -20,9 +20,36 @@
   margin: 1.25em 0;
 }
 
+.session-edit-wrapper .confirm-update {
+  display: flex;
+  padding: 0 1em;
+  justify-content: flex-end;
+}
+
+.session-edit-wrapper button {
+  margin-top: 1em;
+  position: relative;
+  left: 0;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--medium-blue);
+  color: white;
+  padding: 0.25em 0.5em;
+  font-weight: 500;
+}
+
 @media only screen and (min-width: 768px) {
   .session-edit-wrapper {
     min-height: 100%;
     padding: 1em;
+  }
+
+  .session-edit-wrapper .confirm-update {
+    padding: 0;
+  }
+
+  .session-edit-wrapper button {
+    width: auto;
   }
 }

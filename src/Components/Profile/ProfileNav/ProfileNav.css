@@ -32,7 +32,7 @@
 }
 
 .profile-nav ul li a.active {
-  background-color: var(--light-blue);
-  border: 1px solid var(--light-blue);
+  background-color: var(--medium-blue);
+  border: 1px solid var(--medium-blue);
   color: white;
 }

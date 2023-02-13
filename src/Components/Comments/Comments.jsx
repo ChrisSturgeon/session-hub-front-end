@@ -9,19 +9,24 @@ export default function Comments() {
   const { sessionID } = useParams();
   const url = `${APIURL}/comments/${sessionID}`;
 
-  const { isLoading, APIData: data, error } = useFetch(url);
+  const {
+    isLoading,
+    APIData: comments,
+    setAPIData: setComments,
+    error,
+  } = useFetch(url);
 
   if (isLoading) {
     return <Spinner />;
   }
 
-  if (data.data) {
+  if (comments.data) {
     return (
       <>
-        <h3>Comments</h3>
-        <NewCommentForm />
+        <h3 style={{ color: 'var(--dark-blue' }}>Comments</h3>
+        <NewCommentForm setComments={setComments} />
 
-        {data.data.map((comment) => {
+        {comments.data.map((comment) => {
           return <CommentCard key={comment._id} comment={comment} />;
         })}
       </>

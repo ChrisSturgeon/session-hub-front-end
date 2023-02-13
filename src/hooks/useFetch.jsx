@@ -36,7 +36,7 @@ const useFetch = (url) => {
     };
     fetchData();
   }, [url]);
-  return { isLoading, isAuthenticated, APIData, error };
+  return { isLoading, isAuthenticated, APIData, setAPIData, error };
 };
 
 export default useFetch;
