@@ -45,7 +45,10 @@ export default function CommentDeleteForm({ commentID, setCommentIsVisible }) {
 
   return (
     <div className="comment-delete confirm-cancel">
-      <form onSubmit={(event) => handleSubmit(event)}>
+      <form
+        onSubmit={(event) => handleSubmit(event)}
+        name="comment-delete-form"
+      >
         <button className="confirm-btn">Confirm</button>
       </form>
       <button onClick={() => setFormVisible(false)} className="cancel-btn">

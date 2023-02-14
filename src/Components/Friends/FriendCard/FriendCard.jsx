@@ -11,7 +11,7 @@ export default function FriendCard({ friendData }) {
         <div className="profile-dummy-img"></div>
       )}
 
-      <div>{friendData.username}</div>
+      <div data-testid="username">{friendData.username}</div>
     </Link>
   );
 }

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Friend Card Matches snapshot 1`] = `
+<div>
+  <a
+    class="friend-card"
+    href="/profile/1ab2c3/posts"
+  >
+    <img
+      alt="display-pic"
+      src="https://i.imgur.com/RpjwdOf.png"
+    />
+    <div
+      data-testid="username"
+    >
+      Chris Sturgeon
+    </div>
+  </a>
+</div>
+`;

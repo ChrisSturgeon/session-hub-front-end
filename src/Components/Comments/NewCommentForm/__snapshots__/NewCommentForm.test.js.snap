@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`New Comment Form Matches snapshot 1`] = `
+<div>
+  <form
+    class="new-comment-form"
+    name="new-comment-form"
+    style="height: auto; opacity: 1;"
+  >
+    <textarea
+      placeholder="Leave a comment!"
+    />
+    <div
+      class="character-count"
+      data-testid="character-count"
+    >
+      0
+       / 1500
+       
+    </div>
+    <button>
+      Add Comment
+    </button>
+  </form>
+</div>
+`;

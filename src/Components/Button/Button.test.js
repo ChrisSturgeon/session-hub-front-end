@@ -10,6 +10,11 @@ describe('General Button', () => {
     expect(screen.getByRole('button')).toHaveAttribute('class', 'btn');
   });
 
+  it('Matches snapshot', () => {
+    const { container } = render(<Button />);
+    expect(container).toMatchSnapshot();
+  });
+
   it('Has text from props', () => {
     render(<Button label="myBtn" />);
     expect(screen.getByRole('button')).toHaveTextContent('myBtn');

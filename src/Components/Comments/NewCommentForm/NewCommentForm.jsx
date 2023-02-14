@@ -36,7 +36,7 @@ const expandDown = {
   },
 };
 
-export default function NewCommentForm({ setComments }) {
+export default function NewCommentForm() {
   const { sessionID } = useParams();
   const [show, setShow] = useState(true);
   const [text, setText] = useState('');
@@ -103,13 +103,16 @@ export default function NewCommentForm({ setComments }) {
             exit={expandDown.exit}
             onSubmit={handleSubmit}
             className="new-comment-form"
+            name="new-comment-form"
           >
             <textarea
               onChange={handleChange}
               value={text}
               placeholder="Leave a comment!"
             ></textarea>
-            <div className="character-count">{characterCount} / 1500 </div>
+            <div className="character-count" data-testid="character-count">
+              {characterCount} / 1500{' '}
+            </div>
             <SessionValidationError
               isVisible={showInputError}
               message={'Min. comment length is 3 characters'}
