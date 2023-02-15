@@ -10,6 +10,11 @@ describe('Comment Delete Form', () => {
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
+  it('Matches snapshot', () => {
+    const { container } = render(<CommentDeleteForm />);
+    expect(container).toMatchSnapshot();
+  });
+
   it('Displays form on activation button click', () => {
     render(<CommentDeleteForm />);
     const activationButton = screen.getByRole('button');

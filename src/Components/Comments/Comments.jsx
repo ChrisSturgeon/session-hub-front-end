@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { APIURL } from '../../api';
 import useFetch from '../../hooks/useFetch';
 
@@ -7,8 +6,8 @@ import Spinner from '../Spinner/Spinner';
 import CommentCard from './CommentCard/CommentCard';
 import NewCommentForm from './NewCommentForm/NewCommentForm';
 
-export default function Comments() {
-  const { sessionID } = useParams();
+export default function Comments({ sessionID }) {
+  // const { sessionID } = useParams();
   const url = `${APIURL}/comments/${sessionID}`;
 
   const {
@@ -25,7 +24,7 @@ export default function Comments() {
     return (
       <>
         <h3 style={{ color: 'var(--dark-blue' }}>Comments</h3>
-        <NewCommentForm setComments={setComments} />
+        <NewCommentForm sessionID={sessionID} />
 
         {comments.data.map((comment) => {
           return <CommentCard key={comment._id} comment={comment} />;

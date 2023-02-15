@@ -44,6 +44,8 @@
     ]
   },
   "devDependencies": {
+    "jest": "^27.5.1",
+    "jest-environment-jsdom": "^29.4.2",
     "msw": "^1.0.1"
   }
 }

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment Delete Form Matches snapshot 1`] = `
+<div>
+  <button
+    class="comment-delete activate-btn"
+  >
+    <span>
+      <ion-icon
+        name="trash-outline"
+      />
+      <div>
+        Remove
+      </div>
+    </span>
+  </button>
+</div>
+`;

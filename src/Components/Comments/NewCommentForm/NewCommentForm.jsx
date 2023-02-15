@@ -36,8 +36,8 @@ const expandDown = {
   },
 };
 
-export default function NewCommentForm() {
-  const { sessionID } = useParams();
+export default function NewCommentForm({ sessionID }) {
+  // const { sessionID } = useParams();
   const [show, setShow] = useState(true);
   const [text, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);

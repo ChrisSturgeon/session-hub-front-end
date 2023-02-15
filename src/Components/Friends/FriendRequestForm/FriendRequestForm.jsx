@@ -64,7 +64,7 @@ export default function FriendRequestForm({ userID }) {
     <div className="add-friend">
       {showForm ? (
         <>
-          <form>
+          <form name="add-friend-form">
             <button
               className="confirm-btn"
               onClick={(event) => handleSubmit(event)}

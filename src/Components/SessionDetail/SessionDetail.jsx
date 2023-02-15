@@ -139,7 +139,7 @@ export default function SessionDetail() {
                 </div>
               )}
               <hr></hr>
-              <Comments />
+              <Comments sessionID={session._id} />
             </div>
           </div>
         </div>
