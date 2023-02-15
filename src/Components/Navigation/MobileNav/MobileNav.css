@@ -67,11 +67,11 @@
 }
 
 .mobile-nav ul li a.active .text {
-  color: #03738c;
+  color: var(--dark-blue);
 }
 
 .mobile-nav ul li a.active .icon {
-  color: #03738c;
+  color: var(--dark-blue);
 }
 
 .mobile-nav ul .friend-request-notification {
