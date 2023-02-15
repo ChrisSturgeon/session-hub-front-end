@@ -44,9 +44,13 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.20.11",
     "babel-jest": "^29.4.2",
-    "jest": "^27.5.1",
-    "jest-environment-jsdom": "^29.4.2",
     "msw": "^1.0.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "react-leaflet": "<rootDir>/mocks/reactLeafletMock.js"
+    }
   }
 }

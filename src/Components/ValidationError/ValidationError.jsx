@@ -43,7 +43,7 @@ export default function ValidationError({ isVisible, message }) {
           animate={expandDown.animate}
           exit={expandDown.exit}
           className="validation-error"
-          data-testId="validation-error"
+          data-testid="validation-error"
         >
           {message}
         </motion.div>

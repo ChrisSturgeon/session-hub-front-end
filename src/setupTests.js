@@ -15,3 +15,10 @@ afterEach(() => server.resetHandlers());
 
 // Clean up after the tests are finished.
 afterAll(() => server.close());
+
+// Clears scroll to error
+const windowMock = {
+  scrollTo: jest.fn(),
+};
+
+Object.assign(global, global, windowMock);
