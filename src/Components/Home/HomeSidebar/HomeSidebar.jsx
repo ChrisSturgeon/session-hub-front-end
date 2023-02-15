@@ -16,7 +16,7 @@ export default function HomeSidebar() {
           <Link to="/friends/requests" className="friends-request-notification">
             <span>
               <ion-icon name="person-add-outline"></ion-icon>
-              <div>
+              <div data-testid="friend-request-notification">
                 You have {friendRequests.count} pending
                 {friendRequests.count > 1
                   ? ' friends requests'

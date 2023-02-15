@@ -27,4 +27,8 @@ export const handlers = [
       return res(ctx.status(200));
     }
   ),
+
+  rest.get('http://localhost/to%20setup/users/latest', (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
 ];
