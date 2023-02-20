@@ -11,7 +11,7 @@
   gap: 1em;
   padding-bottom: 75px;
   width: 100%;
-  min-height: 300vh;
+  min-height: 150vh;
 }
 
 @media only screen and (min-width: 768px) {

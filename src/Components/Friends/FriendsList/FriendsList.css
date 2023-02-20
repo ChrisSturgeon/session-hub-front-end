@@ -11,10 +11,15 @@
   align-items: center;
   gap: 1em;
   width: 100%;
+  padding-bottom: 75px;
 }
 
 @media only screen and (min-width: 768px) {
   .friends-list {
     padding: 1em 0;
+  }
+
+  .friends-list .column {
+    padding-bottom: 0;
   }
 }

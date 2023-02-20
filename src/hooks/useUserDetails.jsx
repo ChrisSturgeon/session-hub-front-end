@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { APIURL } from '../api';
 
 const useUserDetails = () => {
   const [userDetails, setUserDetails] = useState(null);
@@ -7,15 +8,12 @@ const useUserDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          'http://localhost:3000/api/users/details/',
-          {
-            method: 'GET',
-            headers: {
-              Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
-            },
-          }
-        );
+        const response = await fetch(`${APIURL}users/details/`, {
+          method: 'GET',
+          headers: {
+            Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
+          },
+        });
         if (response.status === 200) {
           const data = await response.json();
           setUserDetails(data.data);

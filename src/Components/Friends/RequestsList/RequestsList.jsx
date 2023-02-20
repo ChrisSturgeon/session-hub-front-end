@@ -9,7 +9,7 @@ export default function RequestsList() {
   if (friendRequests.count === 0) {
     return (
       <div className="friends-request-wrapper">
-        You don't have any friends requests at the moment
+        <p>You don't have any friends requests at the moment</p>
       </div>
     );
   }

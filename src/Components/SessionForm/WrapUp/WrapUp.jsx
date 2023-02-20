@@ -11,6 +11,7 @@ export default function WrapUp() {
   const [
     formState,
     setFormState,
+    completed,
     setCompleted,
     handleFormSubmit,
     allSectionsComplete,

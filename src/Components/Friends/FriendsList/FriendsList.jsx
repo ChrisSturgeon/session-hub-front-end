@@ -20,7 +20,12 @@ export default function FriendsList() {
       {friends && (
         <div className="column">
           {friends.map((friend) => {
-            return <FriendCard key={friend.username} friendData={friend} />;
+            return (
+              <FriendCard
+                key={friend.friends._id}
+                friendData={friend.friends}
+              />
+            );
           })}
         </div>
       )}
@@ -41,7 +46,7 @@ export const FriendsListLoader = async (params) => {
   }
 
   const data = await response.json();
-  const friends = data.data[0].friends;
+  const friends = data.data;
 
   return {
     friends,

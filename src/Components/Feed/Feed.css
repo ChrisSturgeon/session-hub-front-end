@@ -4,7 +4,7 @@
   align-items: center;
   gap: 1em;
   padding: 1em 0;
-  min-height: 200vh;
+  min-height: 150vh;
 }
 
 .feed-column a.feed-to-users-link {

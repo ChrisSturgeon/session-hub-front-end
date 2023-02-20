@@ -21,9 +21,17 @@
   background-color: white;
 }
 
+.profile-header .username:first-child {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .profile-header h1 {
   font-size: 3rem;
   color: var(--dark-blue);
+  text-align: center;
 }
 
 .profile-header .username a {
@@ -64,6 +72,7 @@
 
   .profile-header .username h1 {
     grid-column: 2 / 3;
+    text-align: left;
   }
 
   .filler-box {

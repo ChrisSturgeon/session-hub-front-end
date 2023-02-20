@@ -30,7 +30,7 @@ export default function Feed() {
           setIsLoading(false);
           setFeedData(data.data);
         } else {
-          console.log(data.message);
+          console.log('Something has gone wrong...');
         }
       } catch (err) {
         console.log(err);
@@ -48,7 +48,7 @@ export default function Feed() {
       return (
         <div className="feed-wrapper">
           <div className="feed-column" style={{ textAlign: 'center' }}>
-            Add some friends to start creating a feed!{' '}
+            Add some friends to start creating a feed!
             <Link className="feed-to-users-link" to="/friends/all-users">
               See all users
             </Link>
@@ -61,11 +61,11 @@ export default function Feed() {
       <div id="feed" className="feed-wrapper">
         <div className="feed-column">
           {feedData.map((session) => {
-            if (session.post.length) {
+            if (session.session[0]) {
               return (
                 <SessionCard
                   key={session._id}
-                  session={session.post[0]}
+                  session={session.session[0]}
                   feed={true}
                   thumbURL={session.thumbURL}
                 />

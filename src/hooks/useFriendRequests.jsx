@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { APIURL } from '../api';
 
 const useFriendRequest = () => {
   const [friendRequests, setFriendRequests] = useState({
@@ -14,15 +15,12 @@ const useFriendRequest = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          'http://localhost:3000/api/friends/request/all',
-          {
-            method: 'GET',
-            headers: {
-              Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
-            },
-          }
-        );
+        const response = await fetch(`${APIURL}/friends/request`, {
+          method: 'GET',
+          headers: {
+            Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
+          },
+        });
 
         if (response.status === 200) {
           const responseData = await response.json();

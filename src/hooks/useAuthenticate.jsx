@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { APIURL } from '../api';
 
 const useAuthenticate = () => {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
@@ -15,15 +16,12 @@ const useAuthenticate = () => {
         setIsAuthenticating(false);
       } else {
         try {
-          const response = await fetch(
-            'http://localhost:3000/api/users/authenticate',
-            {
-              method: 'GET',
-              headers: {
-                Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
-              },
-            }
-          );
+          const response = await fetch(`${APIURL}/users/authenticate`, {
+            method: 'GET',
+            headers: {
+              Authorization: `bearer ${window.localStorage.getItem('JWT')}`,
+            },
+          });
 
           if (response.status === 200) {
             setIsAuthenticated(true);
