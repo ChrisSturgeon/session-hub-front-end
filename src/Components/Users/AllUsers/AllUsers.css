@@ -1,5 +1,5 @@
 .all-users {
-  padding: 1em 0;
+  padding: 1em;
   padding-bottom: 75px;
   display: flex;
   flex-direction: column;
@@ -10,6 +10,6 @@
 
 @media only screen and (min-width: 768px) {
   .all-users {
-    /* padding: 1em; */
+    padding: 1em 0;
   }
 }
