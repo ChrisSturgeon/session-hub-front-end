@@ -47,6 +47,7 @@ import ConditionsEdit from './Components/SessionEdit/ConditionsEdit/ConditionsEd
 import EquipmentEdit from './Components/SessionEdit/EquipmentEdit/EquipmentEdit';
 import WrapUpEdit from './Components/SessionEdit/WrapUpEdit/WrapUpEdit';
 import LocationEdit from './Components/SessionEdit/LocationEdit/LocationEdit';
+import ErrorPage from './Components/ErrorPage/ErrorPage';
 
 // Context Exports
 export const RequestContext = React.createContext();
@@ -72,6 +73,7 @@ function App() {
     {
       path: '/',
       element: <NavBarWrapper toggleAuth={toggleAuth} setUser={setUser} />,
+      errorElement: <ErrorPage />,
       children: [
         {
           path: '/',
