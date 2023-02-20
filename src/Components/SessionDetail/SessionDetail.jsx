@@ -122,7 +122,7 @@ export default function SessionDetail() {
                   <div className="title-and-edit">
                     <h2 className="equipment-title">Wrap Up</h2>
                     {isOwnSession && (
-                      <Link to="edit/equipment">
+                      <Link to="edit/wrap-up">
                         <span>
                           <ion-icon name="brush-outline"></ion-icon>
                           <div>edit</div>

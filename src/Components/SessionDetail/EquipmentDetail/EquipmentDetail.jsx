@@ -7,7 +7,9 @@ export default function EquipmentDetail({ sport, equipment }) {
       <div className="equipment-detail">
         <div>
           <div className="equipment-label">BOARD</div>
-          <div>{equipment.board}</div>
+          <div
+            dangerouslySetInnerHTML={{ __html: sanitize(equipment.board) }}
+          ></div>
         </div>
       </div>
     );

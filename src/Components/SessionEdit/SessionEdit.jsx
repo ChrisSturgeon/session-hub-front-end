@@ -35,10 +35,7 @@ export default function SessionEdit() {
   });
 
   async function handleSubmit(event) {
-    console.log('submitting!');
     event.preventDefault();
-    console.log(sessionState);
-
     const sessionData = {
       description: sessionState.wrapUp,
       date: sessionState.about.date,
