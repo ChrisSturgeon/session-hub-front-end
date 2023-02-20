@@ -1,6 +1,10 @@
 import './App.css';
 import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  createHashRouter,
+  RouterProvider,
+} from 'react-router-dom';
 
 // Hook imports
 import useAuthenticate from './hooks/useAuthenticate';
@@ -64,7 +68,7 @@ function App() {
     setIsAuthenticated(!isAuthenticated);
   }
 
-  const router = createBrowserRouter([
+  const router = createHashRouter([
     {
       path: '/',
       element: <NavBarWrapper toggleAuth={toggleAuth} setUser={setUser} />,
