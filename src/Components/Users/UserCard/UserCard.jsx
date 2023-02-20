@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import FriendRequestForm from '../../Friends/FriendRequestForm/FriendRequestForm';
 
 export default function UserCard({ userData }) {
-  const profileURL = `/profile/${userData._id}`;
+  const profileURL = `/profile/${userData._id}/posts`;
   const { ID, friends, pendingRequests } = useContext(UserContext);
   const [isPendingRequest, setIsPendingRequest] = useState(null);
   const [isFriend, setIsFriend] = useState(null);

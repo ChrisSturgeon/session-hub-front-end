@@ -48,10 +48,12 @@ export default function Feed() {
       return (
         <div className="feed-wrapper">
           <div className="feed-column" style={{ textAlign: 'center' }}>
-            Add some friends to start creating a feed!
-            <Link className="feed-to-users-link" to="/friends/all-users">
-              See all users
-            </Link>
+            <div className="no-friends">
+              <p>Add some friends to start creating a feed!</p>
+              <Link className="feed-to-users-link" to="/friends/all-users">
+                See all users
+              </Link>
+            </div>
           </div>
         </div>
       );

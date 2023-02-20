@@ -7,7 +7,15 @@
   min-height: 150vh;
 }
 
-.feed-column a.feed-to-users-link {
+.feed-column .no-friends {
+  padding: 1em;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.feed-column .no-friends a.feed-to-users-link {
   background-color: var(--medium-blue);
   padding: 0.5em 1em;
   color: white;
