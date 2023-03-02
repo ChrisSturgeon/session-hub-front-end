@@ -11,9 +11,9 @@
 
 ## Overview
 
-The front end of my final project for the Node JS section of The Odin Project. Built with React the app consumes my Express REST API (repo [here](https://github.com/ChrisSturgeon/session-hub-api)). The project aim was to create a social media site where users can create accounts, add friends, and post about their recent surfing, windsurfing, kitesurfing etc. sessions for other users to like and comment on.
+The front end of my final project for the Node JS section of The Odin Project. Built with React the app consumes my Express REST API. The project aim was to create a social media site where users can create accounts, add friends, and post about their recent surfing, windsurfing, kitesurfing etc. sessions for other users to like and comment on.
 
-View the live project [here](https://chrissturgeon.github.io/session-hub-front-end/#/) and view the project guidelines [here](https://www.theodinproject.com/lessons/nodejs-odin-book).
+View the live project [here](https://chrissturgeon.github.io/session-hub-front-end/#/), the repo for the Express API [here](https://github.com/ChrisSturgeon/session-hub-api) and view the project guidelines [here](https://www.theodinproject.com/lessons/nodejs-odin-book).
 
 _Example Home Page_
 ![Front page screenshot](screenshots/screenshot.jpg 'IMG DESCRIPTION')
