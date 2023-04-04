@@ -25,7 +25,6 @@ _Profile Page_
 
 ### Built With
 
-- [Language/Framework](https://example.com/)
 - [React](https://reactjs.org/)
 - [React Router](https://reactrouter.com/en/main)
 - [Framer Motion](https://www.framer.com/motion/)
